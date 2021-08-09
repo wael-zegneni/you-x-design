@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express()
 const port = 3000
-const connectDB = require('./db/connect')
+const connectDB = require('./helpers/connect')
 app.get('/',(req,res)=>{
     res.send('<h1>you x design</h1>')
 })
