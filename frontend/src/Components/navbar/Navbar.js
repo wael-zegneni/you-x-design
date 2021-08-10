@@ -1,11 +1,11 @@
 import React from 'react'
-import logo from '../Assets/Images/logo.jpg'
-import searchLogo from '../Assets/Images/searchLogo.jpg'
+import logo from '../../Assets/Images/logo.jpg'
+import searchLogo from '../../Assets/Images/searchLogo.jpg'
 import ReactLanguageSelect from 'react-languages-select';
 import 'react-languages-select/css/react-languages-select.css';
 
 
-import './style.css'
+import './navbar.css'
 
 const Navbar = () => {
     return (
