@@ -4,9 +4,14 @@ const app = express()
 const port = 3000
 const connectDB = require('./helpers/connect')
 require('dotenv').config()
+const users = require('./routes/users')
+
+app.use(express.json())
+
 app.get('/',(req,res)=>{
     res.send('<h1>you x design</h1>')
 })
+app.use('/api/v1/user', users)
 
 
 const start = async() => {
