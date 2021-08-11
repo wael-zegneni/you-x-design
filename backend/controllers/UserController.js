@@ -2,7 +2,7 @@ const User = require('../models/User')
 
 
 const login = (req,res) => {
-    res.send('login')
+    res.send({name : 'yassine', email : 'yassine@gmail.com'})
 }
 const register = (req,res) => {
     res.send('register')

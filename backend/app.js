@@ -1,7 +1,7 @@
 
 const express = require('express');
 const app = express()
-const port = 3000
+const port = 4000
 const connectDB = require('./helpers/connect')
 require('dotenv').config()
 const users = require('./routes/users')
