@@ -10,6 +10,7 @@ import linkedLogo from '../../Assets/Images/linkedIn.png'
 const Login = () => {
 
     const [position, setPosition] = useState(true)
+    const axios = require('axios').default;
 
     return (
         <div className="container">
