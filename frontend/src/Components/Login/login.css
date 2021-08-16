@@ -70,10 +70,11 @@
 }
 
 .login-form {
-  height: 80%;
+  /* height: 80%;
   width: 80%;
   margin: 10%;
-  position: relative;
+  position: relative; */
+  padding: 15px;
 }
 
 .signup-form {
@@ -143,7 +144,7 @@
 .label {
   position: absolute;
   left: 2.2vw;
-  top: 2.9vh;
+  top: 2.5vh;
   color: #707070;
   font-weight: 500;
   font-weight: 23px;
@@ -217,11 +218,6 @@
   margin-top: 2vh;
 }
 
-.alternative {
-  display: flex;
-  justify-content: center;
-  margin-top: 15%;
-}
 
 .alternative1 {
   display: flex;
@@ -229,12 +225,6 @@
   margin-top: 5%;
 }
 
-.alternative h4 {
-  margin-top: 23px;
-  margin-right: 4vw;
-  font-size: 13px;
-  font-family: "Montserrat";
-}
 
 @media (min-width: 1600px) {
   .input1 {

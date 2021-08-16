@@ -4,8 +4,18 @@ import { useState } from 'react'
 import googleLogo from '../../Assets/Images/google.png'
 import facebookLogo from '../../Assets/Images/facebook.png'
 import linkedLogo from '../../Assets/Images/linkedIn.png'
+import { Avatar, Flex, Heading, Text } from "@chakra-ui/react"
 
-
+const FormFooter = () => (
+    <Flex position="absolute" bottom="20px" w="100%" wrap="wrap" left="50%" transform="translate(-50%, 0%)" align="center" justify="center">
+        <Text mr="2">Or login with</Text>
+        <Flex className="login-options" align="center" wrap="wrap">
+            <Avatar _hover={{cursor: "pointer"}} size="sm" src={googleLogo}  name="Google" bg="transparent" mr="2"/>
+            <Avatar _hover={{cursor: "pointer"}} size="sm" src={facebookLogo}  name="Facebook" bg="transparent" mr="2"/>
+            <Avatar _hover={{cursor: "pointer"}} size="sm" src={linkedLogo}  name="LinkedIn" bg="transparent"/>
+        </Flex>
+    </Flex>
+)
 
 const Login = () => {
 
@@ -53,18 +63,11 @@ const Login = () => {
                             <div className="button">
                                 <button>Login</button>
                             </div>
-                            <div className="alternative">
-                                <h4>Or login with</h4>
-                                <div className="login-options">
-                                    <a href="facebook.com"><img src={googleLogo} width="50px" style={{ paddingBottom: '2px' }} /></a>
-                                    <a href="facebook.com"><img src={facebookLogo} width="90px" /></a>
-                                    <a href="facebook.com"><img src={linkedLogo} width="47px" style={{ paddingBottom: '4px' }} /></a>
-                                </div>
-                            </div>
+                            <FormFooter />
                         </form>
                         :
                         <form className="login-form">
-                            <h2 >Create Account</h2>
+                            <Heading pt="4">Create Account</Heading>
                             <div className="inputs-signup">
                                 <div className="input-trans">
                                     <input className="input input1" type="text" autoComplete="off" placeholder=" "></input>
@@ -89,14 +92,7 @@ const Login = () => {
                                 <button>Sign Up</button>
                             </div>
 
-                            <div className="alternative alternative1">
-                                <h4>Or login with</h4>
-                                <div className="login-options">
-                                    <a href="facebook.com"><img src={googleLogo} width="50px" style={{ paddingBottom: '2px' }} /></a>
-                                    <a href="facebook.com"><img src={facebookLogo} width="90px" /></a>
-                                    <a href="facebook.com"><img src={linkedLogo} width="47px" style={{ paddingBottom: '4px' }} /></a>
-                                </div>
-                            </div>
+                            <FormFooter />
                         </form>
                 }
             </div>

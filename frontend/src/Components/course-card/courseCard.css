@@ -1,0 +1,18 @@
+.view-details{
+    border: solid 1px #FCC509;
+    color: #FCC509;
+    box-shadow: 1px 1px 5px #ffe9a2;
+    border-radius: 20px;
+    padding: 8px 23px;
+    font-size: 10px;
+    font-family:'montserrat';
+    font-weight: 600;
+}
+
+.courseType{
+    display: flex;
+}
+
+.courseType img{
+    height: 50px;
+}
