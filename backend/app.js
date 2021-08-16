@@ -6,14 +6,15 @@ const connectDB = require('./helpers/connect')
 require('dotenv').config()
 require('./middlewares/passport-config')
 const users = require('./routes/users')
-
+const auth = require('./routes/auth')
+const passport = require('passport')
 app.use(express.json())
 
 app.get('/',(req,res)=>{
     res.send('<h1>you x design</h1>')
 })
-app.use('/api/v1/user', users)
-
+app.use('/api/v1/user', passport.authenticate('jwt', {session: false}), users)
+app.use('/api/v1/auth', auth)
 
 const start = async() => {
     try {

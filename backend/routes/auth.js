@@ -2,14 +2,11 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const passport = require("passport");
-
-
 const {
-    updateUser,
-    deleteUser,
-    getUser } = require ( "../controllers/UserController")
+    signin,
+    register
+} = require ('../controllers/authController')
 
-    
-router.route('/:id').get(getUser).patch(updateUser).delete(deleteUser);
-
+router.route('/login').post(signin);
+router.route('/register').post(register);
 module.exports = router
