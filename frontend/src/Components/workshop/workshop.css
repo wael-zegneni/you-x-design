@@ -1,0 +1,19 @@
+.enroll-now{
+    border: solid 1px #FCC509;
+    color: #FCC509;
+    box-shadow: 1px 1px 5px #ffe9a2;
+    border-radius: 20px;
+    padding: 8px 23px;
+    font-size: 10px;
+    font-family:'montserrat';
+    font-weight: 600;
+    transition: 0.4s;
+
+}
+
+.enroll-now:hover{
+    background-color: #FCC509 ;
+    color: white;
+    font-size: 13px;
+    padding: 6px 14px;
+}
