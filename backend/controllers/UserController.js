@@ -5,28 +5,27 @@ const passport = require("passport");
 
 
 
-const login = (req,res,next) => {
-    passport.authenticate('local', {session: false}, (error, user, info) => {
-        if (err || !user) {
+const signin = (req, res, next) => {
+    passport.authenticate('local', {session: false}, (err, user, info) => {
+        /*if (err || !user) {
             return res.status(400).json({
                 message: 'Something is not right',
                 user   : user });
            
-        }
+        }*/
        req.login(user, {session: false}, (error) => {
            if (error) {
                res.send(err);
            }
-           var token = _jwt.sign(user, 'your_jwt_secret');
+           var token = jwt.sign(user, 'your_jwt_secret');
            return res.json({user, token});
         });
-    })
-    
+    })(req, res);
 }
 const register = async (req,res) => {
 
     // Check if this user already exisits
-    /*let user =  User.findOne({ email: req.body.email });
+    let user =  await User.findOne({ email: req.body.email });
     if (user) {
         return res.status(400).send('That user already exisits!');
     } else {
@@ -39,8 +38,8 @@ const register = async (req,res) => {
             role: "student",
         });
         await user.save();
-        res.send(user);*/
-
+        res.send(user);
+    }
     }
 
 const updateUser = (req,res) => {
@@ -55,7 +54,7 @@ const getUser = (req,res)=>{
 
 
 module.exports = {
-    login,
+    signin,
     register,
     updateUser,
     deleteUser,
