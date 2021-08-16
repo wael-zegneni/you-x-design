@@ -5,7 +5,7 @@ const passport = require("passport");
 
 const signin = function (req, res, next) {
     passport.authenticate('local', {session: false}, (err, user, info) => {
-        
+        console.log(user)
         if (err || !user) {
             return res.status(400).json({
                 message: 'Something is not right',
@@ -31,6 +31,7 @@ const register = async (req,res) => {
     } else {
         // Insert the new user if they do not exist yet
     const hashedPassword = await bcrypt.hash(req.body.password,10)
+    console.log(hashedPassword)
         user = new User({
             userName: req.body.name,
             email: req.body.email,
