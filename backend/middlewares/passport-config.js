@@ -4,6 +4,7 @@ var _passportJWT = require("passport-jwt");
 var _JWTStrategy   = _passportJWT.Strategy;
 var _ExtractJWT = _passportJWT.ExtractJwt;
 var FacebookStrategy = require('passport-facebook').Strategy;
+require('dotenv').config()
 const bcrypt = require ('bcrypt')
 const User = require('../models/User');
 
@@ -70,3 +71,24 @@ _passport.use(new _JWTStrategy({
          });
  }
 ));
+_passport.use(new FacebookStrategy({
+
+    // pull in our app id and secret from our auth.js file
+    clientID        : process.env.CLIENT_ID,
+    clientSecret    : process.env.CLIENT_SECRET,
+    callbackURL     : "http://localhost:4000/api/v1/auth/facebook/callback"
+
+},// facebook will send back the token and profile
+function(token, refreshToken, profile, done) {
+
+    console.log(profile)
+    return done(null,profile)
+}));
+_passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+
+// used to deserialize the user
+_passport.deserializeUser(function(id, done) {
+    return done(null,user)
+});

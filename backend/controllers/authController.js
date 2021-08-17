@@ -43,7 +43,15 @@ const register = async (req,res) => {
         res.json({user, token});
     }
     }
+    const LoginFb = (req,res)=>{
+        res.send("facebook login")
+    }
+    const CallbackFb = (req,res)=>{
+        res.send("callback facebook")
+    }
     module.exports = {
         signin,
-        register
+        register,
+        LoginFb,
+        CallbackFb
     }
