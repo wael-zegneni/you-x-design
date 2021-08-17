@@ -39,7 +39,8 @@ const register = async (req,res) => {
             role: "student",
         });
         await user.save();
-        res.send(user);
+        var token = jwt.sign(user.toJSON(), 'your_jwt_secret');
+        res.json({user, token});
     }
     }
     module.exports = {

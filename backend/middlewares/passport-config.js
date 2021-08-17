@@ -4,7 +4,8 @@ var _passportJWT = require("passport-jwt");
 var _JWTStrategy   = _passportJWT.Strategy;
 var _ExtractJWT = _passportJWT.ExtractJwt;
 const bcrypt = require ('bcrypt')
-const User = require('../models/User')
+const User = require('../models/User');
+
 _passport.use(new _LocalStrategy({
         usernameField: 'email',
         passwordField: 'password'
@@ -37,15 +38,34 @@ _passport.use(new _JWTStrategy({
     jwtFromRequest: _ExtractJWT.fromAuthHeaderAsBearerToken(),
     secretOrKey   : 'your_jwt_secret'
 },
-function (jwtPayload, callback) {
-
+/*function(_passport){
+    let opts = {};
+    opts.jwtFromRequest = _ExtractJWT.fromHeader("authorization")
+    opts.secretOrKey = 'your_jwt_secret'
+    _passport.use(new _JWTStrategy(opts, (jwt_payload, done) => {
+      User.findById(jwt_payload.data._id, (err, User) => {
+        if(err){
+          return done(err, false);
+        }
+  
+        if(User){
+          return done(null, User);
+        } else {
+          return done(null, false);
+        }
+      });
+    }));
+  }*/
+ function (jwtPayload, callback) {
     
-    return User.findOneById(jwtPayload.id)
-        .then(user => {
-            return callback(null, user);
+
+     return User.findOne({id: jwtPayload.id})
+         .then(user => {
+             console.log(user)
+             return callback(null, user);
         })
         .catch(err => {
-            return cllback(err);
-        });
-}
+            return callback(err);
+         });
+ }
 ));
