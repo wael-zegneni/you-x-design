@@ -3,6 +3,7 @@ var _LocalStrategy = require('passport-local').Strategy;
 var _passportJWT = require("passport-jwt");
 var _JWTStrategy   = _passportJWT.Strategy;
 var _ExtractJWT = _passportJWT.ExtractJwt;
+var FacebookStrategy = require('passport-facebook').Strategy;
 const bcrypt = require ('bcrypt')
 const User = require('../models/User');
 
