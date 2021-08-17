@@ -5,12 +5,9 @@ const passport = require("passport");
 
 const signin = function (req, res, next) {
     passport.authenticate('local', {session: false}, (err, user, info) => {
-        console.log(user)
+        console.log(info)
         if (err || !user) {
-            return res.status(400).json({
-                message: 'Something is not right',
-                user   : user });
-           
+            return res.status(400).json(info);
         }
        req.login(user, {session: false}, (error) => {
            if (error) {

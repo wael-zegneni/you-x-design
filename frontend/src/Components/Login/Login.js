@@ -4,7 +4,8 @@ import { useState } from 'react'
 import googleLogo from '../../Assets/Images/google.png'
 import facebookLogo from '../../Assets/Images/facebook.png'
 import linkedLogo from '../../Assets/Images/linkedIn.png'
-import { Avatar, Flex, Heading, Text } from "@chakra-ui/react"
+import { Avatar, Flex, Heading, Text, useToast } from "@chakra-ui/react"
+import axios from "axios"
 
 const FormFooter = () => (
     <Flex position="absolute" bottom="20px" w="100%" wrap="wrap" left="50%" transform="translate(-50%, 0%)" align="center" justify="center">
@@ -18,9 +19,31 @@ const FormFooter = () => (
 )
 
 const Login = () => {
-
+    const [credentials, setCredentials] = useState({
+        email: "",
+        password: ""
+    })
     const [position, setPosition] = useState(true)
-    const axios = require('axios').default;
+    const toast = useToast()
+
+    const handleChange = e => {
+        setCredentials({...credentials, [e.target.name]: e.target.value})
+    }
+
+    const handleSubmit = async e => {
+        e.preventDefault();
+        try {
+            const res = await axios.post("/api/v1/auth/login", credentials)
+            console.log(res.data)
+        } catch (error) {
+            toast({
+                title: error.response.data.message,
+                status: "error",
+                duration: 9000,
+                isClosable: true,
+              })
+        }
+    }
 
     return (
         <div className="container">
@@ -45,15 +68,15 @@ const Login = () => {
             <div className={position ? "box-left" : "box-right"}>
                 {
                     position ?
-                        <form className="login-form">
+                        <form className="login-form" onSubmit={handleSubmit}>
                             <h1>Login</h1>
                             <div className="inputs">
                                 <div className="input-trans">
-                                    <input className="input" type="email" autoComplete="off" placeholder=" "></input>
+                                    <input className="input" type="email" autoComplete="off" placeholder=" " onChange={handleChange} name="email"></input>
                                     <label className="label">Email</label>
                                 </div>
                                 <div className="input-trans">
-                                    <input className="input" type="password" autoComplete="off" placeholder=" "></input>
+                                    <input className="input" type="password" autoComplete="off" placeholder=" " onChange={handleChange} name="password"></input>
                                     <label className="label">Password</label>
                                 </div>
                             </div>
@@ -61,7 +84,7 @@ const Login = () => {
                             <a href="">Forgot Password ?</a>
                             <br />
                             <div className="button">
-                                <button>Login</button>
+                                <button type="submit">Login</button>
                             </div>
                             <FormFooter />
                         </form>

@@ -17,16 +17,24 @@ _passport.use(new _LocalStrategy({
         return User.findOne({email})
            .then(user => {
                if (!user) {
-                   return callback(null, false, {message: 'Incorrect email or password.'});
+                   return callback(null, false, {message: 'Account does not exists'});
                }
                //return callback(null, user, {message: 'Logged In Successfully'});
                
                try {
-                   if ( bcrypt.compare(password, user.password)) {
-                    return callback(null, user, {message: 'Logged In Successfully'});
-                   } else {
-                    return callback(null, false, {message: 'Incorrect password.'});
-                   }
+                bcrypt.compare(password, user.password, (err, isMatch) => {
+                    if(err) throw err
+                    if(!isMatch){
+                        return callback(null, false, {message: 'Incorrect password.'});
+                    } else {
+                        return callback(null, user, {message: 'Logged In Successfully'});
+                    }
+                })
+                //    if ( bcrypt.compare(password, user.password)) {
+                //     return callback(null, user, {message: 'Logged In Successfully'});
+                //    } else {
+                //     return callback(null, false, {message: 'Incorrect password.'});
+                //    }
                    
                } catch (error) {
                    return callback(error)
