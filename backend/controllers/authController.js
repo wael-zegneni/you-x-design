@@ -2,6 +2,7 @@ const User = require('../models/User')
 const bcrypt = require ('bcrypt')
 const jwt = require('jsonwebtoken');
 const passport = require("passport");
+const { validationResult } = require('express-validator');
 
 const signin = function (req, res, next) {
     passport.authenticate('local', {session: false}, (err, user, info) => {
@@ -20,25 +21,37 @@ const signin = function (req, res, next) {
     })(req, res);
 }
 const register = async (req,res) => {
+    // Finds the validation errors in this request and wraps them in an object with handy functions
+    const errors = validationResult(req);
+    console.log(errors)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
 
     // Check if this user already exisits
-    let user =  await User.findOne({ email: req.body.email });
+    let user =  await User.findOne({ email: req.body.RegisterEmail });
     if (user) {
-        return res.status(400).send('That user already exisits!');
+        return res.status(400).send({message :'That user already exisits!'});
     } else {
         // Insert the new user if they do not exist yet
-    const hashedPassword = await bcrypt.hash(req.body.password,10)
-    console.log(hashedPassword)
-        user = new User({
-            userName: req.body.name,
-            email: req.body.email,
-            password: hashedPassword,
-            role: "student",
-        });
-        await user.save();
-        var token = jwt.sign(user.toJSON(), 'your_jwt_secret');
-        res.json({user, token});
-    }
+       try {
+        const hashedPassword = await bcrypt.hash(req.body.RegisterPassword,10)
+        console.log(hashedPassword)
+            user = new User({
+                userName: req.body.name,
+                email: req.body.RegisterEmail,
+                phone: req.body.phone,
+                password: hashedPassword,
+                role: "student",
+            });
+            await user.save();
+            var token = jwt.sign(user.toJSON(), 'your_jwt_secret');
+            res.json({user, token});
+       } catch (error) {
+        res.status(400).send(error)
+        }
+       }
+    
     }
     const LoginFb = (req,res)=>{
         res.send("facebook login")

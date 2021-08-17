@@ -24,17 +24,29 @@ const Login = () => {
         password: ""
     })
     const [position, setPosition] = useState(true)
+    const [registreCredentials, setRegisterCredentials] = useState({
+        name: "",
+        RegisterEmail:"",
+        phone:"",
+        RegisterPassword:""
+    })
     const toast = useToast()
-
-    const handleChange = e => {
+    
+    const handleLoginChange = e => {
         setCredentials({...credentials, [e.target.name]: e.target.value})
     }
 
-    const handleSubmit = async e => {
+    const handleLoginSubmit = async e => {
         e.preventDefault();
         try {
             const res = await axios.post("/api/v1/auth/login", credentials)
             console.log(res.data)
+            toast({
+                title: "login successfull",
+                status: "success",
+                duration: 9000,
+                isClosable: true,
+            })
         } catch (error) {
             toast({
                 title: error.response.data.message,
@@ -43,6 +55,30 @@ const Login = () => {
                 isClosable: true,
               })
         }
+    }
+    const handleRegisterChange = e =>{
+        setRegisterCredentials({...registreCredentials, [e.target.name]: e.target.value})
+    }
+    const handleRegisterSubmit = async e => {
+        e.preventDefault();
+        try {
+            const res = await axios.post("api/v1/auth/register", registreCredentials)
+            toast({
+                title: "successfull",
+                status: "success",
+                duration: 9000,
+                isClosable: true,
+            })
+        } catch (error) {
+            console.log(error.response.data.errors)
+            error.response.data.errors.map(el => toast({
+                title: el.msg,
+                status: "error",
+                duration: 4000,
+                isClosable: true,
+            }))
+        }
+
     }
 
     return (
@@ -68,15 +104,15 @@ const Login = () => {
             <div className={position ? "box-left" : "box-right"}>
                 {
                     position ?
-                        <form className="login-form" onSubmit={handleSubmit}>
+                        <form className="login-form" onSubmit={handleLoginSubmit}>
                             <h1>Login</h1>
                             <div className="inputs">
                                 <div className="input-trans">
-                                    <input className="input" type="email" autoComplete="off" placeholder=" " onChange={handleChange} name="email"></input>
+                                    <input className="input" type="email" autoComplete="off" placeholder=" " onChange={handleLoginChange} name="email"></input>
                                     <label className="label">Email</label>
                                 </div>
                                 <div className="input-trans">
-                                    <input className="input" type="password" autoComplete="off" placeholder=" " onChange={handleChange} name="password"></input>
+                                    <input className="input" type="password" autoComplete="off" placeholder=" " onChange={handleLoginChange} name="password"></input>
                                     <label className="label">Password</label>
                                 </div>
                             </div>
@@ -89,30 +125,30 @@ const Login = () => {
                             <FormFooter />
                         </form>
                         :
-                        <form className="login-form">
+                        <form className="login-form" onSubmit={handleRegisterSubmit}>
                             <Heading pt="4">Create Account</Heading>
                             <div className="inputs-signup">
                                 <div className="input-trans">
-                                    <input className="input input1" type="text" autoComplete="off" placeholder=" "></input>
+                                    <input className="input input1" type="text" autoComplete="off" placeholder=" " name="name" onChange={handleRegisterChange}></input>
                                     <label className="label">Username</label>
                                 </div>
                                 <div className="input-trans">
-                                    <input className="input input1" type="email" autoComplete="off" placeholder=" "></input>
+                                    <input className="input input1" type="email" autoComplete="off" placeholder=" " name ="RegisterEmail" onChange={handleRegisterChange}></input>
                                     <label className="label">Email</label>
                                 </div>
                                 <div className="input-trans">
-                                    <input className="input input1" type="tel" autoComplete="off" placeholder=" "></input>
+                                    <input className="input input1" type="tel" autoComplete="off" placeholder=" " name="phone" onChange={handleRegisterChange}></input>
                                     <label className="label">Mobile number</label>
                                 </div>
                                 <div className="input-trans">
-                                    <input className="input input1" type="tel" autoComplete="off" placeholder=" "></input>
+                                    <input className="input input1" type="password" autoComplete="off" placeholder=" " name ="RegisterPassword" onChange={handleRegisterChange}></input>
                                     <label className="label">Password</label>
                                 </div>
                             </div>
 
                            
                             <div className="button button1">
-                                <button>Sign Up</button>
+                                <button type="submit">Sign Up</button>
                             </div>
 
                             <FormFooter />
