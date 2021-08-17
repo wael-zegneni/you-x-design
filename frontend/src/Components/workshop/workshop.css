@@ -11,8 +11,22 @@
     font-family:'montserrat';
     font-weight: 600;
     transition: 0.4s;
-
 }
+
+.workshop{
+    min-width:"30vw"; 
+    max-width:"530px"; 
+    height:"330px";
+    width:"max-content"
+}
+
+.description{
+    height: 100px;
+    width: 400px;
+    margin-bottom: 10px;
+}
+
+
 
 .enroll-now:hover{
     background-color: #FCC509 ;
@@ -38,3 +52,9 @@ span{
 .liveLogo{
     margin-right: 20px;
 }
+
+@media screen and (min-width: 1500px) {
+   .workshop{
+       height: 350px;
+   }
+} 
