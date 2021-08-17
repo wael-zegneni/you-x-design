@@ -4,7 +4,8 @@ import { useState } from 'react'
 import googleLogo from '../../Assets/Images/google.png'
 import facebookLogo from '../../Assets/Images/facebook.png'
 import linkedLogo from '../../Assets/Images/linkedIn.png'
-import { Avatar, Flex, Heading, Text } from "@chakra-ui/react"
+import { Avatar, Flex, Heading, Text, useToast } from "@chakra-ui/react"
+import axios from "axios"
 
 const FormFooter = () => (
     <Flex position="absolute" bottom="20px" w="100%" wrap="wrap" left="50%" transform="translate(-50%, 0%)" align="center" justify="center">
@@ -18,9 +19,67 @@ const FormFooter = () => (
 )
 
 const Login = () => {
-
+    const [credentials, setCredentials] = useState({
+        email: "",
+        password: ""
+    })
     const [position, setPosition] = useState(true)
-    const axios = require('axios').default;
+    const [registreCredentials, setRegisterCredentials] = useState({
+        name: "",
+        RegisterEmail:"",
+        phone:"",
+        RegisterPassword:""
+    })
+    const toast = useToast()
+    
+    const handleLoginChange = e => {
+        setCredentials({...credentials, [e.target.name]: e.target.value})
+    }
+
+    const handleLoginSubmit = async e => {
+        e.preventDefault();
+        try {
+            const res = await axios.post("/api/v1/auth/login", credentials)
+            console.log(res.data)
+            toast({
+                title: "login successfull",
+                status: "success",
+                duration: 9000,
+                isClosable: true,
+            })
+        } catch (error) {
+            toast({
+                title: error.response.data.message,
+                status: "error",
+                duration: 9000,
+                isClosable: true,
+              })
+        }
+    }
+    const handleRegisterChange = e =>{
+        setRegisterCredentials({...registreCredentials, [e.target.name]: e.target.value})
+    }
+    const handleRegisterSubmit = async e => {
+        e.preventDefault();
+        try {
+            const res = await axios.post("api/v1/auth/register", registreCredentials)
+            toast({
+                title: "successfull",
+                status: "success",
+                duration: 9000,
+                isClosable: true,
+            })
+        } catch (error) {
+            console.log(error.response.data.errors)
+            error.response.data.errors.map(el => toast({
+                title: el.msg,
+                status: "error",
+                duration: 4000,
+                isClosable: true,
+            }))
+        }
+
+    }
 
     return (
         <div className="container">
@@ -45,15 +104,15 @@ const Login = () => {
             <div className={position ? "box-left" : "box-right"}>
                 {
                     position ?
-                        <form className="login-form">
+                        <form className="login-form" onSubmit={handleLoginSubmit}>
                             <h1>Login</h1>
                             <div className="inputs">
                                 <div className="input-trans">
-                                    <input className="input" type="email" autoComplete="off" placeholder=" "></input>
+                                    <input className="input" type="email" autoComplete="off" placeholder=" " onChange={handleLoginChange} name="email"></input>
                                     <label className="label">Email</label>
                                 </div>
                                 <div className="input-trans">
-                                    <input className="input" type="password" autoComplete="off" placeholder=" "></input>
+                                    <input className="input" type="password" autoComplete="off" placeholder=" " onChange={handleLoginChange} name="password"></input>
                                     <label className="label">Password</label>
                                 </div>
                             </div>
@@ -61,35 +120,35 @@ const Login = () => {
                             <a href="">Forgot Password ?</a>
                             <br />
                             <div className="button">
-                                <button>Login</button>
+                                <button type="submit">Login</button>
                             </div>
                             <FormFooter />
                         </form>
                         :
-                        <form className="login-form">
+                        <form className="login-form" onSubmit={handleRegisterSubmit}>
                             <Heading pt="4">Create Account</Heading>
                             <div className="inputs-signup">
                                 <div className="input-trans">
-                                    <input className="input input1" type="text" autoComplete="off" placeholder=" "></input>
+                                    <input className="input input1" type="text" autoComplete="off" placeholder=" " name="name" onChange={handleRegisterChange}></input>
                                     <label className="label">Username</label>
                                 </div>
                                 <div className="input-trans">
-                                    <input className="input input1" type="email" autoComplete="off" placeholder=" "></input>
+                                    <input className="input input1" type="email" autoComplete="off" placeholder=" " name ="RegisterEmail" onChange={handleRegisterChange}></input>
                                     <label className="label">Email</label>
                                 </div>
                                 <div className="input-trans">
-                                    <input className="input input1" type="tel" autoComplete="off" placeholder=" "></input>
+                                    <input className="input input1" type="tel" autoComplete="off" placeholder=" " name="phone" onChange={handleRegisterChange}></input>
                                     <label className="label">Mobile number</label>
                                 </div>
                                 <div className="input-trans">
-                                    <input className="input input1" type="tel" autoComplete="off" placeholder=" "></input>
+                                    <input className="input input1" type="password" autoComplete="off" placeholder=" " name ="RegisterPassword" onChange={handleRegisterChange}></input>
                                     <label className="label">Password</label>
                                 </div>
                             </div>
 
                            
                             <div className="button button1">
-                                <button>Sign Up</button>
+                                <button type="submit">Sign Up</button>
                             </div>
 
                             <FormFooter />
