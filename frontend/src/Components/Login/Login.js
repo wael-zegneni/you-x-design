@@ -36,13 +36,14 @@ const Login = () => {
     const handleLoginChange = e => {
         setCredentials({...credentials, [e.target.name]: e.target.value})
     }
-    const {token, setToken} = useContext(AuthContext)
+    const {userCredentials, setUserCredentials} = useContext(AuthContext)
     const handleLoginSubmit = async e => {
         e.preventDefault();
         try {
             const res = await axios.post("/api/v1/auth/login", credentials)
-            setToken(res.data.token);
-            console.log(token)
+            setUserCredentials({token : res.data.token, user : res.data.user})
+            console.log(userCredentials.token)
+            console.log(userCredentials.user)
 
             toast({
                 title: "login successfull",
@@ -57,6 +58,7 @@ const Login = () => {
                 duration: 9000,
                 isClosable: true,
               })
+              console.log(error)
         }
     }
     const handleRegisterChange = e =>{
