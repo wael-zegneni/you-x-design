@@ -63,6 +63,7 @@ const Login = () => {
         e.preventDefault();
         try {
             const res = await axios.post("api/v1/auth/register", registreCredentials)
+            console.log(res.data)
             toast({
                 title: "successfull",
                 status: "success",
@@ -70,6 +71,7 @@ const Login = () => {
                 isClosable: true,
             })
         } catch (error) {
+            console.log(error)
             console.log(error.response.data.errors)
             error.response.data.errors.map(el => toast({
                 title: el.msg,
