@@ -5,6 +5,8 @@ import { AuthContext } from '../../Auth/AuthContext'
 import './home.css'
 
 const Home = () => {
+    const {userCredentials, setUserCredentials} = useContext(AuthContext)
+    console.log(userCredentials)
     return (
         <div className="body">
             <Navbar/>

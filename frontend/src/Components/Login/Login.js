@@ -7,6 +7,7 @@ import linkedLogo from '../../Assets/Images/linkedIn.png'
 import { Avatar, Flex, Heading, Text, useToast } from "@chakra-ui/react"
 import axios from "axios"
 import { AuthContext } from '../../Auth/AuthContext'
+import { Link } from 'react-router-dom'
 
 const FormFooter = () => (
     <Flex position="absolute" bottom="20px" w="100%" wrap="wrap" left="50%" transform="translate(-50%, 0%)" align="center" justify="center">
@@ -160,7 +161,9 @@ const Login = () => {
 
                             <FormFooter />
                         </form>
+                        
                 }
+                <Link to="/"><h1 className="h1">home</h1></Link> 
             </div>
         </div>
     )
