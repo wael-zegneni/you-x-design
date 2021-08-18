@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './login.css'
 import { useState } from 'react'
 import googleLogo from '../../Assets/Images/google.png'
@@ -6,6 +6,7 @@ import facebookLogo from '../../Assets/Images/facebook.png'
 import linkedLogo from '../../Assets/Images/linkedIn.png'
 import { Avatar, Flex, Heading, Text, useToast } from "@chakra-ui/react"
 import axios from "axios"
+import { AuthContext } from '../../Auth/AuthContext'
 
 const FormFooter = () => (
     <Flex position="absolute" bottom="20px" w="100%" wrap="wrap" left="50%" transform="translate(-50%, 0%)" align="center" justify="center">
@@ -35,12 +36,14 @@ const Login = () => {
     const handleLoginChange = e => {
         setCredentials({...credentials, [e.target.name]: e.target.value})
     }
-
+    const {token, setToken} = useContext(AuthContext)
     const handleLoginSubmit = async e => {
         e.preventDefault();
         try {
             const res = await axios.post("/api/v1/auth/login", credentials)
-            console.log(res.data)
+            setToken(res.data.token);
+            console.log(token)
+
             toast({
                 title: "login successfull",
                 status: "success",
