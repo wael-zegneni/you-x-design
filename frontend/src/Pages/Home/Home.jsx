@@ -5,17 +5,23 @@ import { AuthContext } from '../../Auth/AuthContext'
 import './home.css'
 
 const Home = () => {
-    const {userCredentials, setUserCredentials} = useContext(AuthContext)
-    console.log(userCredentials)
-    return (
-        <div className="body">
-            <Navbar/>
-            
-            <CourseCard/>
-          
+    const { auth } = useContext(AuthContext)
+    if(auth.isAuthenticated){
+        return (
+        <div>
+            <h1>CONNECTED!!!!</h1>
         </div>
-        
-    )
+        )
+    } else {
+        return (
+            <div className="body">
+                <CourseCard/>
+            
+            </div>
+            
+        )
+
+    }
 }
 
 export default Home

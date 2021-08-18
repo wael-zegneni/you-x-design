@@ -53,6 +53,12 @@ const register = async (req,res) => {
        }
     
     }
+
+    // Loadin connected user
+    // const loadUser = (req, res) => {
+
+    // }
+
     const LoginFb = (req,res)=>{
         res.send("facebook login")
     }
@@ -63,5 +69,6 @@ const register = async (req,res) => {
         signin,
         register,
         LoginFb,
-        CallbackFb
+        CallbackFb,
+        loadUser
     }

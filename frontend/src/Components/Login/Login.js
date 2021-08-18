@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './login.css'
 import { useState } from 'react'
 import googleLogo from '../../Assets/Images/google.png'
@@ -8,6 +8,7 @@ import { Avatar, Flex, Heading, Text, useToast } from "@chakra-ui/react"
 import axios from "axios"
 import { AuthContext } from '../../Auth/AuthContext'
 import { Link } from 'react-router-dom'
+
 
 const FormFooter = () => (
     <Flex position="absolute" bottom="20px" w="100%" wrap="wrap" left="50%" transform="translate(-50%, 0%)" align="center" justify="center">
@@ -33,35 +34,16 @@ const Login = () => {
         RegisterPassword:""
     })
     const toast = useToast()
-    
+    const { login, auth } = useContext(AuthContext)
     const handleLoginChange = e => {
         setCredentials({...credentials, [e.target.name]: e.target.value})
     }
-    const {userCredentials, setUserCredentials} = useContext(AuthContext)
+
     const handleLoginSubmit = async e => {
         e.preventDefault();
-        try {
-            const res = await axios.post("/api/v1/auth/login", credentials)
-            setUserCredentials({token : res.data.token, user : res.data.user})
-            console.log(userCredentials.token)
-            console.log(userCredentials.user)
-
-            toast({
-                title: "login successfull",
-                status: "success",
-                duration: 9000,
-                isClosable: true,
-            })
-        } catch (error) {
-            toast({
-                title: error.response.data.message,
-                status: "error",
-                duration: 9000,
-                isClosable: true,
-              })
-              console.log(error)
-        }
+        await login(credentials)
     }
+    
     const handleRegisterChange = e =>{
         setRegisterCredentials({...registreCredentials, [e.target.name]: e.target.value})
     }
@@ -86,8 +68,18 @@ const Login = () => {
                 isClosable: true,
             }))
         }
-
     }
+
+    useEffect(() => {
+        if(auth.error){
+            toast({
+                title: auth.error,
+                status: "error",
+                duration: 4000,
+                isClosable: true,
+              })
+        }
+    }, [auth.error])
 
     return (
         <div className="container">
@@ -114,6 +106,7 @@ const Login = () => {
                     position ?
                         <form className="login-form" onSubmit={handleLoginSubmit}>
                             <h1>Login</h1>
+                            {auth.isLogginIn && <h1>LOADING... </h1>}
                             <div className="inputs">
                                 <div className="input-trans">
                                     <input className="input" type="email" autoComplete="off" placeholder=" " onChange={handleLoginChange} name="email"></input>

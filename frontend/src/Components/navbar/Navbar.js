@@ -17,7 +17,7 @@ const Navbar = () => {
                 <img src={searchLogo} alt="searchLogo" />
             </div>
             <ReactLanguageSelect className="langPicker" defaultLanguage="en" languages={["en", "fr", "ar"]} customLabels={{"en": "EN", "fr": "FR", "ar": "AR"}} />
-            <Link to="/signup"><h1 className="h1">Join our community</h1></Link> 
+            <Link to="/login"><h1 className="h1">Join our community</h1></Link> 
         </div>
     )
 }
