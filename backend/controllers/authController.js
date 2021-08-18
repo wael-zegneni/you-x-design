@@ -31,7 +31,7 @@ const register = async (req,res) => {
     // Check if this user already exisits
     let user =  await User.findOne({ email: req.body.RegisterEmail });
     if (user) {
-        return res.status(400).send({message :'That user already exisits!'});
+        return res.status(400).json({errors :[{msg: "user already exists !"}]});
     } else {
         // Insert the new user if they do not exist yet
        try {
