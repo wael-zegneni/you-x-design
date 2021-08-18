@@ -3,11 +3,13 @@ import { Router, Route, BrowserRouter } from "react-router-dom";
 import Home from './Pages/Home/Home';
 import SignUp from './Pages/Sign-up/SignUp'
 import {AuthContext} from './Auth/AuthContext'
+import { useState } from "react";
 
 function App() {
+  const [token, setToken]= useState(null)
   return (
     <BrowserRouter>
-    <AuthContext.Provider value ="test">
+    <AuthContext.Provider value ={{token, setToken}}>
       <Route exact={true} path="/" component={Home} />
       <Route exact={true} path="/signup" component={SignUp} />
     </AuthContext.Provider>
