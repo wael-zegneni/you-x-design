@@ -63,7 +63,7 @@ const CourseCard = () => {
                     </Stack>
 
                     <Flex mr='10px' mb='7px' className='view-details' cursor='pointer'>
-                        View details <span style={{ marginLeft: 10 }}>></span>
+                        View details <span style={{ marginLeft: 10 }}></span>
                     </Flex>
                 </Flex>
 
