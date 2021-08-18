@@ -7,10 +7,10 @@ import {AuthContext} from './Auth/AuthContext'
 function App() {
   return (
     <BrowserRouter>
-    <AuthContext value ="test">
+    <AuthContext.Provider value ="test">
       <Route exact={true} path="/" component={Home} />
       <Route exact={true} path="/signup" component={SignUp} />
-    </AuthContext>
+    </AuthContext.Provider>
     </BrowserRouter>
   );
 }
