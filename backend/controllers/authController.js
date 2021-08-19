@@ -70,5 +70,5 @@ const register = async (req,res) => {
         register,
         LoginFb,
         CallbackFb,
-        loadUser
+        //loadUser
     }
