@@ -6,8 +6,9 @@ import facebookLogo from '../../Assets/Images/facebook.png'
 import linkedLogo from '../../Assets/Images/linkedIn.png'
 import { Avatar, Flex, Heading, Text, useToast } from "@chakra-ui/react"
 import axios from "axios"
-import { AuthContext } from '../../Auth/AuthContext'
-import { Link } from 'react-router-dom'
+import { AuthContext } from '../../Auth/AuthContext';
+import { useHistory } from 'react-router-dom'
+
 
 
 const FormFooter = () => (
@@ -34,6 +35,7 @@ const Login = () => {
         RegisterPassword:""
     })
     const toast = useToast()
+    const history = useHistory()
     const { login, auth } = useContext(AuthContext)
     const handleLoginChange = e => {
         setCredentials({...credentials, [e.target.name]: e.target.value})
@@ -80,6 +82,11 @@ const Login = () => {
               })
         }
     }, [auth.error])
+    useEffect(() => {
+        if(auth.isAuthenticated){
+            history.push('/profile')
+        }
+    }, [auth.isAuthenticated])
 
     return (
         <div className="container">

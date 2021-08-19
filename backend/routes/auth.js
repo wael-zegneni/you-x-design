@@ -9,8 +9,10 @@ const {
     register,
     LoginFb,
     CallbackFb,
+    loadUser,
     //loadUser
-} = require ('../controllers/authController')
+} = require ('../controllers/authController');
+const authMiddleware = require('../middlewares/authMiddleware');
 
 // email password
 router.route('/login').post(signin);
@@ -20,7 +22,7 @@ router.post('/register', [
     body('phone', "Phone must be a number!!").isNumeric(),
     body('RegisterPassword', "Password's length must be at least 5 characters").isLength({ min: 5 })
 ], register)
-//router.get("/user", loadUser)
+router.get("/user", authMiddleware,loadUser)
 
 // facebook
 router.route('/facebook',passport.authenticate('facebook', { scope : 'email,user_photos' })).get(LoginFb);
