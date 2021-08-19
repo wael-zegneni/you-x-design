@@ -52,6 +52,8 @@ const Candidate = () => {
     }
 
     return (
+        <div className="container">
+        <div className="box-right">
         <form className="login-form" onSubmit={handleSubmit}>
                             <h1>Enter your personal information</h1>                       
                             <div className="inputs">
@@ -110,6 +112,8 @@ const Candidate = () => {
                             </div>
                             
                         </form>
+                        </div>
+                        </div>
     )
             
 }

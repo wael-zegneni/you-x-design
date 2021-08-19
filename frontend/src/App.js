@@ -20,6 +20,8 @@ function App() {
 
   return (
       <>
+        
+        
         {!pathname.includes("login") && <Navbar/>}
         <Switch>
           <Route exact path="/" component={Home} />

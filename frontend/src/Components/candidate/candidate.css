@@ -1,0 +1,17 @@
+
+  .container {
+    height: 100vh;
+    background-color: #072446;
+    position: relative;
+  }
+  
+  .box-right {
+    width: 42%;
+    height: 90%;
+    background-color: white;
+    border-radius: 25px;
+    position: absolute;
+    top: 5%;
+    transform: translate(50vw);
+    transition: 0.2s;
+  }
