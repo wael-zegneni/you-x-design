@@ -156,7 +156,6 @@ const Login = () => {
                         </form>
                         
                 }
-                <Link to="/"><h1 className="h1">home</h1></Link> 
             </div>
         </div>
     )
