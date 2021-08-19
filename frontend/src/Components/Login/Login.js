@@ -60,6 +60,7 @@ const Login = () => {
                 duration: 9000,
                 isClosable: true,
             })
+            setPosition(true)
         } catch (error) {
             console.log(error)
             console.log(error.response.data.errors)
