@@ -10,7 +10,6 @@ const {
     LoginFb,
     CallbackFb,
     loadUser,
-    //loadUser
 } = require ('../controllers/authController');
 const authMiddleware = require('../middlewares/authMiddleware');
 
