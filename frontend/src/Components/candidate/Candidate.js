@@ -1,4 +1,7 @@
+import axios from 'axios'
 import React, {useState} from 'react'
+import {useToast } from "@chakra-ui/react"
+import { useHistory } from 'react-router-dom'
 
 
 const Candidate = () => {
@@ -20,10 +23,31 @@ const Candidate = () => {
 
     const handleChange  = e => {
         setCredentials({...credentials, [e.target.name]: e.target.value})
-        console.log(credentials)
     }
-    const handleSubmit = e => {
+    const toast = useToast();
+    const history = useHistory();
+    const handleSubmit = async e => {
         e.preventDefault();
+        try {
+            const res = await axios.post('api/v1/candidate',credentials)
+            console.log(res.data)
+            toast({
+                title: "successfull",
+                status: "success",
+                duration: 9000,
+                isClosable: true,
+            })
+            history.push('/')
+            
+        } catch (error) {
+            error.response.data.errors.map(el => toast({
+                title: el.msg,
+                status: "error",
+                duration: 4000,
+                isClosable: true,
+            }))
+        }
+         
 
     }
 
