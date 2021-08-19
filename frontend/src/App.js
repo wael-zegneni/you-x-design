@@ -8,6 +8,7 @@ import Profile from "./Components/profile/Profile";
 import Login from "./Components/login/Login";
 import { useContext, useEffect } from "react";
 import { AuthContext } from './Auth/AuthContext';
+import Candidate from "./Components/candidate/Candidate";
 
 function App() {
   const {pathname} = useLocation()
@@ -23,6 +24,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/candidate" component={Candidate} />
           <PrivateRoute exact path="/profile" component={Profile} />
         </Switch>
       </>

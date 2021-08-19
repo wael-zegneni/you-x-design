@@ -8,7 +8,7 @@ const deleteUser = (req,res)=>{
 }
 const getUser = (req,res)=>{
     //let x = passport.ExtractJwt.fromAuthHeaderAsBearerToken
-    //console.log(x)
+    console.log("x")
     res.send("workss")
 }
 
