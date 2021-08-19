@@ -1,6 +1,11 @@
 const mongoose = require('mongoose')
 
 const CandidateSchema = new mongoose.Schema({
+    name : {
+        type: String,
+        required: [true, 'must provide your full name'],
+
+    },
     email : {
         type: String,
         required: [true, 'must provide email'],
@@ -15,7 +20,6 @@ const CandidateSchema = new mongoose.Schema({
         type: String,
         required: [true, 'must provide a job title'],
     },
-    residence: String,
     bio: String,
     school: String,
     degree: {
@@ -23,7 +27,7 @@ const CandidateSchema = new mongoose.Schema({
         required: [true, 'must provide a degree'],
     },
     facebook: String,
-    linkedIn: String,
+    linkedin: String,
     instagram: String
 
 

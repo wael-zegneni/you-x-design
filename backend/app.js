@@ -7,6 +7,7 @@ require('dotenv').config()
 require('./middlewares/passport-config')
 const users = require('./routes/users')
 const auth = require('./routes/auth')
+const candidates = require ('./routes/candidates')
 const passport = require('passport')
 app.use(express.json())
 
@@ -15,6 +16,8 @@ app.get('/',(req,res)=>{
 })
 app.use('/api/v1/user', passport.authenticate('jwt', {session: false}), users)
 app.use('/api/v1/auth', auth)
+app.use('/api/v1/candidate', candidates)
+
 
 const start = async() => {
     try {

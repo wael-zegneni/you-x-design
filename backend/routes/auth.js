@@ -3,6 +3,7 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const passport = require("passport");
 const { body } = require('express-validator');
+const authMiddleware = require('../middlewares/authMiddleware');
 
 const {
     signin,
@@ -11,7 +12,7 @@ const {
     CallbackFb,
     loadUser,
 } = require ('../controllers/authController');
-const authMiddleware = require('../middlewares/authMiddleware');
+
 
 // email password
 router.route('/login').post(signin);
