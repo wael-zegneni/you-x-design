@@ -37,7 +37,9 @@ const Candidate = () => {
         e.preventDefault();
         const formData = new FormData()
         Object.keys(credentials).map(key => formData.append(key, credentials[key]))
-        
+        for (const [key, value] of formData.entries()) {
+            console.log(key, value);
+        }
         try {
             const res = await axios.post('api/v1/candidate',formData)
             console.log(res.data)
@@ -97,7 +99,7 @@ const Candidate = () => {
                                     <label className="label">Degree</label>
                                 </div>
                                 <div className="input-trans">
-                                    <input className="input" type="file" autoComplete="off" placeholder=" " onChange={handleChangeFile} name="cv"></input>
+                                    <input className="input" type="file" accept="application/pdf" autoComplete="off" placeholder=" " onChange={handleChangeFile} name="cv"></input>
                                     <label className="label">cv</label>
                                 </div>
                                 <h2>Enter your Contact details</h2>    
