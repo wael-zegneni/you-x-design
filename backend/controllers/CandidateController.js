@@ -9,6 +9,7 @@ const addCandidate = async (req,res) => {
         return res.status(400).json({ errors: errors.array() });
     }
 
+
     let candidate = await Candidate.findOne({email: req.body.email})
     if(candidate) {
         return res.status(400).json({errors :[{msg: "Email already applied !"}]})
@@ -26,7 +27,8 @@ const addCandidate = async (req,res) => {
             degree : req.body.degree,
             facebook : req.body.facebook,
             linkedin : req.body.linkedin,
-            instagram : req.body.instagram
+            instagram : req.body.instagram,
+            cv: req.file.path
         })
         await candidate.save();
         res.send(candidate)

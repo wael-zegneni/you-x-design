@@ -10,6 +10,7 @@ const Candidate = () => {
         name: "",
         job: "",
         age: "",
+        cv:"",
         residence: "",
         bio: "",
         school: "",
@@ -20,16 +21,25 @@ const Candidate = () => {
         linkedin: "",
         instagram: "",
     })
+    const toast = useToast();
+    const history = useHistory();
 
     const handleChange  = e => {
         setCredentials({...credentials, [e.target.name]: e.target.value})
+        
     }
-    const toast = useToast();
-    const history = useHistory();
+
+    const handleChangeFile = e => {
+        setCredentials({...credentials, cv: e.target.files[0]})
+    }
+
     const handleSubmit = async e => {
         e.preventDefault();
+        const formData = new FormData()
+        Object.keys(credentials).map(key => formData.append(key, credentials[key]))
+        
         try {
-            const res = await axios.post('api/v1/candidate',credentials)
+            const res = await axios.post('api/v1/candidate',formData)
             console.log(res.data)
             toast({
                 title: "successfull",
@@ -37,7 +47,7 @@ const Candidate = () => {
                 duration: 9000,
                 isClosable: true,
             })
-            history.push('/')
+            //history.push('/')
             
         } catch (error) {
             error.response.data.errors.map(el => toast({
@@ -54,7 +64,7 @@ const Candidate = () => {
     return (
         <div className="container">
         <div className="box-right">
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form className="login-form" onSubmit={handleSubmit} enctype="multipart/form-data">
                             <h2>Enter your personal information</h2>                       
                             <div className="inputs">
                                 <div className="input-trans">
@@ -85,6 +95,10 @@ const Candidate = () => {
                                 <div className="input-trans">
                                     <input className="input" type="text" autoComplete="off" placeholder=" " onChange={handleChange} name="degree"></input>
                                     <label className="label">Degree</label>
+                                </div>
+                                <div className="input-trans">
+                                    <input className="input" type="file" autoComplete="off" placeholder=" " onChange={handleChangeFile} name="cv"></input>
+                                    <label className="label">cv</label>
                                 </div>
                                 <h2>Enter your Contact details</h2>    
                                 <div className="input-trans">

@@ -20,6 +20,7 @@ const CandidateSchema = new mongoose.Schema({
         type: String,
         required: [true, 'must provide a job title'],
     },
+    cv: String,
     bio: String,
     school: String,
     degree: {
