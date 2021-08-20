@@ -55,7 +55,7 @@ const Candidate = () => {
         <div className="container">
         <div className="box-right">
         <form className="login-form" onSubmit={handleSubmit}>
-                            <h1>Enter your personal information</h1>                       
+                            <h2>Enter your personal information</h2>                       
                             <div className="inputs">
                                 <div className="input-trans">
                                     <input className="input" type="text" autoComplete="off" placeholder=" " onChange={handleChange} name="name"></input>
@@ -77,6 +77,7 @@ const Candidate = () => {
                                     <input className="input" type="text" autoComplete="off" placeholder=" " onChange={handleChange} name="bio"></input>
                                     <label className="label">Short Bio</label>
                                 </div>
+                                <h2>Enter your education information</h2>    
                                 <div className="input-trans">
                                     <input className="input" type="text" autoComplete="off" placeholder=" " onChange={handleChange} name="school"></input>
                                     <label className="label">School</label>
@@ -85,6 +86,7 @@ const Candidate = () => {
                                     <input className="input" type="text" autoComplete="off" placeholder=" " onChange={handleChange} name="degree"></input>
                                     <label className="label">Degree</label>
                                 </div>
+                                <h2>Enter your Contact details</h2>    
                                 <div className="input-trans">
                                     <input className="input" type="email" autoComplete="off" placeholder=" " onChange={handleChange} name="email"></input>
                                     <label className="label">Email</label>
@@ -93,6 +95,7 @@ const Candidate = () => {
                                     <input className="input" type="tel" autoComplete="off" placeholder=" " onChange={handleChange} name="phone"></input>
                                     <label className="label">Phone Number</label>
                                 </div>
+                                <h2>Enter your social links</h2>    
                                 <div className="input-trans">
                                     <input className="input" type="text" autoComplete="off" placeholder=" " onChange={handleChange} name="facebook"></input>
                                     <label className="label">Facebook account</label>
