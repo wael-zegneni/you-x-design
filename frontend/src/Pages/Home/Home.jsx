@@ -18,7 +18,7 @@ const Home = () => {
     } else {
         return (
             <div className="body">
-                <CourseCard/>
+                
             
             </div>
             
