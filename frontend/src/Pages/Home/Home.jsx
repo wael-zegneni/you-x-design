@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useState, useEffect } from "react";
 import WeAreUnique from "../../Components/we-are-unique/WeAreUnique";
 import WorkshopSwiper from "../../Components/workshops-swiper/WorkshopSwiper";
 import { AuthContext } from "../../Auth/AuthContext";
@@ -7,6 +8,15 @@ import LiveSession from "../../Components/live-session/LiveSession";
 import CourseCardList from "../../Components/course-card-list/CourseCardList";
 import { Heading, Flex, Text, Box } from "@chakra-ui/react";
 import "./home.css";
+
+// const [workshopList, setworkshopList] = useState([])
+
+// useEffect(() => {
+// //    get
+// setworkshopList(res.data)
+// }, [])
+
+// workshopList={workshopList}
 
 const Home = () => {
   const { auth } = useContext(AuthContext);
@@ -25,7 +35,7 @@ const Home = () => {
         <Box ml="2.5vw">
           <Flex justify="space-between" mt="3em">
             <LiveSession />
-            <WorkshopSwiper  />
+            <WorkshopSwiper   />
           </Flex>
           <Flex>
             <Text

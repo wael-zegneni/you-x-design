@@ -26,7 +26,7 @@ const FilterBy = () => {
                         <input type="checkbox" id="two" />Advanced UX</label>
                     <label for="three">
                         <input type="checkbox" id="three" />Leadership</label>
-                    <span>____________________</span>
+                    <span>_________________</span>
                 </div>
             </div>
         </div>
