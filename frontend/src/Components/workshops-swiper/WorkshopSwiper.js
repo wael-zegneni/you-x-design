@@ -27,7 +27,6 @@ const WorkshopSwiper = ({ workshopList }) => {
     )
 }
 
-const res = axios.post('/api/v1/workshop/')
 WorkshopSwiper.defaultProps = {
     workshopList: [
         {
