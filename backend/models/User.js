@@ -27,12 +27,12 @@ const UserSchema = new mongoose.Schema({
             ref: 'user'
         }
     ],
-    /*courses: [
+    courses: [
         {
             type: mongoose.Types.ObjectId,
             ref: 'course'
         }
-    ]*/
+    ]
     
 
 
