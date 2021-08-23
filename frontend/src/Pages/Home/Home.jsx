@@ -8,17 +8,27 @@ import LiveSession from "../../Components/live-session/LiveSession";
 import CourseCardList from "../../Components/course-card-list/CourseCardList";
 import { Heading, Flex, Text, Box } from "@chakra-ui/react";
 import "./home.css";
+import axios from "axios"
 
-// const [workshopList, setworkshopList] = useState([])
 
-// useEffect(() => {
-// //    get
-// setworkshopList(res.data)
-// }, [])
 
-// workshopList={workshopList}
+
 
 const Home = () => {
+  const [workshopList, setworkshopList] = useState([])
+  const [liveSession, setliveSession] = useState()
+
+useEffect(async () => {
+  const res = await axios.get('api/v1/workshop/')
+  console.log (res.data)
+  setworkshopList(res.data)
+}, [])
+useEffect(async () => {
+  const res = await axios.get('api/v1/workshop/livesession')
+  console.log (res.data[0])
+  setliveSession(res.data[0])
+}, [])
+
   const { auth } = useContext(AuthContext);
   console.log(auth);
   if (auth.isAuthenticated) {
@@ -34,8 +44,8 @@ const Home = () => {
         <WeAreUnique />
         <Box ml="2.5vw">
           <Flex justify="space-between" mt="3em">
-            <LiveSession />
-            <WorkshopSwiper   />
+            <LiveSession liveSession = {liveSession } />
+            <WorkshopSwiper  workshopList={workshopList} />
           </Flex>
           <Flex alignItems="center" justifyContent="space-between" my="20px">
             <Text

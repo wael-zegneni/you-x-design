@@ -12,11 +12,13 @@ const workshopSchema = new mongoose.Schema({
     date : {
         type : Date,
         required : true,
+        min : Date.now(),
     },
 
     endDate : {
         type : Date,
         required : true,
+        min : Date.now(),
     },
     maxAtt :{
         type : Number,

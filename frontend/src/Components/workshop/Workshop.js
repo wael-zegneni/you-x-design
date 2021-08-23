@@ -13,7 +13,7 @@ const Workshop = ({ workshop }) => {
 
             <Flex mt="25px" mb="5%" pt="6%" className="title">
                 <Alert borderLeftColor="#FCC509" borderLeftWidth="12px" color="#072446" status="warning" fontSize="3xl" fontWeight="bolder" fontFamily="Montserrat" variant="left-accent" bg="none">
-                    {workshop.workshopTitle}
+                    {workshop.title}
                 </Alert>
 
                 <center className="liveLogo">
@@ -34,7 +34,7 @@ const Workshop = ({ workshop }) => {
                         <Box className="schedule-date" ml="20px" >
                             <Text fontWeight="600" fontFamily="Montserrat">SCHEDULED FOR</Text>
                             <Text fontSize="xs">{workshop.date}</Text>
-                            <Text fontSize="xs">{workshop.time}</Text>
+                            <Text fontSize="xs">10:30</Text>
                         </Box>
                     </Box>
                     <Flex mr='30px' mb='7px' className='enroll-now' cursor='pointer' >

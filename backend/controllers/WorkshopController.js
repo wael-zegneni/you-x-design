@@ -30,8 +30,43 @@ const indexWorkshop = async (req,res) => {
     console.log(workshops)
     return res.send(workshops)
 }
+const liveSession = async(req,res) => {
+    try {
+        
+    
+    const livesession= await Workshop.aggregate([
+        {
+            $project : {
+                date : 1,
+                title : 1,
+                description : 1,
+                date : 1,
+                endDate : 1,    
+                maxAtt : 1,
+                link : 1,
+                difference : {
+                    $abs : {
+                        $subtract : [new Date(), "$date"]
+                    }
+                }
+            }
+        },
+        {
+            $sort : {difference : 1}
+        },
+        {
+            $limit : 1
+        }
+        ]);
+        return res.send(livesession)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+        
+}
 
 module.exports = {
+    liveSession,
     addWorkshop,
     indexWorkshop,
 }

@@ -1,4 +1,3 @@
-import React from "react";
 
 // importing workshop component
 import Workshop from '../workshop/Workshop';
@@ -8,7 +7,6 @@ import './workshopSwiper.css'
 // importing swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
-import axios from "axios";
 
 
 
@@ -26,6 +24,7 @@ const WorkshopSwiper = ({ workshopList }) => {
         </div>
     )
 }
+
 
 WorkshopSwiper.defaultProps = {
     workshopList: [
