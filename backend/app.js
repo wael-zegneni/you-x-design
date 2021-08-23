@@ -11,6 +11,7 @@ const candidates = require ('./routes/candidates')
 const passport = require('passport')
 const multer = require('multer')
 const upload = require('./middlewares/fileStorageEngine')
+const workshop = require('./routes/workshop')
 app.use(express.json())
 
 app.get('/',(req,res)=>{
@@ -19,6 +20,7 @@ app.get('/',(req,res)=>{
 app.use('/api/v1/user', passport.authenticate('jwt', {session: false}), users)
 app.use('/api/v1/auth', auth)
 app.use('/api/v1/candidate', candidates)
+app.use('/api/v1/workshop',workshop)
 
 app.post('/upload',upload.single('image'),(req,res)=>{
     console.log(req.file);
