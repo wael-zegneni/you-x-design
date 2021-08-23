@@ -8,6 +8,7 @@ import './workshopSwiper.css'
 // importing swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
+import axios from "axios";
 
 
 
@@ -26,6 +27,7 @@ const WorkshopSwiper = ({ workshopList }) => {
     )
 }
 
+const res = axios.post('/api/v1/workshop/')
 WorkshopSwiper.defaultProps = {
     workshopList: [
         {

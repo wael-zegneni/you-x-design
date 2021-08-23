@@ -1,13 +1,18 @@
-const { findById } = require('../models/Workshop');
 const Workshop = require('../models/Workshop')
 
 const addWorkshop = async (req,res)=> {
+    let workshop = await Workshop.findOne({ title : req.body.title})
+    if (workshop) {
+        res.status(400).send('workshop already exists')
+    } else {
+        
+    
     try {
         workshop = new Workshop({
             title : req.body.title,
             description : req.body.description,
             date : req.body.date,
-            endDate : Date.now(),
+            endDate : req.body.endDate,
             maxAtt : req.body.maxAtt,
             link : req.body.link,
         })
@@ -17,6 +22,7 @@ const addWorkshop = async (req,res)=> {
     } catch (error) {
         res.status(400).send(error)
     }
+}
 }
 
 const indexWorkshop = async (req,res) => {
