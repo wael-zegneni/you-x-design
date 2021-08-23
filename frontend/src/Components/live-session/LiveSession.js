@@ -3,11 +3,20 @@ import { Box, Flex, Text, Alert, Stack, Avatar } from '@chakra-ui/react';
 import liveLogo from '../../Assets/Images/liveLogo.png'
 import clockIcon from '../../Assets/Images/clockIcon.png'
 import './liveSession.css'
+import moment from 'moment'
 
 
 const LiveSession = ({ liveSession }) => {
 
-
+    const endDate = moment(liveSession.endDate).toDate()
+    const current = moment(Date.now()).toDate()
+    const diffTime = Math.abs(endDate - current);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+    
+    console.log(diffTime + " milliseconds");
+    console.log(diffDays + " days");
+    console.log(current)
+    console.log(endDate)
     return (
         <div>
             <Text color="#072446" fontSize="3xl" fontWeight="bolder"  mb="30px">
@@ -40,15 +49,15 @@ const LiveSession = ({ liveSession }) => {
                             <img src={clockIcon} alt="clock logo" height="30px !important" width="50px" />
                             <Box className="schedule-date" ml="20px" mb="5px">
                                 <Text fontWeight="600" fontFamily="Montserrat">SCHEDULED FOR</Text>
-                                <Text fontSize="xs">{liveSession.date}</Text>
-                                <Text fontSize="xs">10:30</Text>
+                                <Text fontSize="xs">{moment(liveSession.date).format('dddd DD MMMM YYYY')}</Text>
+                                <Text fontSize="xs">{moment(liveSession.date).format('HH.mm A')}</Text>
                             </Box>
                         </Box>
                         <Box  className="schedule" mr="20px">
                             <img src={clockIcon} alt="clock logo" height="30px !important" width="50px" />
                             <Box className="schedule-date" ml="20px" >
                                 <Text fontWeight="600" fontFamily="Montserrat">ENROLMENT ENDS IN</Text>
-                                <Text fontSize="xs">{liveSession.endDate}</Text>
+                                <Text fontSize="xs">{diffDays} Days</Text>
                             </Box>
                         </Box>
                     </Flex>
