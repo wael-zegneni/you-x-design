@@ -37,7 +37,7 @@ const Home = () => {
             <LiveSession />
             <WorkshopSwiper   />
           </Flex>
-          <Flex>
+          <Flex alignItems="center" justifyContent="space-between" my="20px">
             <Text
               color="#072446"
               fontSize="3xl"
@@ -47,7 +47,7 @@ const Home = () => {
             >
               Our Most Popular Courses
             </Text>
-            <FilterBy/>
+            <FilterBy  />
           </Flex>
           <CourseCardList />
         </Box>
