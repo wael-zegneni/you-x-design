@@ -24,7 +24,7 @@ const LiveSession = ({ liveSession }) => {
 
                 <Flex className="title">
                     <Text ml="28px" pb="10px" pt="12px" color="#072446" fontSize="4xl" fontWeight="bolder" fontFamily="Montserrat">
-                        {liveSession.workshopTitle}
+                        {liveSession.title}
                     </Text>
                 </Flex>
 
@@ -41,14 +41,14 @@ const LiveSession = ({ liveSession }) => {
                             <Box className="schedule-date" ml="20px" mb="5px">
                                 <Text fontWeight="600" fontFamily="Montserrat">SCHEDULED FOR</Text>
                                 <Text fontSize="xs">{liveSession.date}</Text>
-                                <Text fontSize="xs">{liveSession.time}</Text>
+                                <Text fontSize="xs">10:30</Text>
                             </Box>
                         </Box>
                         <Box  className="schedule" mr="20px">
                             <img src={clockIcon} alt="clock logo" height="30px !important" width="50px" />
                             <Box className="schedule-date" ml="20px" >
                                 <Text fontWeight="600" fontFamily="Montserrat">ENROLMENT ENDS IN</Text>
-                                <Text fontSize="xs">{liveSession.date}</Text>
+                                <Text fontSize="xs">{liveSession.endDate}</Text>
                             </Box>
                         </Box>
                     </Flex>
@@ -56,12 +56,12 @@ const LiveSession = ({ liveSession }) => {
                         <Flex justifyContent='space-between  ' alignItems='flex-end' mt="10px">
                             <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
                                 <Avatar
-                                    src={liveSession.instructor.instructorPicture}
+                                    src='https://www.villard.biz/assets/Uploads/projects/portrait-o.jpg'
                                     alt={'Author'}
                                 />
                                 <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-                                    <Text fontWeight={600}>{liveSession.instructor.instructorName}</Text>
-                                    <Text color={'gray.500'}>{liveSession.instructor.instructorRole}</Text>
+                                    <Text fontWeight={600}>Instructor name</Text>
+                                    <Text color={'gray.500'}>UX Designer</Text>
                                 </Stack>
                             </Stack>
 

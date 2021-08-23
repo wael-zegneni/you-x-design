@@ -16,12 +16,19 @@ import axios from "axios"
 
 const Home = () => {
   const [workshopList, setworkshopList] = useState([])
+  const [liveSession, setliveSession] = useState()
 
 useEffect(async () => {
   const res = await axios.get('api/v1/workshop/')
   console.log (res.data)
   setworkshopList(res.data)
 }, [])
+useEffect(async () => {
+  const res = await axios.get('api/v1/workshop/livesession')
+  console.log (res.data[0])
+  setliveSession(res.data[0])
+}, [])
+
   const { auth } = useContext(AuthContext);
   console.log(auth);
   if (auth.isAuthenticated) {
@@ -37,7 +44,7 @@ useEffect(async () => {
         <WeAreUnique />
         <Box ml="2.5vw">
           <Flex justify="space-between" mt="3em">
-            <LiveSession />
+            <LiveSession liveSession = {liveSession } />
             <WorkshopSwiper  workshopList={workshopList} />
           </Flex>
           <Flex>
