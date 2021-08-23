@@ -14,8 +14,8 @@ import axios from "axios";
 
 const WorkshopSwiper = ({ workshopList }) => {
     return (
-        <div style={{marginTop:'65px'}} >
-            <Text color="#072446" fontSize="3xl" fontWeight="bolder">
+        <div style={{marginTop:'65px', marginLeft:"30px"}}>
+            <Text color="#072446" fontSize="3xl" fontWeight="bolder" mb="10px" >
                 Upcoming
             </Text>
             <Swiper watchSlidesProgress={true} watchSlidesVisibility={true} freeMode={true} slidesPerView={1.5} className="mySwiper">
@@ -27,7 +27,6 @@ const WorkshopSwiper = ({ workshopList }) => {
     )
 }
 
-const res = axios.post('/api/v1/workshop/')
 WorkshopSwiper.defaultProps = {
     workshopList: [
         {

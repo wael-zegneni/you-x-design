@@ -9,11 +9,11 @@ const LiveSession = ({ liveSession }) => {
 
 
     return (
-        <div style={{marginLeft:"2vw"}}>
-            <Text color="#072446" fontSize="3xl" fontWeight="bolder" ml="22px" mb="20px">
+        <div>
+            <Text color="#072446" fontSize="3xl" fontWeight="bolder"  mb="30px">
                 Live Session
             </Text>
-            <Box borderRadius="2xl" boxShadow="0px 0px 10px #DCDCDC	" height="400px" width="44vw" className="workshop" ml="20px">
+            <Box borderRadius="2xl" boxShadow="0px 0px 10px #DCDCDC	" height="400px" width="44vw" className="workshop" >
 
                 <Box height="17%" display="flex" justifyContent="flex-end" alignItems="flex-end" bg="#FCC509" borderTopLeftRadius="2xl" borderTopRightRadius="2xl">
                     <center className="liveLogo">
