@@ -9,7 +9,7 @@ const Workshop = ({ workshop }) => {
 
 
     return (
-        <Box borderRadius="2xl" boxShadow="0px 0px 10px #DCDCDC	" minWidth="30vw" maxWidth="530px" height="330px" width="max-content" className="workshop">
+        <Box borderRadius="2xl" boxShadow="0px 0px 10px #DCDCDC	" minWidth="30vw"  maxWidth="31vw" height="330px" width="max-content" className="workshop">
 
             <Flex mt="25px" mb="5%" pt="6%" className="title">
                 <Alert borderLeftColor="#FCC509" borderLeftWidth="12px" color="#072446" status="warning" fontSize="3xl" fontWeight="bolder" fontFamily="Montserrat" variant="left-accent" bg="none">
@@ -23,7 +23,7 @@ const Workshop = ({ workshop }) => {
             </Flex>
             <Box ml="28px" pb="8%">
                 <Flex className="description">
-                    <Text flex="0.8" mb="6%" fontSize="l" fontWeight="bold" fontFamily="Montserrat">
+                    <Text flex="0.9" mb="6%" fontSize="l" fontWeight="bold" fontFamily="Montserrat">
                         {workshop.description}
                     </Text>
                 </Flex>

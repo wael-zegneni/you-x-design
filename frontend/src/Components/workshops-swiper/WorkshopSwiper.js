@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 
 // importing workshop component
 import Workshop from '../workshop/Workshop';
-
+import { Box, Center, Heading, Text, Stack, Avatar, useColorModeValue, Flex } from '@chakra-ui/react';
 import './workshopSwiper.css'
 
 // importing swiper
@@ -13,13 +13,15 @@ import "swiper/swiper.min.css";
 
 const WorkshopSwiper = ({ workshopList }) => {
     return (
-        <div >
+        <div style={{marginTop:'65px'}} >
+            <Text color="#072446" fontSize="3xl" fontWeight="bolder">
+                Upcoming
+            </Text>
             <Swiper watchSlidesProgress={true} watchSlidesVisibility={true} freeMode={true} slidesPerView={1.5} className="mySwiper">
                 {workshopList.map((el) => (
                     <SwiperSlide><Workshop workshop={el} /></SwiperSlide>
                 ))}
             </Swiper>
-            <Workshop />
         </div>
     )
 }

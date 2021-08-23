@@ -4,23 +4,12 @@ import './courseCard.css'
 import articleLogo from '../../Assets/Images/articleLogo.png'
 import workshopLogo from '../../Assets/Images/workshopLogo.png'
 
-const CourseCard = () => {
+const CourseCard = ({cardData}) => {
 
-    var cardData = {
-        thumbnailUrl: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-        courseName: 'Business and marketing outcomes',
-        courseType: 'Workshop',
-        studentsCount: 45,
-        instructor: {
-            instructorName: 'Instructor Name',
-            instructorRole: 'UX Designer',
-            instructorPicture: 'https://avatars0.githubusercontent.com/u/1164541?v=4'
-        }
-    }
 
     return (
         <Center py={6} _hover={{ transform: "translateY(-10px)" }} transition="0.3s">
-            <Box maxW={'400px'} w={'full'} bg={useColorModeValue('white', 'gray.900')} boxShadow={'xl'} rounded={'xl'} p={6} overflow={'hidden'}>
+            <Box width={'27vw'}  bg={useColorModeValue('white', 'gray.900')} boxShadow={'xl'} rounded={'xl'} p={6} overflow={'hidden'}>
                 <Box h={'100%'} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
                     <img src={cardData.thumbnailUrl} layout={'fill'} alt='img' />
                 </Box>
@@ -71,6 +60,19 @@ const CourseCard = () => {
         </Center>
 
     )
+}
+CourseCard.defaultProps={
+    cardData : {
+        thumbnailUrl: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+        courseName: 'Business and marketing outcomes',
+        courseType: 'Workshop',
+        studentsCount: 45,
+        instructor: {
+            instructorName: 'Instructor Name',
+            instructorRole: 'UX Designer',
+            instructorPicture: 'https://avatars0.githubusercontent.com/u/1164541?v=4'
+        }
+    }
 }
 
 export default CourseCard

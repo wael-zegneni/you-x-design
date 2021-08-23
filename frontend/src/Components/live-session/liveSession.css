@@ -1,0 +1,60 @@
+*{
+    font-family: 'montserrat';
+}
+.enroll-now{
+    border: solid 1px #FCC509;
+    color: #FCC509;
+    box-shadow: 1px 1px 5px #ffe9a2;
+    border-radius: 20px;
+    padding: 8px 23px;
+    font-size: 15px;
+    font-family:'montserrat';
+    font-weight: 600;
+    transition: 0.4s;
+}
+
+.workshop{
+    min-width:"30vw"; 
+    max-width:"530px"; 
+    height:"330px";
+    width:"max-content"
+}
+
+.description{
+    height: 100px;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+
+
+.enroll-now:hover{
+    background-color: #FCC509 ;
+    color: white;
+}
+
+.enroll-now:hover  span{
+    transform: translateX(10px);
+    transition: 0.3;
+}
+
+.schedule{
+    display: flex;
+    height: 50px;
+}
+
+span{
+    font-weight: 600 !important; 
+}
+
+
+
+.liveLogo{
+    margin-right: 20px;
+}
+
+@media screen and (min-width: 1500px) {
+   .workshop{
+       height: 350px;
+   }
+} 
