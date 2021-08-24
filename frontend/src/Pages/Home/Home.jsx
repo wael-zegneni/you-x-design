@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import WeAreUnique from "../../Components/we-are-unique/WeAreUnique";
+import InstructorCard from "../../Components/instructor-card/InstructorCard";
 import WorkshopSwiper from "../../Components/workshops-swiper/WorkshopSwiper";
 import { AuthContext } from "../../Auth/AuthContext";
 import FilterBy from "../../Components/filter-by/FilterBy";
@@ -27,7 +28,9 @@ useEffect(async () => {
   const res = await axios.get('api/v1/workshop/livesession')
   console.log (res.data[0])
   setliveSession(res.data[0])
+
 }, [])
+
 
   const { auth } = useContext(AuthContext);
   console.log(auth);
@@ -61,6 +64,7 @@ useEffect(async () => {
           </Flex>
           <CourseCardList />
         </Box>
+        <InstructorCard/>
       </div>
     );
   }
