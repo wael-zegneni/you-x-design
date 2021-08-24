@@ -18,6 +18,7 @@ import axios from "axios"
 const Home = () => {
   const [workshopList, setworkshopList] = useState([])
   const [liveSession, setliveSession] = useState()
+  const [courseList, setcourseList] = useState([])
 
 useEffect(async () => {
   const res = await axios.get('api/v1/workshop/')
@@ -30,7 +31,11 @@ useEffect(async () => {
   setliveSession(res.data[0])
 
 }, [])
-
+useEffect(async () => {
+  const res = await axios.get('api/v1/course/')
+  console.log(res.data)
+  setcourseList(res.data)
+}, [])
 
   const { auth } = useContext(AuthContext);
   console.log(auth);
@@ -62,7 +67,7 @@ useEffect(async () => {
             </Text>
             <FilterBy  />
           </Flex>
-          <CourseCardList />
+          <CourseCardList courseList = {courseList} />
         </Box>
         <InstructorCard/>
       </div>
