@@ -9,7 +9,7 @@ import moment from 'moment'
 const LiveSession = ({ liveSession }) => {
 
     const DateDifference = (date1,date2) => {
-        console.log(date2 + "Curren date")
+        console.log(date2 + "Current date")
         console.log(date1 + " end date")
         const diffTime = Math.abs(date2 - date1);
         const diffDays = Math.trunc(diffTime / (1000 * 60 * 60 * 24));
