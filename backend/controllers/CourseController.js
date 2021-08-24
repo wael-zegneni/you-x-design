@@ -14,8 +14,8 @@ const addCourse = async (req,res)=> {
             tags : req.body.tags,
             date : currentDate,
             language : req.body.language,
-            url : req.body.ur,
-            thumbnail : req.body.thumbnail,
+            url : req.body.url,
+            thumbnail : req.file.path,
             content : req.body.content,
             type : 'article'
         })
