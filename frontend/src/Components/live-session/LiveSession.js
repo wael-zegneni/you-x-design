@@ -40,7 +40,7 @@ const LiveSession = ({ liveSession }) => {
     // console.log(diffMin)
     return (
         <div>
-            <Text color="#072446" fontSize="3xl" fontWeight="bolder"  mb="30px">
+            <Text color="#072446"  fontSize="3xl" fontWeight="bolder"  mb="30px">
                 Live Session
             </Text>
             <Box borderRadius="2xl" boxShadow="0px 0px 10px #DCDCDC	" height="400px" width="44vw" className="workshop" >
