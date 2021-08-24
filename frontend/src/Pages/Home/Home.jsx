@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import WeAreUnique from "../../Components/we-are-unique/WeAreUnique";
 import InstructorCard from "../../Components/instructor-card/InstructorCard";
+import JoinCommunityCard from "../../Components/join-community-card/JoinCommunityCard";
+import InstructorSwiper from "../../Components/instructor-swiper/InstructorSwiper";
 import WorkshopSwiper from "../../Components/workshops-swiper/WorkshopSwiper";
 import { AuthContext } from "../../Auth/AuthContext";
 import FilterBy from "../../Components/filter-by/FilterBy";
@@ -9,11 +11,7 @@ import LiveSession from "../../Components/live-session/LiveSession";
 import CourseCardList from "../../Components/course-card-list/CourseCardList";
 import { Heading, Flex, Text, Box } from "@chakra-ui/react";
 import "./home.css";
-import axios from "axios"
-
-
-
-
+import axios from "axios";
 
 const Home = () => {
   const [workshopList, setworkshopList] = useState([])
@@ -48,12 +46,12 @@ useEffect(async () => {
     );
   } else {
     return (
-      <div >
+      <div>
         <WeAreUnique />
         <Box ml="2.5vw">
           <Flex justify="space-between" mt="3em">
-            <LiveSession liveSession = {liveSession } />
-            <WorkshopSwiper  workshopList={workshopList} />
+            <LiveSession liveSession={liveSession} />
+            <WorkshopSwiper workshopList={workshopList} />
           </Flex>
           <Flex alignItems="center" justifyContent="space-between" my="20px">
             <Text
@@ -61,15 +59,47 @@ useEffect(async () => {
               fontSize="3xl"
               fontWeight="bolder"
               ml="1vw"
-              mb="30px"
+              mb="15px"
             >
               Our Most Popular Courses
             </Text>
-            <FilterBy  />
+            <FilterBy />
           </Flex>
           <CourseCardList courseList = {courseList} />
         </Box>
-        <InstructorCard/>
+        <Text
+          color="#072446"
+          fontSize="3xl"
+          fontWeight="bolder"
+          ml="3.5vw"
+          mb="30px"
+          mt="3em"
+        >
+          Our Instructors
+        </Text>
+        <InstructorSwiper />
+        <Text
+          color="#072446"
+          fontSize="3xl"
+          fontWeight="bolder"
+          ml="3.5vw"
+          mb="30px"
+          mt="3em"
+        >
+          Join our community
+        </Text>
+        <Flex justify="space-around">
+          <JoinCommunityCard
+            heading={"As Student"}
+            role={"student"}
+            text={"Get started with your immersive learning experience"}
+          />
+          <JoinCommunityCard
+            heading={"As Instructor"}
+            role={"instructor"}
+            text={"become a part of our instructor team"}
+          />
+        </Flex>
       </div>
     );
   }
