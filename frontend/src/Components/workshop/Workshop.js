@@ -3,7 +3,7 @@ import { Box, Flex, Text, Alert } from '@chakra-ui/react';
 import liveLogo from '../../Assets/Images/liveLogo.png'
 import clockIcon from '../../Assets/Images/clockIcon.png'
 import './workshop.css'
-
+import moment from 'moment'
 
 const Workshop = ({ workshop }) => {
 
@@ -33,8 +33,8 @@ const Workshop = ({ workshop }) => {
                         <img src={clockIcon} alt="clock logo" height="30px !important" width="50px" />
                         <Box className="schedule-date" ml="20px" >
                             <Text fontWeight="600" fontFamily="Montserrat">SCHEDULED FOR</Text>
-                            <Text fontSize="xs">{workshop.date}</Text>
-                            <Text fontSize="xs">10:30</Text>
+                            <Text fontSize="xs">{moment(workshop.date).format('dddd DD MMMM YYYY')}</Text>
+                            <Text fontSize="xs">{moment(workshop.date).format('HH.mm A')}</Text>
                         </Box>
                     </Box>
                     <Flex mr='30px' mb='7px' className='enroll-now' cursor='pointer' >

@@ -3,11 +3,41 @@ import { Box, Flex, Text, Alert, Stack, Avatar } from '@chakra-ui/react';
 import liveLogo from '../../Assets/Images/liveLogo.png'
 import clockIcon from '../../Assets/Images/clockIcon.png'
 import './liveSession.css'
+import moment from 'moment'
 
 
 const LiveSession = ({ liveSession }) => {
 
-
+    const DateDifference = (date1,date2) => {
+        console.log(date2 + "Curren date")
+        console.log(date1 + " end date")
+        const diffTime = Math.abs(date2 - date1);
+        const diffDays = Math.trunc(diffTime / (1000 * 60 * 60 * 24));
+        const diffDaysMs = diffDays *1000*60*60*24 
+        // const diffHoursMs = diffTime - diffDaysMs
+        const diffHours = Math.trunc ((diffTime - (diffDaysMs)) / (1000*60*60))
+        const diffHoursMs = (diffHours*1000*60*60) + diffDaysMs
+        const diffMinMs = diffTime-diffHoursMs
+        const diffMin = Math.ceil(diffMinMs /(1000*60))
+        
+        return {
+            days : diffDays ,
+            hours : diffHours,
+            minutes : diffMin
+        }
+    }
+    const difference = DateDifference(moment(Date.now()).toDate(), moment(liveSession.endDate).toDate())
+    console.log(difference)
+    // console.log(diffDays + " days");
+    // console.log(current + "Curren date")
+    // console.log(endDate + " end date")
+    // console.log(diffHoursMs + "diff hours ms")
+    // console.log(diffHours + "diff hours")
+    // console.log(diffMinMs + "diff min ms")
+    // console.log(diffTime + " milliseconds");
+    // console.log(diffHoursMs)
+    // console.log(diffMinMs)
+    // console.log(diffMin)
     return (
         <div>
             <Text color="#072446" fontSize="3xl" fontWeight="bolder"  mb="30px">
@@ -40,15 +70,15 @@ const LiveSession = ({ liveSession }) => {
                             <img src={clockIcon} alt="clock logo" height="30px !important" width="50px" />
                             <Box className="schedule-date" ml="20px" mb="5px">
                                 <Text fontWeight="600" fontFamily="Montserrat">SCHEDULED FOR</Text>
-                                <Text fontSize="xs">{liveSession.date}</Text>
-                                <Text fontSize="xs">10:30</Text>
+                                <Text fontSize="xs">{moment(liveSession.date).format('dddd DD MMMM YYYY')}</Text>
+                                <Text fontSize="xs">{moment(liveSession.date).format('HH.mm A')}</Text>
                             </Box>
                         </Box>
                         <Box  className="schedule" mr="20px">
                             <img src={clockIcon} alt="clock logo" height="30px !important" width="50px" />
                             <Box className="schedule-date" ml="20px" >
                                 <Text fontWeight="600" fontFamily="Montserrat">ENROLMENT ENDS IN</Text>
-                                <Text fontSize="xs">{liveSession.endDate}</Text>
+                                <Text fontSize="xs"> {difference.days} Days   {difference.hours} hours    {difference.minutes} minutes</Text>
                             </Box>
                         </Box>
                     </Flex>
