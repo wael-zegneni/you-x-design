@@ -10,7 +10,7 @@ const CourseSchema = new mongoose.Schema({
         required : true,
     },
     tags: String,
-    lagnuage : {
+    language : {
         type : String,
         required : true,
     },
@@ -23,7 +23,8 @@ const CourseSchema = new mongoose.Schema({
         type : String,
         required : true,
     },
-    // type: [
+    type : String,
+    // category: [
     //     {
     //         type: mongoose.Types.ObjectId,
     //         ref: 'category'

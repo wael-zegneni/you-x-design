@@ -14,19 +14,26 @@ import "./home.css";
 import axios from "axios";
 
 const Home = () => {
-  const [workshopList, setworkshopList] = useState([]);
-  const [liveSession, setliveSession] = useState();
+  const [workshopList, setworkshopList] = useState([])
+  const [liveSession, setliveSession] = useState()
+  const [courseList, setcourseList] = useState([])
 
-  useEffect(async () => {
-    const res = await axios.get("api/v1/workshop/");
-    console.log(res.data);
-    setworkshopList(res.data);
-  }, []);
-  useEffect(async () => {
-    const res = await axios.get("api/v1/workshop/livesession");
-    console.log(res.data[0]);
-    setliveSession(res.data[0]);
-  }, []);
+useEffect(async () => {
+  const res = await axios.get('api/v1/workshop/')
+  console.log (res.data)
+  setworkshopList(res.data)
+}, [])
+useEffect(async () => {
+  const res = await axios.get('api/v1/workshop/livesession')
+  console.log (res.data[0])
+  setliveSession(res.data[0])
+
+}, [])
+useEffect(async () => {
+  const res = await axios.get('api/v1/course/')
+  console.log(res.data)
+  setcourseList(res.data)
+}, [])
 
   const { auth } = useContext(AuthContext);
   console.log(auth);
@@ -58,7 +65,7 @@ const Home = () => {
             </Text>
             <FilterBy />
           </Flex>
-          <CourseCardList />
+          <CourseCardList courseList = {courseList} />
         </Box>
         <Text
           color="#072446"

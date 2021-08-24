@@ -8,16 +8,15 @@ import moment from 'moment'
 
 const LiveSession = ({ liveSession }) => {
 
-    const DateDifference = (date1,date2) => {
-        console.log(date2 + "Current date")
-        console.log(date1 + " end date")
-        const diffTime = Math.abs(date2 - date1);
-        const diffDays = Math.trunc(diffTime / (1000 * 60 * 60 * 24));
+    const DateDifference = (date1, date2) => {
+        const diff = Math.abs(date2 - date1);
+
+        const diffDays = Math.trunc(diff / (1000 * 60 * 60 * 24));
         const diffDaysMs = diffDays *1000*60*60*24 
         // const diffHoursMs = diffTime - diffDaysMs
-        const diffHours = Math.trunc ((diffTime - (diffDaysMs)) / (1000*60*60))
+        const diffHours = Math.trunc ((diff - (diffDaysMs)) / (1000*60*60))
         const diffHoursMs = (diffHours*1000*60*60) + diffDaysMs
-        const diffMinMs = diffTime-diffHoursMs
+        const diffMinMs = diff-diffHoursMs
         const diffMin = Math.ceil(diffMinMs /(1000*60))
         
         return {
@@ -26,8 +25,15 @@ const LiveSession = ({ liveSession }) => {
             minutes : diffMin
         }
     }
+
+    // const difference = DateDifference(liveSession.difference)
+    console.log(Date.now())
+    console.log(liveSession.endDate)
+    console.log(liveSession.date)
+    console.log(moment(Date.now()).toDate())
+    console.log(moment(liveSession.endDate).toDate())
+    console.log(moment(liveSession.date).toDate())
     const difference = DateDifference(moment(Date.now()).toDate(), moment(liveSession.endDate).toDate())
-    console.log(difference)
     // console.log(diffDays + " days");
     // console.log(current + "Curren date")
     // console.log(endDate + " end date")
