@@ -13,21 +13,28 @@ const multer = require('multer')
 const upload = require('./middlewares/fileStorageEngine')
 const workshop = require('./routes/workshop')
 const course = require('./routes/coursers')
+const cors = require("cors");
+const path = require("path");
+
 app.use(express.json())
+
+
+const directory = path.join(__dirname, "/public");
+// middlewares
+app.use("/public", express.static(directory));
+app.use(cors())
 
 app.get('/',(req,res)=>{
     res.send('<h1>you x design</h1>')
 })
-app.use('/api/v1/user', passport.authenticate('jwt', {session: false}), users)
+app.use('/api/v1/user', /*passport.authenticate('jwt', {session: false}),*/ users)
 app.use('/api/v1/auth', auth)
 app.use('/api/v1/candidate', candidates)
 app.use('/api/v1/workshop',workshop)
 app.use('/api/v1/course', course)
 
-app.post('/upload',upload.single('image'),(req,res)=>{
-    console.log(req.file);
-    res.send('upload successfull !');
-})
+app.disable("etag")
+
 
 const start = async() => {
     try {

@@ -21,6 +21,7 @@ const UserSchema = new mongoose.Schema({
     avatar : String,
     residence : String,
     age: Number,
+    bio : String,
     followers: [
         {
             type: mongoose.Types.ObjectId,

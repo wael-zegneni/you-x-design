@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { body } = require('express-validator');
-const upload = require('../middlewares/fileStorageEngine')
+const {uploadCv} = require('../middlewares/fileStorageEngine')
 
 const {addCandidate} = require ('../controllers/CandidateController')
 
@@ -15,7 +15,7 @@ router.post('/',[
     // body('bio','bio must be at least 20 caracters').isLength({min:20}).optional(),
     // body('school').optional(),
     // body('degree','please enter your degree').notEmpty()],
-    upload.single('cv')
+    uploadCv.single('cv')
 ],addCandidate)
 
 module.exports = router

@@ -1,5 +1,5 @@
 const multer = require("multer");
-const fileStorageEngine = multer.diskStorage({
+const fileStorageEnginecv = multer.diskStorage({
     destination :(req, file ,cb)=> {
         cb(null, './public/uploads/cv')
     },
@@ -8,6 +8,20 @@ const fileStorageEngine = multer.diskStorage({
     }
 
 });
-const upload = multer({storage: fileStorageEngine})
+const fileStorageEngineCourse = multer.diskStorage({
+    destination :(req, file ,cb)=> {
+        cb(null, './public/uploads/courses/img')
+    },
+    filename :(req,file, cb)=> {
+        cb(null, Date.now()+"-"+ file.originalname.replace(/ /g,'-'))
+    }
 
-module.exports = upload;
+});
+const uploadCv = multer({storage: fileStorageEnginecv})
+const uploadCourse = multer({storage: fileStorageEngineCourse}) 
+
+module.exports = {
+    uploadCv,
+    uploadCourse
+
+};
