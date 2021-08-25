@@ -6,7 +6,7 @@ import './joinCommunityCard.css'
 
 const JoinCommunityCard = ({heading, role, text}) => {
     return (
-        <Flex className="JoinCommunityCard"  direction="column" alignItems="center" justifyContent="space-around" py="15px" >
+        <Flex className="JoinCommunityCard"  direction="column" alignItems="center" justifyContent="space-around" py="15px" borderRadius="3xl">
             <Text fontSize="3xl" fontWeight="bolder">
                 {heading}
             </Text>
@@ -16,7 +16,7 @@ const JoinCommunityCard = ({heading, role, text}) => {
                 <Instructor/>
             }
             <Text>{text}</Text>
-            <Text bg="#FCC509" fontSize="md" px="30px" py="10px" borderRadius="3xl" fontWeight="bold" color="white" >Sign up</Text>
+            <Text cursor="pointer" bg="#FCC509" fontSize="md" px="30px" py="10px" borderRadius="3xl" transition='0.3s' fontWeight="bold" color="white" _hover={{transform:'scale(1.1, 1.1)'}} >Sign up</Text>
 
         </Flex>
     )

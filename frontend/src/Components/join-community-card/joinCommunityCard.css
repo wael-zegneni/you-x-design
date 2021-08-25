@@ -3,3 +3,11 @@
     height: 27vw;
     background-color: #F7F9FB;
 }
+
+.facebook_icon:hover path{
+    fill: white;
+}
+
+.facebook_icon:hover circle{
+    fill: #072446;
+}
