@@ -17,6 +17,7 @@ const Home = () => {
   const [workshopList, setworkshopList] = useState([])
   const [liveSession, setliveSession] = useState()
   const [courseList, setcourseList] = useState([])
+  const [InstructorList, setInstructorList] = useState([])
 
 useEffect(async () => {
   const res = await axios.get('api/v1/workshop/')
@@ -33,6 +34,11 @@ useEffect(async () => {
   const res = await axios.get('api/v1/course/')
   console.log(res.data)
   setcourseList(res.data)
+}, [])
+useEffect(async () => {
+  const res = await axios.get('api/v1/user/instructors/')
+  console.log(res.data)
+  setInstructorList(res.data)
 }, [])
 
   const { auth } = useContext(AuthContext);
@@ -77,7 +83,7 @@ useEffect(async () => {
         >
           Our Instructors
         </Text>
-        <InstructorSwiper />
+        <InstructorSwiper  InstructorList = { InstructorList }/>
         <Text
           color="#072446"
           fontSize="3xl"

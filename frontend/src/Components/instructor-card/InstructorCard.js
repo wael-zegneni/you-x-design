@@ -6,13 +6,14 @@ import Facebook from '../../Assets/Icons/Facebook';
 import LinkedIn from '../../Assets/Icons/LinkedIn'
 // bg="#F7F9FB"
 const InstructorCard = ({instructor}) => {
+    console.log(instructor)
     return (
         <Box borderRadius="3xl" width="37vw"  pl="20px" bg="#F7F9FB"  px="25px" py="10px">
             <Flex>
-                <img style={{borderRadius:"9999px", height:"210px"}} src={instructor.picture} />
+                <img style={{borderRadius:"9999px", height:"210px"}} src='https://images.ctfassets.net/p0qf7j048i0q/7nozjTQrvoZnihgJAHmsyL/b6062ea05e780c77ce9dbacba470cf54/Portrait_of_Gretchen_Vierstra.jpg?w=1200&h=1200&fit=fill&fm=webp'/>
                 <Box pl="20px"> 
-                    <Text fontSize="2xl" fontWeight="bolder" color="#1E1E1E">{instructor.name}</Text>
-                    <Text fontSize="md" fontWeight="600" color="#1E1E1E" py="10px">{instructor.role}</Text>
+                    <Text fontSize="2xl" fontWeight="bolder" color="#1E1E1E">{instructor.userName}</Text>
+                    <Text fontSize="md" fontWeight="600" color="#1E1E1E" py="10px">UX Designer</Text>
                     <Text fontSize="sm" pt="5px" fontWeight="500" color="#1E1E1E">{instructor.bio} </Text>
                     <Flex pt="15px" alignItems="center" justifyContent="space-between">
                         <Flex >

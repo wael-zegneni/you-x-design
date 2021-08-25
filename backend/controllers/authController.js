@@ -45,7 +45,8 @@ const register = async (req,res) => {
                 password: hashedPassword,
                 role: req.body.role,
                 age : req.body.age,
-                residence : req.body.residence
+                residence : req.body.residence,
+                bio : req.body.bio
             });
             await user.save();
             var token = jwt.sign(user.toJSON(), 'your_jwt_secret');

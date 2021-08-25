@@ -11,11 +11,12 @@ import "swiper/swiper.min.css";
 
 
 const InstructorSwiper = ({ InstructorList }) => {
+    console.log(InstructorList)
     return (
         <div style={{marginTop:"65px"}}>
             <Swiper watchSlidesProgress={true} watchSlidesVisibility={true} freeMode={true} slidesPerView={2.6} className="instructor-swiper">
                 {InstructorList.map((el) => (
-                    <SwiperSlide><InstructorCard workshop={el} /></SwiperSlide>
+                    <SwiperSlide><InstructorCard instructor={el} /></SwiperSlide>
                 ))}
             </Swiper>
         </div>
