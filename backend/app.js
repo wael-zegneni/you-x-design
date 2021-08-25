@@ -33,6 +33,7 @@ app.use('/api/v1/candidate', candidates)
 app.use('/api/v1/workshop',workshop)
 app.use('/api/v1/course', course)
 
+app.disable("etag")
 
 
 const start = async() => {
