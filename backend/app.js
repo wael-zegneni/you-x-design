@@ -27,7 +27,7 @@ app.use(cors())
 app.get('/',(req,res)=>{
     res.send('<h1>you x design</h1>')
 })
-app.use('/api/v1/user', passport.authenticate('jwt', {session: false}), users)
+app.use('/api/v1/user', /*passport.authenticate('jwt', {session: false}),*/ users)
 app.use('/api/v1/auth', auth)
 app.use('/api/v1/candidate', candidates)
 app.use('/api/v1/workshop',workshop)

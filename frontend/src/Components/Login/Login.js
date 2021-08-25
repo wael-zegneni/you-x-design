@@ -32,7 +32,8 @@ const Login = () => {
         name: "",
         RegisterEmail:"",
         phone:"",
-        RegisterPassword:""
+        RegisterPassword:"",
+        role : "student"
     })
     const toast = useToast()
     const history = useHistory()
