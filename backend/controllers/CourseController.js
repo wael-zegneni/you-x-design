@@ -15,7 +15,7 @@ const addCourse = async (req,res)=> {
             date : currentDate,
             language : req.body.language,
             url : req.body.url,
-            thumbnail : req.file.path,
+            thumbnail : req.file.path.replace(/ /g,'-'),
             content : req.body.content,
             type : 'article'
         })
