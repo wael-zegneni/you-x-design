@@ -21,7 +21,7 @@ function App() {
   return (
       <>
 
-        {pathname.includes("login") || <Navbar/> }
+        {(pathname.includes("login") || pathname.includes("candidate")) || <Navbar/> }
         
         <Switch>
           <Route exact path="/" component={Home} />
