@@ -17,7 +17,8 @@ const addCourse = async (req,res)=> {
             url : req.body.url,
             thumbnail : req.file.path.replace(/ /g,'-'),
             content : req.body.content,
-            type : 'article'
+            type : req.body.type,
+            instructor : req.body.instructor
         })
         
         console.log(course)
@@ -29,12 +30,39 @@ const addCourse = async (req,res)=> {
 }
 }
 const getCourses = async (req,res)=> {
-    const courses = await Course.find()
+    const courses = await Course.find().populate('instructor')
     console.log(courses)
     return res.send(courses)
 }
+const updateCourse = async (req,res)=> {
+    try {
+        Course.findByIdAndUpdate(req.body.id,{
+            description : req.body.description,
+            tags : req.body.tags,
+            language : req.body.language,
+            url : req.body.url,
+            thumbnail : req.file.path.replace(/ /g,'-'),
+            content : req.body.content,
+            type : req.body.type,
+            instructor : req.body.instructor
+        }, function(err,course){
+            if(err){
+                console.log(err)
+                res.status(400).send(err)
+            } else {
+                console.log( course )
+                res.send(course)
+            }
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
+}
+
 
 module.exports = {
     addCourse,
-    getCourses
+    getCourses,
+    updateCourse
 }

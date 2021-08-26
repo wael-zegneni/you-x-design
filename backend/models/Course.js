@@ -24,6 +24,10 @@ const CourseSchema = new mongoose.Schema({
         required : true,
     },
     type : String,
+    instructor : {
+        type: mongoose.Types.ObjectId,
+        ref: 'user'
+    },
     // category: [
     //     {
     //         type: mongoose.Types.ObjectId,

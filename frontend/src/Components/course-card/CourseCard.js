@@ -51,14 +51,14 @@ const CourseCard = ({cardData}) => {
                     <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
                         <Avatar
                             // src={cardData.instructor.instructorPicture}
-                            src = 'https://avatars0.githubusercontent.com/u/1164541?v=4'
+                            src = {cardData.instructor.avatar}
                             alt={'Author'}
                         />
                         <Stack direction={'column'} spacing={0} fontSize={'sm'}>
                             {/* <Text fontWeight={600}>{cardData.instructor.instructorName}</Text> */}
-                            <Text fontWeight={600}>Instructor Name</Text>
+                            <Text fontWeight={600}>{cardData.instructor.userName}</Text>
                             {/* <Text color={'gray.500'}>{cardData.instructor.instructorRole}</Text> */}
-                            <Text color={'gray.500'}>UX Designer</Text>
+                            <Text color={'gray.500'}>{cardData.instructor.career}</Text>
                         </Stack>
                     </Stack>
 

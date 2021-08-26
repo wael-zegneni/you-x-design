@@ -22,6 +22,7 @@ const UserSchema = new mongoose.Schema({
     residence : String,
     age: Number,
     bio : String,
+    career : String,
     followers: [
         {
             type: mongoose.Types.ObjectId,
