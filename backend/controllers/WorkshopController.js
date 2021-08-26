@@ -26,7 +26,7 @@ const addWorkshop = async (req,res)=> {
 }
 
 const indexWorkshop = async (req,res) => {
-    const workshops = await Workshop.find()
+    const workshops = await Workshop.find().sort('date')
     console.log(workshops)
     return res.send(workshops)
 }
