@@ -137,7 +137,7 @@ useEffect(async () => {
           Testimonials
         </Text>
         <TestimonyList />
-        {/* <Footer/> */}
+        <Footer/>
       </div>
     );
   }
