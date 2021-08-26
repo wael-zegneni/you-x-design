@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Flex, Text, Alert, Stack, Avatar } from '@chakra-ui/react';
 import liveLogo from '../../Assets/Images/liveLogo.png'
 import clockIcon from '../../Assets/Images/clockIcon.png'
+import enrollIcon from '../../Assets/Images/icon-enrollement.png'
 import './liveSession.css'
 import moment from 'moment'
 
@@ -81,7 +82,7 @@ const LiveSession = ({ liveSession }) => {
                             </Box>
                         </Box>
                         <Box  className="schedule" mr="20px">
-                            <img src={clockIcon} alt="clock logo" height="30px !important" width="50px" />
+                            <img src={enrollIcon} alt="clock logo" height="30px !important" width="50px" />
                             <Box className="schedule-date" ml="20px" >
                                 <Text fontWeight="600" fontFamily="Montserrat">ENROLMENT ENDS IN</Text>
                                 <Text fontSize="xs"> {difference.days} Days   {difference.hours} hours    {difference.minutes} minutes</Text>
