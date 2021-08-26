@@ -13,7 +13,7 @@ const InstructorCard = ({instructor}) => {
                 <img style={{borderRadius:"9999px", height:"190px", width:"190px", objectFit:"cover"}} alt="instructor" src={instructor.avatar}/>
                 <Box pl="20px"> 
                     <Text fontSize="2xl" fontWeight="bolder" color="#1E1E1E">{instructor.userName}</Text>
-                    <Text fontSize="md" fontWeight="600" color="#1E1E1E" py="10px">UX Designer</Text>
+                    <Text fontSize="md" fontWeight="600" color="#1E1E1E" py="10px">{instructor.career}</Text>
                     <Text fontSize="sm" pt="5px" fontWeight="500" color="#1E1E1E">{instructor.bio} </Text>
                     <Flex pt="15px" alignItems="center" justify="space-between" wrap="wrap">
                         <Flex className="contact_icons" >

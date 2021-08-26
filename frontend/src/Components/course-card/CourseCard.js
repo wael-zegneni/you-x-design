@@ -3,6 +3,7 @@ import { Box, Center, Heading, Text, Stack, Avatar, useColorModeValue, Flex } fr
 import './courseCard.css'
 import articleLogo from '../../Assets/Images/articleLogo.png'
 import workshopLogo from '../../Assets/Images/workshopLogo.png'
+import moment from 'moment'
 
 const CourseCard = ({cardData}) => {
     
@@ -25,7 +26,7 @@ const CourseCard = ({cardData}) => {
                     <Flex>
                         <Flex direction="column" flex="0.7">
                             <Heading color={useColorModeValue('gray.700', 'white')} fontSize={'l'} fontFamily={'montserrat'}>{cardData.title}</Heading>
-                            <Text fontFamily={'montserrat'} mt='5px'>  45 Already</Text>
+                            <Text fontFamily={'montserrat'} mt='5px'>  Published on {moment(cardData.date).format('MMM DD,YYYY')}</Text>
                         </Flex>
                         <Flex flex="0.3" justify="flex-end" >
                             {
