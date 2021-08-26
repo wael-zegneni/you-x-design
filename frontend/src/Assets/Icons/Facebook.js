@@ -2,7 +2,7 @@ import React from 'react'
 
 const Facebook = () => {
   return (
-    <svg className="facebook_icon" xmlns="http://www.w3.org/2000/svg" width="50.549" height="50.549" viewBox="0 0 59.549 59.549" fill="red">
+    <svg className="facebook_icon" xmlns="http://www.w3.org/2000/svg" width="50.549" height="50.549" viewBox="0 0 59.549 59.549" fill="red" style={{cursor:'pointer'}}>
       <defs>
         <filter id="Ellipse_15" x="0" y="0" width="50.549" height="50.549" filterUnits="userSpaceOnUse">
           <feOffset dy="3" input="SourceAlpha" />

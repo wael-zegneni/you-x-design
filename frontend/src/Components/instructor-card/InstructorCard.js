@@ -8,20 +8,20 @@ import LinkedIn from '../../Assets/Icons/LinkedIn'
 const InstructorCard = ({instructor}) => {
     console.log(instructor)
     return (
-        <Box borderRadius="3xl" width="37vw"  pl="20px" bg="#F7F9FB"  px="25px" py="10px">
+        <Box borderRadius="3xl" width="600px"  pl="20px" bg="#F7F9FB"  pl="25px" pr="15px" py="10px" style={{backgroundColor:"red"}}>
             <Flex>
-                <img style={{borderRadius:"9999px", height:"210px"}} src={instructor.avatar}/>
+                <img style={{borderRadius:"9999px", height:"190px", width:"190px", objectFit:"cover"}} alt="instructor" src={instructor.avatar}/>
                 <Box pl="20px"> 
                     <Text fontSize="2xl" fontWeight="bolder" color="#1E1E1E">{instructor.userName}</Text>
                     <Text fontSize="md" fontWeight="600" color="#1E1E1E" py="10px">UX Designer</Text>
                     <Text fontSize="sm" pt="5px" fontWeight="500" color="#1E1E1E">{instructor.bio} </Text>
-                    <Flex pt="15px" alignItems="center" justifyContent="space-between">
-                        <Flex >
-                            <a href={instructor.facebook} alt="icon" target="_blank"><Facebook/></a>
-                            <a href={instructor.instagram} alt="icon" target="_blank"><Insta/></a>
-                            <a href={instructor.linkedIn} alt="icon" target="_blank"><LinkedIn/></a>
+                    <Flex pt="15px" alignItems="center" justify="space-between" wrap="wrap">
+                        <Flex className="contact_icons" >
+                            <a href={instructor.facebook} alt="icon" target="_blank"><Facebook cursor="pointer"/></a>
+                            <a href={instructor.instagram} alt="icon" target="_blank"><Insta cursor="pointer"/></a>
+                            <a href={instructor.linkedIn} alt="icon" target="_blank"><LinkedIn cursor="pointer"/></a>
                         </Flex>
-                        <Text color="white" bg="#072446" cursor="pointer" fontSize="sm" py="5px" px="10px" borderRadius="3xl">View Profile</Text>
+                        <Text color="white" bg="#072446" cursor="pointer" fontSize="sm" px="15px" py="5px" ml="5px" borderRadius="3xl">View Profile</Text>
                     </Flex>
                 </Box>
             </Flex>

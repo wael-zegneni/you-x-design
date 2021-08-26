@@ -120,8 +120,8 @@ useEffect(async () => {
         >
           Testimonials
         </Text>
-        <TestimonyList />
-        <Footer/>
+        <TestimonyList/>
+        <Footer />
       </div>
     );
   }
