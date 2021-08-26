@@ -1,6 +1,7 @@
 import React from 'react'
 import Student from '../../Assets/Icons/Student'
 import Instructor from '../../Assets/Icons/Instructor'
+import { Link } from 'react-router-dom'
 import { Box, Text, Avatar, Flex } from '@chakra-ui/react';
 import './joinCommunityCard.css'
 
@@ -16,7 +17,9 @@ const JoinCommunityCard = ({heading, role, text}) => {
                 <Instructor/>
             }
             <Text>{text}</Text>
-            <Text cursor="pointer" bg="#FCC509" fontSize="md" px="30px" py="10px" borderRadius="3xl" transition='0.3s' fontWeight="bold" color="white" _hover={{transform:'scale(1.1, 1.1)'}} >Sign up</Text>
+            <Link to="/candidate"><Text cursor="pointer" bg="#FCC509" fontSize="md" px="30px" py="10px" borderRadius="3xl" transition='0.3s' fontWeight="bold" color="white" _hover={{transform:'scale(1.1, 1.1)'}} >Sign up</Text></Link>
+
+        
 
         </Flex>
     )

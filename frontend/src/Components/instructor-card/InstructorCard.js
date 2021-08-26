@@ -8,7 +8,7 @@ import LinkedIn from '../../Assets/Icons/LinkedIn'
 const InstructorCard = ({instructor}) => {
     console.log(instructor)
     return (
-        <Box borderRadius="3xl" width="600px"  pl="20px" bg="#F7F9FB"  pl="25px" pr="15px" py="10px" style={{backgroundColor:"red"}}>
+        <Box borderRadius="3xl" width="570px" py="1em"  pl="20px" bg="#F7F9FB"  pl="25px" >
             <Flex>
                 <img style={{borderRadius:"9999px", height:"190px", width:"190px", objectFit:"cover"}} alt="instructor" src={instructor.avatar}/>
                 <Box pl="20px"> 
