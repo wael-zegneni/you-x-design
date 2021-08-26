@@ -15,7 +15,7 @@ const workshop = require('./routes/workshop')
 const course = require('./routes/coursers')
 const cors = require("cors");
 const path = require("path");
-
+const comments = require('./routes/comments')
 
 app.use(express.json())
 
@@ -33,6 +33,7 @@ app.use('/api/v1/auth', auth)
 app.use('/api/v1/candidate', candidates)
 app.use('/api/v1/workshop',workshop)
 app.use('/api/v1/course', course)
+app.use('/api/v1/comment', comments)
 
 app.disable("etag")
 
