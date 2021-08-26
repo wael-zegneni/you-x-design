@@ -16,6 +16,7 @@ const course = require('./routes/coursers')
 const cors = require("cors");
 const path = require("path");
 
+
 app.use(express.json())
 
 
