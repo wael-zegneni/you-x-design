@@ -15,6 +15,7 @@ const addWorkshop = async (req,res)=> {
             endDate : req.body.endDate,
             maxAtt : req.body.maxAtt,
             link : req.body.link,
+            instructor : req.body.instructor
         })
         console.log(workshop)
         await workshop.save();
@@ -26,7 +27,7 @@ const addWorkshop = async (req,res)=> {
 }
 
 const indexWorkshop = async (req,res) => {
-    const workshops = await Workshop.find()
+    const workshops = await Workshop.find().populate("instructor").sort('date')
     console.log(workshops)
     return res.send(workshops)
 }
@@ -44,6 +45,7 @@ const liveSession = async(req,res) => {
                 endDate : 1,    
                 maxAtt : 1,
                 link : 1,
+                instructor : 1,
                 difference : {
                     $abs : {
                         $subtract : [new Date(), "$date"]
@@ -58,15 +60,41 @@ const liveSession = async(req,res) => {
             $limit : 1
         }
         ]);
-        return res.send(livesession)
+        Workshop.populate(livesession, {path: "instructor"}, (err, result) => {
+            return res.send(result)
+        });
     } catch (error) {
         res.status(400).send(error)
     }
         
 }
-
+const updateWorkshop = (req,res)=>{
+    try {
+        Workshop.findByIdAndUpdate(req.body.id,{
+            description : req.body.description,
+            date : req.body.date,
+            endDate : req.body.endDate,
+            maxAtt : req.body.maxAtt,
+            link : req.body.link,
+            instructor : req.body.instructor
+        }, function (err,workshop) {
+            if (err){
+                console.log(err)
+                res.send(err)
+            } else {
+                console.log(workshop)
+                res.send(workshop)
+            }
+            
+        })
+    } catch (error) {
+        console.log(error)
+        res.send(error)
+    }
+}
 module.exports = {
     liveSession,
     addWorkshop,
     indexWorkshop,
+    updateWorkshop,
 }

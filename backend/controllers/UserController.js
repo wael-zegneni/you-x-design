@@ -29,10 +29,9 @@ const updateUser = async (req,res) => {
 const deleteUser = (req,res)=>{
     res.send('delete user')
 }
-const getUser = (req,res)=>{
-    //let x = passport.ExtractJwt.fromAuthHeaderAsBearerToken
-    console.log("x")
-    res.send("workss")
+const findUserById = async (req,res)=>{
+    const user = await User.findById(req.body.id)
+    res.send(user)
 }
 const getInstructors = async (req,res) =>{
     instructors = await User.find({role : "instructor"})
@@ -43,6 +42,6 @@ const getInstructors = async (req,res) =>{
 module.exports = {
     updateUser,
     deleteUser,
-    getUser,
+    findUserById,
     getInstructors,
 }

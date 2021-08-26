@@ -6,12 +6,12 @@ const {uploadAvatar} = require('../middlewares/fileStorageEngine')
 const {
     updateUser,
     deleteUser,
-    getUser,
+    findUserById,
     getInstructors,   
     } = require ( "../controllers/UserController")
 
     
-router.route('/').get(getUser).delete(deleteUser);
+router.route('/').get(findUserById).delete(deleteUser);
 router.get('/instructors', getInstructors)
 router.patch('/update',uploadAvatar.single('avatar') , updateUser)
 

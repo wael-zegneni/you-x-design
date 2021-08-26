@@ -27,12 +27,28 @@ useEffect(async () => {
   console.log (res.data)
   setworkshopList(res.data)
 }, [])
-useEffect(async () => {
-  const res = await axios.get('api/v1/workshop/livesession')
-  console.log (res.data[0])
-  setliveSession(res.data[0])
+// useEffect(async () => {
+//   const res = await axios.get('api/v1/workshop/livesession')
+//   console.log (res.data[0])
+//   setliveSession(res.data[0])
 
+// }, [])
+
+useEffect(async () => {
+  const res = await axios.get('api/v1/workshop/')
+  console.log (res.data)
+  const res2 = await axios.get('api/v1/workshop/livesession')
+  console.log (res2.data[0])
+  let filtered = await res.data.filter(function (el) {
+  return el._id != res2.data[0]._id })
+  console.log(filtered)
+  setliveSession(res2.data[0])
+  setworkshopList(filtered)
+  // const res = await axios.get('api/v1/workshop/')
+  // console.log (res.data)
+  // setworkshopList (res.data)
 }, [])
+
 useEffect(async () => {
   const res = await axios.get('api/v1/course/')
   console.log(res.data)
