@@ -15,6 +15,7 @@ const addWorkshop = async (req,res)=> {
             endDate : req.body.endDate,
             maxAtt : req.body.maxAtt,
             link : req.body.link,
+            instructor : req.body.instructor
         })
         console.log(workshop)
         await workshop.save();
@@ -64,9 +65,33 @@ const liveSession = async(req,res) => {
     }
         
 }
-
+const updateWorkshop = (req,res)=>{
+    try {
+        Workshop.findByIdAndUpdate(req.body.id,{
+            description : req.body.description,
+            date : req.body.date,
+            endDate : req.body.endDate,
+            maxAtt : req.body.maxAtt,
+            link : req.body.link,
+            instructor : req.body.instructor
+        }, function (err,workshop) {
+            if (err){
+                console.log(err)
+                res.send(err)
+            } else {
+                console.log(workshop)
+                res.send(workshop)
+            }
+            
+        })
+    } catch (error) {
+        console.log(error)
+        res.send(error)
+    }
+}
 module.exports = {
     liveSession,
     addWorkshop,
     indexWorkshop,
+    updateWorkshop,
 }
