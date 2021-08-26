@@ -5,6 +5,7 @@ const passport = require("passport");
 const { body } = require('express-validator');
 const authMiddleware = require('../middlewares/authMiddleware');
 
+
 const {
     signin,
     register,
@@ -20,8 +21,8 @@ router.post('/register', [
     body('name', "Name is required!!").notEmpty(),
     body('RegisterEmail', "Please provide a valid email address!").isEmail(),
     body('phone', "Phone must be a number!!").isNumeric(),
-    body('RegisterPassword', "Password's length must be at least 5 characters").isLength({ min: 5 })
-], register)
+    body('RegisterPassword', "Password's length must be at least 5 characters").isLength({ min: 5 }),] ,
+ register)
 router.get("/user", authMiddleware,loadUser)
 
 // facebook

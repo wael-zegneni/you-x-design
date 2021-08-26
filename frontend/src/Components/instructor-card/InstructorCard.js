@@ -10,7 +10,7 @@ const InstructorCard = ({instructor}) => {
     return (
         <Box borderRadius="3xl" width="37vw"  pl="20px" bg="#F7F9FB"  px="25px" py="10px">
             <Flex>
-                <img style={{borderRadius:"9999px", height:"210px"}} src='https://images.ctfassets.net/p0qf7j048i0q/7nozjTQrvoZnihgJAHmsyL/b6062ea05e780c77ce9dbacba470cf54/Portrait_of_Gretchen_Vierstra.jpg?w=1200&h=1200&fit=fill&fm=webp'/>
+                <img style={{borderRadius:"9999px", height:"210px"}} src={instructor.avatar}/>
                 <Box pl="20px"> 
                     <Text fontSize="2xl" fontWeight="bolder" color="#1E1E1E">{instructor.userName}</Text>
                     <Text fontSize="md" fontWeight="600" color="#1E1E1E" py="10px">UX Designer</Text>
