@@ -92,12 +92,12 @@ const LiveSession = ({ liveSession }) => {
                         <Flex justifyContent='space-between  ' alignItems='flex-end' mt="10px">
                             <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
                                 <Avatar
-                                    src='https://www.villard.biz/assets/Uploads/projects/portrait-o.jpg'
+                                    src={liveSession.instructor.avatar}
                                     alt={'Author'}
                                 />
                                 <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-                                    <Text fontWeight={600}>Instructor name</Text>
-                                    <Text color={'gray.500'}>UX Designer</Text>
+                                    <Text fontWeight={600}>{liveSession.instructor.userName}</Text>
+                                    <Text color={'gray.500'}>{liveSession.instructor.career}</Text>
                                 </Stack>
                             </Stack>
 

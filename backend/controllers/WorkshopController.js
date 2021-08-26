@@ -27,7 +27,7 @@ const addWorkshop = async (req,res)=> {
 }
 
 const indexWorkshop = async (req,res) => {
-    const workshops = await Workshop.find().populate("instructor").sort('date')
+    const workshops = await Workshop.find().sort('date')
     console.log(workshops)
     return res.send(workshops)
 }
@@ -89,7 +89,7 @@ const updateWorkshop = (req,res)=>{
         })
     } catch (error) {
         console.log(error)
-        res.send(error)
+        res.status(400).send(error)
     }
 }
 module.exports = {
