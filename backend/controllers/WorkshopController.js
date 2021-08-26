@@ -27,7 +27,7 @@ const addWorkshop = async (req,res)=> {
 }
 
 const indexWorkshop = async (req,res) => {
-    const workshops = await Workshop.find().sort('date')
+    const workshops = await Workshop.find().populate("instructor").sort('date')
     console.log(workshops)
     return res.send(workshops)
 }
@@ -45,6 +45,7 @@ const liveSession = async(req,res) => {
                 endDate : 1,    
                 maxAtt : 1,
                 link : 1,
+                instructor : 1,
                 difference : {
                     $abs : {
                         $subtract : [new Date(), "$date"]
@@ -59,7 +60,9 @@ const liveSession = async(req,res) => {
             $limit : 1
         }
         ]);
-        return res.send(livesession)
+        Workshop.populate(livesession, {path: "instructor"}, (err, result) => {
+            return res.send(result)
+        });
     } catch (error) {
         res.status(400).send(error)
     }
