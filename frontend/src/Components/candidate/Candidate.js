@@ -78,7 +78,7 @@ const Candidate = () => {
                                     <label className="label">Job Title </label>
                                 </div>
                                 <div className="input-trans">
-                                    <input className="input" type="text" autoComplete="off" placeholder=" " onChange={handleChange} name="age"></input>
+                                    <input className="input" type="number" autoComplete="off" placeholder=" " onChange={handleChange} name="age"></input>
                                     <label className="label">Age</label>
                                 </div>
                                 <div className="input-trans">
@@ -108,7 +108,7 @@ const Candidate = () => {
                                     <label className="label">Email</label>
                                 </div>
                                 <div className="input-trans">
-                                    <input className="input" type="tel" autoComplete="off" placeholder=" " onChange={handleChange} name="phone"></input>
+                                    <input className="input" type="tel" pattern="[0-9]{8}" autoComplete="off" placeholder=" " onChange={handleChange} name="phone"></input>
                                     <label className="label">Phone Number</label>
                                 </div>
                                 <h2>Enter your social links</h2>    

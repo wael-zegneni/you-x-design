@@ -46,10 +46,10 @@ const register = async (req,res) => {
                 role: req.body.role,
                 age : req.body.age,
                 residence : req.body.residence,
-                bio : req.body.bio
+                bio : req.body.bio,
             });
             await user.save();
-            var token = jwt.sign(user.toJSON(), 'your_jwt_secret');
+            var token = jwt.sign(user.toJSON(), process.env.SECRET_KEY);
             res.json({user, token});
        } catch (error) {
         res.status(400).send(error)
