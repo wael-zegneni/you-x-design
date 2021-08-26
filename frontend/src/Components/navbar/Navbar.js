@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import logo from '../../Assets/Images/logo.jpg'
 import searchLogo from '../../Assets/Images/searchLogo.jpg'
+import Logo from '../../Assets/Icons/Logo';
 import ReactLanguageSelect from 'react-languages-select';
 import 'react-languages-select/css/react-languages-select.css';
 import { Link } from 'react-router-dom'

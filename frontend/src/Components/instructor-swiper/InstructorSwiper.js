@@ -14,7 +14,32 @@ const InstructorSwiper = ({ InstructorList }) => {
     console.log(InstructorList)
     return (
         <div style={{marginTop:"65px"}}>
-            <Swiper watchSlidesProgress={true} watchSlidesVisibility={true} freeMode={true} slidesPerView={2.6} className="instructor-swiper">
+            <Swiper watchSlidesProgress={true} watchSlidesVisibility={true} freeMode={true}  className="instructor-swiper" breakpoints={{
+"640": {
+    "slidesPerView": 1.5,
+    "spaceBetween": 20
+  },
+  "768": {
+    "slidesPerView": 1.2,
+    "spaceBetween": 40
+  },
+  "1024": {
+    "slidesPerView": 1.7,
+    "spaceBetween": 50
+  },
+  "1500": {
+    "slidesPerView": 2.5,
+    "spaceBetween": 50
+  },
+  "1920": {
+    "slidesPerView": 2.9,
+    "spaceBetween": 50
+  },
+  "2560": {
+    "slidesPerView": 3.5,
+    "spaceBetween": 50
+  }
+  }}>
                 {InstructorList.map((el) => (
                     <SwiperSlide><InstructorCard instructor={el} /></SwiperSlide>
                 ))}

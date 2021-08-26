@@ -12,11 +12,32 @@ import "swiper/swiper.min.css";
 
 const WorkshopSwiper = ({ workshopList }) => {
     return (
-        <div style={{marginTop:'65px', marginLeft:"30px"}}>
+        <div style={{ marginTop: '65px', marginLeft: "30px" }}>
             <Text color="#072446" fontSize="3xl" fontWeight="bolder" mb="10px" >
                 Upcoming
             </Text>
-            <Swiper watchSlidesProgress={true} watchSlidesVisibility={true} freeMode={true} slidesPerView={1.5} className="mySwiper">
+            <Swiper watchSlidesProgress={true} watchSlidesVisibility={true} freeMode={true} className="mySwiper" breakpoints={{
+                "640": {
+                    "slidesPerView": 1,
+                    "spaceBetween": 20
+                },
+                "768": {
+                    "slidesPerView": 0.8,
+                    "spaceBetween": 40
+                },
+                "1024": {
+                    "slidesPerView": 1.1,
+                    "spaceBetween": 50
+                },
+                "1440": {
+                    "slidesPerView": 1.5,
+                    "spaceBetween": 50
+                },
+                "2560": {
+                    "slidesPerView": 2.7,
+                    "spaceBetween": 50
+                }
+            }}>
                 {workshopList.map((el) => (
                     <SwiperSlide><Workshop workshop={el} /></SwiperSlide>
                 ))}
