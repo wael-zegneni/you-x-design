@@ -1,5 +1,6 @@
 const Course = require('../models/Course')
-
+const { findById } = require('../models/User')
+const User = require('../models/User')
 const addCourse = async (req,res)=> {
     let course = await Course.findOne({ title : req.body.title})
     if (course) {
@@ -20,10 +21,18 @@ const addCourse = async (req,res)=> {
             type : req.body.type,
             instructor : req.body.instructor
         })
+        console.log('course ' + course)
+        let instructor = await User.findById(req.body.instructor)
+        console.log(instructor)
+        if (instructor) {
+            await course.save();
+            instructor.courses.push(course._id)
+            await instructor.save();
+            return res.send(course)
+        } else {
+            res.status(400).send('instructor not found')
+        }
         
-        console.log(course)
-        await course.save();
-        return res.send(course)
     } catch (error) {
         res.status(400).send(error)
     }
@@ -33,6 +42,17 @@ const getCourses = async (req,res)=> {
     const courses = await Course.find().populate('instructor')
     console.log(courses)
     return res.send(courses)
+}
+const getCourseById = async (req,res) => {
+
+    try {
+        const course = await Course.findOne({ _id : req.body.id})
+        console.log('course by id ' + course)
+        res.send(course)
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
 }
 const updateCourse = async (req,res)=> {
     try {
@@ -60,15 +80,31 @@ const updateCourse = async (req,res)=> {
     }
 }
 
-const deleteCourse = (req,res) => {
-    Course.deleteOne({ _id : req.body.id}, function(err){
-    if (!err) {
-        res.send('Course deleted !');
+const deleteCourse = async (req,res) => {
+    try {
+        let course = await Course.findById(req.body.id)
+        let instructor= await User.findById(course.instructor)
+        console.log(instructor)
+        // res.send(instructor)
+        Course.deleteOne({ _id : course.id}, async function(err){
+            console.log('instructor in delete ' + instructor)
+            if (!err && instructor) {
+                // if(!err){
+                
+                await instructor.courses.pull(course.id)
+                await instructor.save()
+                res.send('Course deleted !');
+                
+            }
+            else {
+                res.status(400).send(err);
+            }  
+            })
+    } catch (error) {
+        console.log(error)
+        res.send(error)        
     }
-    else {
-        res.status(400).send('error');
-    }  
-    })
+    
 }
 
 module.exports = {
@@ -76,4 +112,5 @@ module.exports = {
     getCourses,
     updateCourse,
     deleteCourse,
+    getCourseById,
 }

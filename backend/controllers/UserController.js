@@ -1,25 +1,27 @@
 const User = require('../models/User')
 
 const updateUser = async (req,res) => {
-    try { 
-    User.findByIdAndUpdate(req.body.id,{
-        userName: req.body.name,
-        phone: req.body.phone,
-        role: req.body.role,
-        age : req.body.age,
-        residence : req.body.residence,
-        bio : req.body.bio,
-        avatar : req.file.path,
-
-    }, function(err,user){
-        if (err) {
-            console.log(err)
-            res.send(err)
-        } else {
-            console.log(user)
-            res.send(user)
-        }
-    })
+    try {
+            User.findByIdAndUpdate(req.body.id,{
+                userName: req.body.name,
+                phone: req.body.phone,
+                role: req.body.role,
+                age : req.body.age,
+                residence : req.body.residence,
+                bio : req.body.bio,
+                avatar : req.file.path,
+        
+            }, function(err,user){
+                if (err) {
+                    console.log(err)
+                    res.send(err)
+                } else {
+                    console.log(user)
+                    res.send(user)
+                }
+            }) 
+        
+    
 } catch (error) {
     console.log(error)
     res.send(error)
