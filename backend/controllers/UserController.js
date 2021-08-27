@@ -27,7 +27,14 @@ const updateUser = async (req,res) => {
     // res.send('update user')
 }
 const deleteUser = (req,res)=>{
-    res.send('delete user')
+    User.deleteOne({ _id: req.body.id }, function(err) {
+        if (!err) {
+                res.send('user deleted !');
+        }
+        else {
+                res.status(400).send('error');
+        }
+    });
 }
 const findUserById = async (req,res)=>{
     const user = await User.findById(req.body.id)
@@ -38,10 +45,16 @@ const getInstructors = async (req,res) =>{
     console.log(instructors)
     res.send(instructors)
 }
+const getStudents = async(req,res) =>{
+    students = await User.find({role : "student"})
+    console.log(students)
+    res.send(students)
+}
 
 module.exports = {
     updateUser,
     deleteUser,
     findUserById,
     getInstructors,
+    getStudents,
 }

@@ -60,9 +60,20 @@ const updateCourse = async (req,res)=> {
     }
 }
 
+const deleteCourse = (req,res) => {
+    Course.deleteOne({ _id : req.body.id}, function(err){
+    if (!err) {
+        res.send('Course deleted !');
+    }
+    else {
+        res.status(400).send('error');
+    }  
+    })
+}
 
 module.exports = {
     addCourse,
     getCourses,
-    updateCourse
+    updateCourse,
+    deleteCourse,
 }

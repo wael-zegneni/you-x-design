@@ -3,7 +3,7 @@ const router = express.Router();
 const { body } = require('express-validator');
 const {uploadCv} = require('../middlewares/fileStorageEngine')
 
-const {addCandidate} = require ('../controllers/CandidateController')
+const {addCandidate,getCandidateById,getCandidates} = require ('../controllers/CandidateController')
 
 router.post('/',[
     // [body('name','please enter your full name').notEmpty(),
@@ -17,5 +17,8 @@ router.post('/',[
     // body('degree','please enter your degree').notEmpty()],
     uploadCv.single('cv')
 ],addCandidate)
+router.get('/', getCandidateById),
+router.get('/all', getCandidates)
+
 
 module.exports = router

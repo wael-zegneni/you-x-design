@@ -7,12 +7,15 @@ const {
     updateUser,
     deleteUser,
     findUserById,
-    getInstructors,   
+    getInstructors,
+    getStudents,   
     } = require ( "../controllers/UserController")
 
     
-router.route('/').get(findUserById).delete(deleteUser);
+router.route('/').get(findUserById);
+router.delete('/delete', deleteUser);
 router.get('/instructors', getInstructors)
 router.patch('/update',uploadAvatar.single('avatar') , updateUser)
+router.get('/students', getStudents)
 
 module.exports = router

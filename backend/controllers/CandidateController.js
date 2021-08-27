@@ -38,7 +38,32 @@ const addCandidate = async (req,res) => {
     }
 }
 }
+const getCandidateById = async (req,res) => {
+    try {
+        candidate = await Candidate.findOne({_id : req.body.id})
+        console.log("candidate" + candidate)
+        res.send(candidate)
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
+}
+const getCandidates = async(req,res) => {
+    candidates = await Candidate.find()
+    console.log("all candidates " + candidates)
+    if (candidates) {
+        res.send(candidates)
+    } else {
+        res.send("no candidates")
+    }
+}
+
+
+
+
 
     module.exports = {
         addCandidate,
+        getCandidateById,
+        getCandidates,
     }
