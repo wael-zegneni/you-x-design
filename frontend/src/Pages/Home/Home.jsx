@@ -22,6 +22,7 @@ const Home = () => {
   const [liveSession, setliveSession] = useState()
   const [courseList, setcourseList] = useState([])
   const [InstructorList, setInstructorList] = useState([])
+  const [testimonialList, settestimonialList ] = useState([])
 
 useEffect(async () => {
   const res = await axios.get('api/v1/workshop/')
@@ -60,6 +61,11 @@ useEffect(async () => {
   console.log(res.data)
   setInstructorList(res.data)
 }, [])
+useEffect(async()=> {
+  const res = await axios.get('api/v1/comment/testimonials')
+  console.log(" testimonials" +res.data)
+  settestimonialList(res.data)
+},[])
 
   const { auth } = useContext(AuthContext);
   console.log(auth);
@@ -137,7 +143,7 @@ useEffect(async () => {
         >
           Testimonials
         </Text>
-        <TestimonyList/>
+        <TestimonyList testimonyList = {testimonialList}/>
         <Footer />
       </Layout>
     );

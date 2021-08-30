@@ -12,11 +12,12 @@ import Testimonial from '../testimonial/Testimonial';
 
 
 const TestimonyList = ({ testimonyList }) => {
+    console.log(testimonyList)
     return (
         <Flex justifyContent="space-evenly">
             {
                 testimonyList.map((el) => (
-                    <Testimonial avatar={el.avatar} name={el.name} comme nt={el.comment} />
+                    <Testimonial avatar={el.user.avatar} name={el.user.userName} comment={el.content} />
                 ))
             }
         </Flex>

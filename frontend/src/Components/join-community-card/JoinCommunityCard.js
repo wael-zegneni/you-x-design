@@ -14,11 +14,16 @@ const JoinCommunityCard = ({heading, role, text}) => {
             {
                 role === 'student'?
                 <Student/>:
-                <Instructor/>
+                <Instructor/> 
             }
             <Text>{text}</Text>
-            <Link to="/candidate"><Text cursor="pointer" bg="#FCC509" fontSize="md" px="30px" py="10px" borderRadius="3xl" transition='0.3s' fontWeight="bold" color="white" _hover={{transform:'scale(1.1, 1.1)'}} >Sign up</Text></Link>
+            {
+                role === 'student'?
+                <Link to="/login"><Text cursor="pointer" bg="#FCC509" fontSize="md" px="30px" py="10px" borderRadius="3xl" transition='0.3s' fontWeight="bold" color="white" _hover={{transform:'scale(1.1, 1.1)'}} >Sign up</Text></Link>:
+                <Link to="/candidate"><Text cursor="pointer" bg="#FCC509" fontSize="md" px="30px" py="10px" borderRadius="3xl" transition='0.3s' fontWeight="bold" color="white" _hover={{transform:'scale(1.1, 1.1)'}} >Sign up</Text></Link>
 
+            }
+            
         
 
         </Flex>

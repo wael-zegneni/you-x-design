@@ -1,4 +1,4 @@
-const comment = require ('../models/Comment')
+const Comment = require ('../models/Comment')
 
 const addComment = async (req,res) => {
     try {
@@ -18,7 +18,37 @@ const addComment = async (req,res) => {
     }
     
 }
+const getTestimonial = async (req,res) => {
+    try {
+        let testimonials = await Comment.find({istestimonial: true}).populate('user')
+        if (testimonials) {
+            console.log("testimonials" + testimonials)
+            res.send(testimonials)
+        } else {
+            res.send("no testimonials")
+        }
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
+}
+const getCommentByCourseId = async (req,res) => {
+    try {
+        let comment = await Comment.find({ course : req.body.course }).populate('user')
+        if (comment) {
+            console.log("comments : " + comment)
+            res.send(comment)
+        } else {
+            res.send("no comments on this course")
+        }
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
+}
 
 module.exports = {
-    addComment
+    addComment,
+    getTestimonial,
+    getCommentByCourseId,
 }
