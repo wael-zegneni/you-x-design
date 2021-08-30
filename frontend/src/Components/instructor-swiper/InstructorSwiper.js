@@ -24,7 +24,7 @@ const InstructorSwiper = ({ InstructorList }) => {
     "spaceBetween": 40
   },
   "1024": {
-    "slidesPerView": 1.7,
+    "slidesPerView": 1.9,
     "spaceBetween": 50
   },
   "1440": {
@@ -35,8 +35,12 @@ const InstructorSwiper = ({ InstructorList }) => {
     "slidesPerView": 2.7,
     "spaceBetween": 50
   },
+  "1800": {
+    "slidesPerView": 3,
+    "spaceBetween": 50
+  },
   "1920": {
-    "slidesPerView": 2.9,
+    "slidesPerView": 3.3,
     "spaceBetween": 50
   },
   "2560": {

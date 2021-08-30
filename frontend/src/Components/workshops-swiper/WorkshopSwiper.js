@@ -32,6 +32,9 @@ const WorkshopSwiper = ({ workshopList }) => {
                 "1440": {
                     "slidesPerView": 1.5,
                     "spaceBetween": 50
+                },"1920": {
+                    "slidesPerView": 1.8,
+                    "spaceBetween": 50
                 },
                 "2560": {
                     "slidesPerView": 2.7,

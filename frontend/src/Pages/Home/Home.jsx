@@ -15,6 +15,7 @@ import CourseCardList from "../../Components/course-card-list/CourseCardList";
 import { Heading, Flex, Text, Box } from "@chakra-ui/react";
 import "./home.css";
 import axios from "axios";
+import Layout from "../../Components/layout/Layout";
 
 const Home = () => {
   const [workshopList, setworkshopList] = useState([])
@@ -71,7 +72,7 @@ useEffect(async () => {
     );
   } else {
     return (
-      <div>
+      <Layout>
         <WeAreUnique />
         <Box ml="2.5vw">
           <Flex justify="space-between" mt="3em">
@@ -138,7 +139,7 @@ useEffect(async () => {
         </Text>
         <TestimonyList/>
         <Footer />
-      </div>
+      </Layout>
     );
   }
 };

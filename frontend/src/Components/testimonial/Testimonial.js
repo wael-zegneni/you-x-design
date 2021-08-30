@@ -14,11 +14,13 @@ const Testimonial = ({ avatar, name, comment }) => {
     <Center py={6}>
       <Box
         maxW={"23vw"}
+        minW={"23vw"}
         w={"full"}
         boxShadow={"2xl"}
         rounded={"3xl"}
         overflow={"visible"}
-        Height={"22vw"}
+        minH={"18vw"}
+        maxH={"22vw"}
       >
         <Flex justify={"center"} mt={-12} position='relative' >
           <Brackets/>
@@ -41,7 +43,6 @@ const Testimonial = ({ avatar, name, comment }) => {
             </Heading>
             <Text color={"#1E1E1E"} mt="15px" fontSize="1vw" fontWeight="500" noOfLines={3}>"{comment}"</Text>
           </Flex>
-
         </Box>
       </Box>
     </Center>

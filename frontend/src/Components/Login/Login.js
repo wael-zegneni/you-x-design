@@ -1,10 +1,13 @@
 import React, { useContext, useEffect } from 'react'
 import './login.css'
 import { useState } from 'react'
+import { FaInstagram, FaFacebook, FaLinkedin, FaEnvelope, FaWhatsapp, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+
+import { Link } from 'react-router-dom'
 import googleLogo from '../../Assets/Images/google.png'
 import facebookLogo from '../../Assets/Images/facebook.png'
 import linkedLogo from '../../Assets/Images/linkedIn.png'
-import { Avatar, Flex, Heading, Text, useToast } from "@chakra-ui/react"
+import { Avatar, Flex, Heading, Text, useToast,  Box, } from "@chakra-ui/react"
 import axios from "axios"
 import { AuthContext } from '../../Auth/AuthContext';
 import { useHistory } from 'react-router-dom'
@@ -92,7 +95,11 @@ const Login = () => {
 
     return (
         <div className="container">
-
+             <Link to="/">
+                <Box position="absolute" top='1em' left='1em' fontSize="3em" cursor="pointer" >
+                    <FaChevronLeft fill='white' />
+                </Box>
+            </Link>
             <div className="greeting">
                 <div className="welcome">
                     <h1>Join us !</h1>
