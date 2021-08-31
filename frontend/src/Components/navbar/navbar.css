@@ -4,24 +4,25 @@
 }
 
 .navbar{
-    margin-left: 6vw;
-    margin-right: 6vw;
-    margin-top: 43px;
     display: flex;
-    justify-content: space-between;
-    position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: space-around;
+    position: fixed;
+    width: 100%;
+    background-color: #FCFCFC;
+    box-shadow: 1px 0.5px 3px rgb(190, 190, 190);
+    align-items: center;
 }
 
 .navbar > img{
-    width: 17vw;
-    height: 60px;
+    width: 250px;
     object-fit: contain;
 }
 
 .navbar .searchBar{
     position: relative;
     width: max-content;
-    margin-top: 7px;
 }
 
 .navbar .searchBar img{
@@ -33,12 +34,13 @@
 }
 
 .navbar .searchBar input{
-    width: 30vw;
+    width: 25vw;
+    flex:2;
     height: 43px;
     border-radius: 20px;
     outline: none;
     border: none;
-    box-shadow: 1px 1px 3px rgb(212, 212, 212);
+    box-shadow: 1px 1px 5px rgb(212, 212, 212);
     padding-left: 10px;
     font-family: 'Montserrat', sans-serif;
 }
@@ -48,8 +50,9 @@
 }
 
 .langPicker{
-    margin-top: 20px;
+    margin-top: 15px;
     position: relative;
+    margin-right: 30px;
 }
 
 .h1{
@@ -57,10 +60,10 @@
     color: white;
     background-color: #FCC509;
     width: max-content;
-    padding: 15px 30px;
-    padding-top: 19px;
+    padding: 10px 20px;
     border-radius: 40px;
-    font-size: 18px;
+    font-size: 15px;
+    margin-top: 8px;
     cursor: pointer;
     position: relative;
     transition: 0.2s ease-in-out;

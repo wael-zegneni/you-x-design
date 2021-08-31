@@ -26,19 +26,19 @@ const WorkshopSwiper = ({ workshopList }) => {
                     "spaceBetween": 40
                 },
                 "1024": {
-                    "slidesPerView": 1.1,
-                    "spaceBetween": 50
+                    "slidesPerView": 1,
+                    "spaceBetween": 40
                 },
                 "1440": {
-                    "slidesPerView": 1.5,
-                    "spaceBetween": 50
+                    "slidesPerView": 1.4,
+                    "spaceBetween": 30
                 },"1920": {
                     "slidesPerView": 1.8,
-                    "spaceBetween": 50
+                    "spaceBetween": 20
                 },
                 "2560": {
                     "slidesPerView": 2.7,
-                    "spaceBetween": 50
+                    "spaceBetween": 20
                 }
             }}>
                 {workshopList.map((el) => (

@@ -5,7 +5,7 @@ import CourseCard from '../course-card/CourseCard';
 
 const CourseCardList = ({ courseList }) => {
     return (
-        <Flex width="94vw"  justifyContent="space-start" ml="2vw" wrap="wrap">
+        <Flex  justifyContent="space-between" wrap="wrap">
             {
                 courseList.map((el) => (
                     <CourseCard cardData={el} /> 

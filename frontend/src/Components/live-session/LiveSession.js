@@ -46,11 +46,11 @@ const LiveSession = ({ liveSession }) => {
     // console.log(diffMinMs)
     // console.log(diffMin)
     return (
-        <div>
+        <Box>
             <Text color="#072446"  fontSize="3xl" fontWeight="bolder"  mb="30px">
                 Live Session
             </Text>
-            <Box borderRadius="2xl" boxShadow="0px 0px 10px #DCDCDC	" height="400px" width="44vw" className="workshop" >
+            <Box borderRadius="2xl" boxShadow="0px 0px 10px #DCDCDC	" height="400px" width="33vw" className="workshop" >
 
                 <Box height="17%" display="flex" justifyContent="flex-end" alignItems="flex-end" bg="#FCC509" borderTopLeftRadius="2xl" borderTopRightRadius="2xl">
                     <center className="liveLogo">
@@ -109,7 +109,7 @@ const LiveSession = ({ liveSession }) => {
 
                 </Box>
             </Box>
-        </div>
+        </Box>
 
 
     )

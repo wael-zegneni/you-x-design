@@ -16,13 +16,13 @@ const CourseCard = ({cardData}) => {
       
       console.log(imgUrl)
     return (
-        <Center py={6} _hover={{ transform: "translateY(-10px)" }} ml="2vw" mr="1vw" transition="0.3s">
-            <Box width={'27vw'}  bg={useColorModeValue('white', 'gray.900')} boxShadow={'xl'} rounded={'xl'} p={6} overflow={'hidden'}>
+        <Center py={6}  _hover={{ transform: "translateY(-10px)" }} ml="1vw" mr="1vw" transition="0.3s">
+            <Box  width={'24vw'} bg={useColorModeValue('white', 'gray.900')} boxShadow={'xl'} rounded={'xl'} p={6} overflow={'hidden'}>
                 <Box h={'18vw'} overflow={"hidden"} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'} style={{backgroundImage: `url(${imgUrl})`,backgroundSize:'cover'  , backgroundRepeat:'no-repeat'}}>
                     {/* <img src={cardData.thumbnail} layout={'cover'} alt='img' style={{backgroundSize:"cover"}}  /> */}
                     {/* 'https://lh3.googleusercontent.com/proxy/bZ-B6bR6kqpy0Hl4NTm7ekPwXT96HRE81rHz1WGt1dEJ-ttqyhxTe1SRamNo9IZsF4usF17ER-83ojGXPDHhz1nvJxaeXY7osSIiegT2F7_6ybFjKQESoS8VplVv' */}
                 </Box>
-                <Stack>
+                <Stack >
                     <Flex>
                         <Flex direction="column" flex="0.7">
                             <Heading color={useColorModeValue('gray.700', 'white')} fontSize={'l'} fontFamily={'montserrat'}>{cardData.title}</Heading>

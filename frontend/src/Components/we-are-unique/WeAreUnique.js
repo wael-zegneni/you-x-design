@@ -1,6 +1,6 @@
 import React from 'react'
 import './we-are-unique.css'
-import { Box, Center, Heading, Text, Stack, Avatar, useColorModeValue, Flex } from '@chakra-ui/react';
+import { Box, Text, Stack, Avatar, useColorModeValue, Flex } from '@chakra-ui/react';
 
 
 const WeAreUnique = () => {

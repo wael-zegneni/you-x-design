@@ -13,12 +13,13 @@ import FilterBy from "../../Components/filter-by/FilterBy";
 import LiveSession from "../../Components/live-session/LiveSession";
 import CourseCardList from "../../Components/course-card-list/CourseCardList";
 import { Heading, Flex, Text, Box } from "@chakra-ui/react";
-import "./home.css";
-import axios from "axios";
 import Layout from "../../Components/layout/Layout";
+import Welcome from "../../Components/welcome/Welcome";
+import axios from "axios";
 
-const Home = () => {
-  const [workshopList, setworkshopList] = useState([]);
+const Landing = () => {
+
+    const [workshopList, setworkshopList] = useState([]);
   const [liveSession, setliveSession] = useState();
   const [courseList, setcourseList] = useState([]);
   const [InstructorList, setInstructorList] = useState([]);
@@ -68,22 +69,11 @@ const Home = () => {
     settestimonialList(res.data);
   }, []);
 
-  const { auth } = useContext(AuthContext);
-  console.log(auth);
-  if (auth.isAuthenticated) {
+
     return (
-      <div>
-        <h1>CONNECTED!!!!</h1>
-        <Heading>{auth.user.userName}</Heading>
-      </div>
-    );
-  } else {
-    return (
-      // <Layout>
-      <Box>
-        <WeAreUnique />
-        <Box ml="0.3vw">
-          <Box ml="2.5vw">
+        <Layout>
+            <Welcome/>
+            <Box ml="2.5vw">
             <Flex justify="space-between" mt="3em">
               <LiveSession liveSession={liveSession} />
               <WorkshopSwiper workshopList={workshopList} />
@@ -103,57 +93,8 @@ const Home = () => {
             </Flex>
             <CourseCardList courseList={courseList} />
           </Box>
-          <Text
-            color="#072446"
-            fontSize="3xl"
-            fontWeight="bolder"
-            ml="3.5vw"
-            mb="30px"
-            mt="3em"
-          >
-            Our Instructors
-          </Text>
-          <InstructorSwiper InstructorList={InstructorList} />
-          <Text
-            color="#072446"
-            fontSize="3xl"
-            fontWeight="bolder"
-            ml="3.5vw"
-            mb="30px"
-            mt="3em"
-          >
-            Join our community
-          </Text>
-        </Box>
-        <Flex justify="space-around">
-          <JoinCommunityCard
-            heading={"As Student"}
-            role={"student"}
-            text={"Get started with your immersive learning experience"}
-          />
-          <JoinCommunityCard
-            heading={"As Instructor"}
-            role={"instructor"}
-            text={"become a part of our instructor team"}
-          />
-        </Flex>
-        <Text
-          color="#072446"
-          fontSize="3xl"
-          fontWeight="bolder"
-          ml="3.5vw"
-          mb="3em"
-          mt="3em"
-        >
-          Testimonials
-        </Text>
-        <TestimonyList testimonyList={testimonialList} />
-        <Footer />
-      </Box>
+        </Layout>
+    )
+}
 
-      // </Layout>
-    );
-  }
-};
-
-export default Home;
+export default Landing

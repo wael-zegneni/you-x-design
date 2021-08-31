@@ -6,6 +6,7 @@ import Navbar from "./Components/navbar/Navbar";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import Profile from "./Components/profile/Profile";
 import Login from "./Components/login/Login";
+import Landing from "./Pages/Landing/Landing";
 import { useContext, useEffect } from "react";
 import { AuthContext } from './Auth/AuthContext';
 import Candidate from "./Components/candidate/Candidate";
@@ -21,12 +22,13 @@ function App() {
   return (
       <>
 
-        {(pathname.includes("login") || pathname.includes("candidate")) || <Navbar/> }
+        {/* {(pathname.includes("login") || pathname.includes("candidate")) || <Navbar/> }  */}
         
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/candidate" component={Candidate} />
+          <Route exact path ="/dashboard" component={Landing} />
           <PrivateRoute exact path="/profile" component={Profile} />
         </Switch>
       </>

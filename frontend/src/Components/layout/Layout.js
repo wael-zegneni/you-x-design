@@ -24,6 +24,7 @@ import {
 import {
   FiHome,
   FiTrendingUp,
+  FiBookmark,
   FiCompass,
   FiStar,
   FiSettings,
@@ -32,39 +33,54 @@ import {
   FiChevronDown,
 } from 'react-icons/fi';
 
+import { useLocation } from 'react-router';
+
+import { BsChatSquare } from "react-icons/bs"
+
+import {FaComment } from 'react-icons/fa';
+
+import Navbar from '../navbar/Navbar';
+
 
 const LinkItems = [
-  { name: 'Home', icon: FiHome },
-  { name: 'Trending', icon: FiTrendingUp },
-  { name: 'Explore', icon: FiCompass },
-  { name: 'Favourites', icon: FiStar },
+  { name: 'DashBoard', icon: FiHome },
+  { name: 'Saved', icon: FiBookmark },
   { name: 'Settings', icon: FiSettings },
+  { name: 'Chat', icon: BsChatSquare },
 ];
+
+
 
 export default function Layout({
   children,
 }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const {pathname} = useLocation()
+  const { isOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
+    <Box minH="100vh" bg={'#FEFEFE'}>
       <SidebarContent
         onClose={() => onClose}
         display={{ base: 'none', md: 'block' }}
+        bg="#072446"
+        overFlow={"hidden"}
+        pt="8vh"
       />
       <Drawer
-        autoFocus={false}
+        overFlow={"hidden"}
+        autoFocus={false} 
         isOpen={isOpen}
         placement="left"
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
         size="full">
-        <DrawerContent>
+        <DrawerContent overFlow={"hidden"}>
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      {/* mobilenav */}
-      <MobileNav onOpen={onOpen} />
+      <Navbar  />
+
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
       </Box>
@@ -77,17 +93,15 @@ const SidebarContent = ({ onClose, ...rest }) => {
   return (
     <Box
       transition="3s ease"
-      bg={useColorModeValue('white', 'gray.900')}
+      bg={useColorModeValue('#FEFEFE')}
       borderRight="1px"
       borderRightColor={useColorModeValue('gray.200', 'gray.700')}
       w={{ base: 'full', md: 60 }}
-      pos="fixed"
       h="full"
+      pos="fixed"
+      overFlow={"hidden"}
       {...rest}>
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
-        </Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
@@ -100,26 +114,32 @@ const SidebarContent = ({ onClose, ...rest }) => {
 };
 
 const NavItem = ({ icon, children, ...rest }) => {
+  const { pathname } = useLocation()
   return (
     <Link href="#" style={{ textDecoration: 'none' }}>
       <Flex
         align="center"
         p="4"
         mx="4"
-        borderRadius="lg"
+        mr='-1.4'
+        borderTopLeftRadius="3xl"
+        borderBottomLeftRadius="3xl"
         role="group"
         cursor="pointer"
+        bg={pathname.includes(children.toLowerCase()) ? "#FEFEFE" : 'transparent'}
+        color={pathname.includes(children.toLowerCase()) ? "#FCC509" : '#FEFEFE'}
+        fontWeight="600"
         _hover={{
-          bg: 'cyan.400',
-          color: 'white',
+          bg: '#FEFEFE',
+          color: '#FCC509',
         }}
         {...rest}>
         {icon && (
           <Icon
             mr="4"
-            fontSize="16"
+            fontSize="20"
             _groupHover={{
-              color: 'white',
+              color: '#FCC509',
             }}
             as={icon}
           />
