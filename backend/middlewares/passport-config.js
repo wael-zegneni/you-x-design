@@ -48,24 +48,7 @@ _passport.use(new _JWTStrategy({
     jwtFromRequest: _ExtractJWT.fromAuthHeaderAsBearerToken(),
     secretOrKey   : 'your_jwt_secret'
 },
-/*function(_passport){
-    let opts = {};
-    opts.jwtFromRequest = _ExtractJWT.fromHeader("authorization")
-    opts.secretOrKey = 'your_jwt_secret'
-    _passport.use(new _JWTStrategy(opts, (jwt_payload, done) => {
-      User.findById(jwt_payload.data._id, (err, User) => {
-        if(err){
-          return done(err, false);
-        }
-  
-        if(User){
-          return done(null, User);
-        } else {
-          return done(null, false);
-        }
-      });
-    }));
-  }*/
+
  function (jwtPayload, callback) {
     
 
