@@ -14,7 +14,7 @@ const updateUser = async (req,res) => {
             }, function(err,user){
                 if (err) {
                     console.log(err)
-                    res.send(err)
+                    res.status(400).send(err)
                 } else {
                     console.log(user)
                     res.send(user)
@@ -24,9 +24,24 @@ const updateUser = async (req,res) => {
     
 } catch (error) {
     console.log(error)
-    res.send(error)
+    res.status(400).send(error)
 }
     // res.send('update user')
+}
+const updateProfilePic = async (req,res)=> {
+    try {
+        User.findByIdAndUpdate(req.body.id,{
+            avatar : req.file.path
+        },function(err,user){
+            if (err) {
+                res.status(400).send(err)
+            } else {
+                res.send('profile updated')
+            }
+        })
+    } catch (error) {
+        res.status(400).send(error)
+    }
 }
 const deleteUser = (req,res)=>{
     User.deleteOne({ _id: req.body.id }, function(err) {
@@ -59,4 +74,5 @@ module.exports = {
     findUserById,
     getInstructors,
     getStudents,
+    updateProfilePic
 }

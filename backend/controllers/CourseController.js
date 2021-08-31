@@ -43,6 +43,10 @@ const getCourses = async (req,res)=> {
     console.log(courses)
     return res.send(courses)
 }
+const getCoursesByDate = async(req,res)=>{
+    const courses = await Course.find().populate('instructor').sort('-date')
+    return res.send(courses)
+}
 const getCourseById = async (req,res) => {
 
     try {
@@ -113,4 +117,5 @@ module.exports = {
     updateCourse,
     deleteCourse,
     getCourseById,
+    getCoursesByDate,
 }
