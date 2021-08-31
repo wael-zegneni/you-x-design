@@ -16,14 +16,20 @@ import { Heading, Flex, Text, Box } from "@chakra-ui/react";
 import Layout from "../../Components/layout/Layout";
 import Welcome from "../../Components/welcome/Welcome";
 import axios from "axios";
+import {useHistory} from 'react-router-dom'
 
 const Landing = () => {
 
-    const [workshopList, setworkshopList] = useState([]);
+  const [workshopList, setworkshopList] = useState([]);
   const [liveSession, setliveSession] = useState();
   const [courseList, setcourseList] = useState([]);
   const [InstructorList, setInstructorList] = useState([]);
   const [testimonialList, settestimonialList] = useState([]);
+  const { auth } = useContext(AuthContext)
+
+
+  const history = useHistory()
+
 
   useEffect(async () => {
     const res = await axios.get("api/v1/workshop/");
@@ -36,7 +42,11 @@ const Landing = () => {
   //   setliveSession(res.data[0])
 
   // }, [])
-
+  useEffect( ()=> {
+      if (!auth.isAuthenticated) {
+        history.push('/login')
+      }
+  },[])
   useEffect(async () => {
     const res = await axios.get("api/v1/workshop/");
     console.log(res.data);
@@ -68,6 +78,7 @@ const Landing = () => {
     console.log(" testimonials" + res.data);
     settestimonialList(res.data);
   }, []);
+  console.log(auth)
 
 
     return (

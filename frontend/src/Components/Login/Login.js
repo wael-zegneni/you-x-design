@@ -89,7 +89,7 @@ const Login = () => {
     }, [auth.error])
     useEffect(() => {
         if(auth.isAuthenticated){
-            history.push('/profile')
+            history.push('/dashboard')
         }
     }, [auth.isAuthenticated])
 
