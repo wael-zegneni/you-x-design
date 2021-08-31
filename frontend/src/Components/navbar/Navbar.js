@@ -13,7 +13,6 @@ import { Button } from '@chakra-ui/react';
 
 const Navbar = () => {
     const { auth, signout } = useContext(AuthContext)
-    console.log(auth)
     return (
         <div className="navbar" style={{zIndex:10}}>
             <img src={logo} alt="youXdesign" />
@@ -23,7 +22,7 @@ const Navbar = () => {
             </div>
             <div style={{display:"flex"}}>
                 <ReactLanguageSelect className="langPicker" defaultLanguage="en" languages={["en", "fr", "ar"]} customLabels={{ "en": "EN", "fr": "FR", "ar": "AR" }} />
-                {auth.isAuthenticated ? <Button variant="solid" onClick={signout}>Sign out</Button> : <Link to="/login"><h1 className="h1">Join our community</h1></Link>}
+                {auth.isAuthenticated ? <Link to='/' variant="solid" onClick={signout} >Sign out</Link> : <Link to="/login"><h1 className="h1">Join our community</h1></Link>}
             </div>
 
         </div>

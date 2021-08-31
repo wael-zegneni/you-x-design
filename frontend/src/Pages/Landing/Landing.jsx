@@ -47,13 +47,10 @@ const Landing = () => {
   }, []);
   useEffect(async () => {
     const res = await axios.get("api/v1/workshop/");
-    console.log(res.data);
     const res2 = await axios.get("api/v1/workshop/livesession");
-    console.log(res2.data[0]);
     let filtered = await res.data.filter(function (el) {
       return el._id != res2.data[0]._id;
     });
-    console.log(filtered);
     setliveSession(res2.data[0]);
     setworkshopList(filtered);
     // const res = await axios.get('api/v1/workshop/')
@@ -63,26 +60,23 @@ const Landing = () => {
 
   useEffect(async () => {
     const res = await axios.get("api/v1/course/");
-    console.log(res.data);
     setcourseList(res.data);
   }, []);
   useEffect(async () => {
     const res = await axios.get("api/v1/user/instructors/");
-    console.log(res.data);
     setInstructorList(res.data);
   }, []);
   useEffect(async () => {
     const res = await axios.get("api/v1/comment/testimonials");
-    console.log(" testimonials" + res.data);
     settestimonialList(res.data);
   }, []);
   console.log(auth);
 
   return (
     <Layout>
-      <Welcome />
-      <Box ml="2.2vw">
-        <Flex justify="space-around" mt="3.2em">
+      {auth.isAuthenticated ? <Welcome  userName={auth.user.userName} /> : <WeAreUnique/> }
+            <Box ml="2.5vw">
+        <Flex justify="space-between" mt="3em">
           <LiveSession liveSession={liveSession} />
           <WorkshopSwiper workshopList={workshopList} />
         </Flex>
