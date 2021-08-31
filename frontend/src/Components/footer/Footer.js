@@ -9,7 +9,8 @@ import {
     VisuallyHidden,
 } from '@chakra-ui/react';
 import Instructor from '../../Assets/Icons/Instructor'
-import uxDesign from '../../Assets/Icons/uxDesign';
+import uxDesign from '../../Assets/Icons/uxd.svg';
+
 
 import { FaInstagram, FaFacebook, FaLinkedin, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 
@@ -97,7 +98,7 @@ export default function SmallWithLogoLeft() {
                 spacing={4}
                 justify={{ base: 'center', md: 'space-between' }}
                 align={{ base: 'center', md: 'center' }}>
-                <uxDesign />
+                <img src={uxDesign} alt="uxd" />
                 <Flex flexDirection="column" alignItems="center"> 
                     <Text color="#FEFEFE" fontWeight="600">Powered by Weare moon ツ</Text>
                     <Flex>

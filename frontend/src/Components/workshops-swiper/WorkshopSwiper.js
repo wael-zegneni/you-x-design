@@ -12,7 +12,7 @@ import "swiper/swiper.min.css";
 
 const WorkshopSwiper = ({ workshopList }) => {
     return (
-        <div style={{ marginTop: '65px', marginLeft: "30px" }}>
+        <div style={{ marginTop: '65px', marginLeft: "10px"  }}>
             <Text color="#072446" fontSize="3xl" fontWeight="bolder" mb="10px" >
                 Upcoming
             </Text>
@@ -30,14 +30,14 @@ const WorkshopSwiper = ({ workshopList }) => {
                     "spaceBetween": 40
                 },
                 "1440": {
-                    "slidesPerView": 1.4,
+                    "slidesPerView": 1.3,
                     "spaceBetween": 30
                 },"1920": {
-                    "slidesPerView": 1.8,
+                    "slidesPerView": 1.7,
                     "spaceBetween": 20
                 },
                 "2560": {
-                    "slidesPerView": 2.7,
+                    "slidesPerView": 2.5,
                     "spaceBetween": 20
                 }
             }}>

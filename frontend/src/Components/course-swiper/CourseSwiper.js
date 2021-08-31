@@ -14,33 +14,38 @@ import CourseCard from '../course-card/CourseCard';
 const CourseSwiper = ({ courseList }) => {
     console.log(courseList)
     return (
-        <Box style={{ marginTop: '65px', marginLeft: "30px" }} >
-            <Text color="#072446" fontSize="3xl" fontWeight="bolder" mb="10px" >
-                Upcoming
+        <Box style={{ marginTop: '65px', marginLeft:'-0.4vw' }} >
+            <Text color="#072446"
+            fontSize="3xl"
+            fontWeight="bolder"
+            ml="1vw"
+            mb="15px"
+            mt="1em" >
+                New Course
             </Text>
-            <Swiper watchSlidesProgress={true} watchSlidesVisibility={true} freeMode={true} className="course_swiper" breakpoints={{
+            <Swiper watchSlidesProgress={true}  watchSlidesVisibility={true} freeMode={true} className="course_swiper" breakpoints={{
                 "640": {
                     "slidesPerView": 1,
                     "spaceBetween": 20
                 },
                 "768": {
-                    "slidesPerView": 0.8,
-                    "spaceBetween": 40
+                    "slidesPerView": 1,
+                    "spaceBetween": 30
                 },
                 "1024": {
-                    "slidesPerView": 1,
-                    "spaceBetween": 40
+                    "slidesPerView": 3.1,
+                    "spaceBetween": 10
                 },
                 "1440": {
-                    "slidesPerView": 1.4,
-                    "spaceBetween": 30
+                    "slidesPerView": 3.1,
+                    "spaceBetween": 10
                 },"1920": {
-                    "slidesPerView": 1.8,
-                    "spaceBetween": 20
+                    "slidesPerView": 3.1,
+                    "spaceBetween": 10
                 },
                 "2560": {
-                    "slidesPerView": 2.7,
-                    "spaceBetween": 20
+                    "slidesPerView": 3.1,
+                    "spaceBetween": 10
                 }
             }}>
                 {courseList.map((el) => (

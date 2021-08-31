@@ -81,7 +81,7 @@ export default function Layout({
       </Drawer>
       <Navbar  />
 
-      <Box ml={{ base: 0, md: 60 }} p="4">
+      <Box ml={{ base: 0, md: 60 }} pt="4">
         {children}
       </Box>
     </Box>
@@ -130,8 +130,8 @@ const NavItem = ({ icon, children, ...rest }) => {
         color={pathname.includes(children.toLowerCase()) ? "#FCC509" : '#FEFEFE'}
         fontWeight="600"
         _hover={{
-          bg: '#FEFEFE',
-          color: '#FCC509',
+          bg: !pathname.includes(children.toLowerCase())? "transparent" : '#FEFEFE',
+          color: !pathname.includes(children.toLowerCase())? '#FCC509' : '#FCC509'
         }}
         {...rest}>
         {icon && (

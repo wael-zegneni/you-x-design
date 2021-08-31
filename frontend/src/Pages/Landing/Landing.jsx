@@ -81,18 +81,18 @@ const Landing = () => {
   return (
     <Layout>
       <Welcome />
-      <Box ml="2.5vw">
-        <Flex justify="space-between" mt="3em">
+      <Box ml="2.2vw">
+        <Flex justify="space-around" mt="3.2em">
           <LiveSession liveSession={liveSession} />
           <WorkshopSwiper workshopList={workshopList} />
         </Flex>
-        <Flex alignItems="center" justifyContent="space-between" my="20px">
+        <CourseSwiper courseList={courseList} />
+        <Flex alignItems="center" justifyContent="space-between" my="20px" mt="3em">
           <Text
             color="#072446"
             fontSize="3xl"
             fontWeight="bolder"
             ml="1vw"
-            mb="15px"
             mt="1em"
           >
             Our Most Popular Courses
@@ -100,8 +100,19 @@ const Landing = () => {
           <FilterBy />
         </Flex>
         <CourseCardList courseList={courseList} />
-        <CourseSwiper courseList={courseList} />
+        <Text
+            color="#072446"
+            fontSize="3xl"
+            fontWeight="bolder"
+            ml="1vw"
+            mb="30px"
+            mt="3em"
+          >
+            Our Instructors
+          </Text>
+          <InstructorSwiper InstructorList={InstructorList} />
       </Box>
+      <Footer style={{zIndex: 999, width:'100%'}} />
     </Layout>
   );
 };
