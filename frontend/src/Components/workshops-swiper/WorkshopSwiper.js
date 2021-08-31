@@ -12,7 +12,7 @@ import "swiper/swiper.min.css";
 
 const WorkshopSwiper = ({ workshopList }) => {
     return (
-        <div style={{ marginTop: '65px', marginLeft: "10px"  }}>
+        <div style={{ marginTop: '65px'  }}>
             <Text color="#072446" fontSize="3xl" fontWeight="bolder" mb="10px" >
                 Upcoming
             </Text>

@@ -21,7 +21,7 @@ const InstructorCard = ({instructor}) => {
                             <a href={instructor.instagram} alt="icon" target="_blank"><Insta cursor="pointer"/></a>
                             <a href={instructor.linkedIn} alt="icon" target="_blank"><LinkedIn cursor="pointer"/></a>
                         </Flex>
-                        <Text color="white" bg="#072446" cursor="pointer" fontSize="sm" px="15px" py="5px" ml="5px" borderRadius="3xl">View Profile</Text>
+                        <Text color="white" bg="#072446" cursor="pointer" fontSize="sm" px="15px" py="5px" ml="30px" borderRadius="3xl">View Profile</Text>
                     </Flex>
                 </Box>
             </Flex>

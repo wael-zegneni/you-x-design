@@ -15,38 +15,70 @@ const InstructorSwiper = ({ InstructorList }) => {
     return (
         <div style={{marginTop:"65px"}}>
             <Swiper watchSlidesProgress={true} watchSlidesVisibility={true} freeMode={true}  className="instructor-swiper" breakpoints={{
+// "640": {
+//     "slidesPerView": 1.5,
+//     "spaceBetween": 20
+//   },
+//   "768": {
+//     "slidesPerView": 1.2,
+//     "spaceBetween": 40
+//   },
+//   "1024": {
+//     "slidesPerView": 1.9,
+//     "spaceBetween": 50
+//   },
+//   "1440": {
+//     "slidesPerView": 2.5,
+//     "spaceBetween": 50
+//   },
+//   "1500": {
+//     "slidesPerView": 2.7,
+//     "spaceBetween": 50
+//   },
+//   "1800": {
+//     "slidesPerView": 3,
+//     "spaceBetween": 50
+//   },
+//   "1920": {
+//     "slidesPerView": 3.3,
+//     "spaceBetween": 50
+//   },
+//   "2560": {
+//     "slidesPerView": 3.7,
+//     "spaceBetween": 50
+//   }
 "640": {
-    "slidesPerView": 1.5,
-    "spaceBetween": 20
-  },
-  "768": {
-    "slidesPerView": 1.2,
-    "spaceBetween": 40
-  },
-  "1024": {
-    "slidesPerView": 1.9,
-    "spaceBetween": 50
-  },
-  "1440": {
-    "slidesPerView": 2.5,
-    "spaceBetween": 50
-  },
-  "1500": {
-    "slidesPerView": 2.7,
-    "spaceBetween": 50
-  },
-  "1800": {
-    "slidesPerView": 3,
-    "spaceBetween": 50
-  },
-  "1920": {
-    "slidesPerView": 3.3,
-    "spaceBetween": 50
-  },
-  "2560": {
-    "slidesPerView": 3.7,
-    "spaceBetween": 50
-  }
+  "slidesPerView": 1.5,
+  "spaceBetween": 20
+},
+"768": {
+  "slidesPerView": 1.2,
+  "spaceBetween": 40
+},
+"1024": {
+  "slidesPerView": 1.5,
+  "spaceBetween": 50
+},
+"1440": {
+  "slidesPerView": 2.1,
+  "spaceBetween": 50
+},
+"1500": {
+  "slidesPerView": 2.2,
+  "spaceBetween": 50
+},
+"1800": {
+  "slidesPerView": 2.4,
+  "spaceBetween": 50
+},
+"1920": {
+  "slidesPerView": 2.7,
+  "spaceBetween": 50
+},
+"2560": {
+  "slidesPerView": 3.3,
+  "spaceBetween": 50
+}
   }}>
                 {InstructorList.map((el) => (
                     <SwiperSlide><InstructorCard instructor={el} /></SwiperSlide>

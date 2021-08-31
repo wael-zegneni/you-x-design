@@ -73,15 +73,24 @@ const Landing = () => {
   console.log(auth);
 
   return (
-    <Layout>
-      {auth.isAuthenticated ? <Welcome  userName={auth.user.userName} /> : <WeAreUnique/> }
-            <Box ml="2.5vw">
+    <Layout overflowX="hidden" >
+      {auth.isAuthenticated ? (
+        <Welcome userName={auth.user.userName} />
+      ) : (
+        <WeAreUnique />
+      )}
+      <Box ml="2.3vw" overflowX="hidden">
         <Flex justify="space-between" mt="3em">
           <LiveSession liveSession={liveSession} />
           <WorkshopSwiper workshopList={workshopList} />
         </Flex>
         <CourseSwiper courseList={courseList} />
-        <Flex alignItems="center" justifyContent="space-between" my="20px" mt="3em">
+        <Flex
+          alignItems="center"
+          justifyContent="space-between"
+          my="20px"
+          mt="3em"
+        >
           <Text
             color="#072446"
             fontSize="3xl"
@@ -95,18 +104,18 @@ const Landing = () => {
         </Flex>
         <CourseCardList courseList={courseList} />
         <Text
-            color="#072446"
-            fontSize="3xl"
-            fontWeight="bolder"
-            ml="1vw"
-            mb="30px"
-            mt="3em"
-          >
-            Our Instructors
-          </Text>
-          <InstructorSwiper InstructorList={InstructorList} />
+          color="#072446"
+          fontSize="3xl"
+          fontWeight="bolder"
+          ml="1vw"
+          mb="30px"
+          mt="3em"
+        >
+          Our Instructors
+        </Text>
+        <InstructorSwiper InstructorList={InstructorList} />
       </Box>
-      <Footer style={{zIndex: 999, width:'100%'}} />
+      <Footer style={{ zIndex: 999, width: "100%" }} />
     </Layout>
   );
 };

@@ -63,7 +63,7 @@ export default function Layout({
         onClose={() => onClose}
         display={{ base: 'none', md: 'block' }}
         bg="#072446"
-        overFlow={"hidden"}
+        overflowX={"hidden"}
         pt="8vh"
       />
       <Drawer
