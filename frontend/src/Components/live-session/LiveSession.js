@@ -50,41 +50,41 @@ const LiveSession = ({ liveSession }) => {
             <Text color="#072446"  fontSize="3xl" fontWeight="bolder"  mb="30px">
                 Live Session
             </Text>
-            <Box borderRadius="2xl" boxShadow="0px 0px 10px #DCDCDC	" height="400px" width="33vw" className="workshop" >
+            <Box borderRadius="2xl" boxShadow="0px 0px 10px #DCDCDC	" height="400px" width="35vw" className="workshop" >
 
                 <Box height="17%" display="flex" justifyContent="flex-end" alignItems="flex-end" bg="#FCC509" borderTopLeftRadius="2xl" borderTopRightRadius="2xl">
                     <center className="liveLogo">
-                        <img src={liveLogo} alt="liveSession" width="50px" mr="20px" left="47px" />
-                        <Text fontSize="sm" fontWeight="bold">Live</Text>
+                        <img src={liveLogo} alt="liveSession" width="45px" mr="20px" left="47px" />
+                        <Text fontSize="xs" fontWeight="bold">Live</Text>
                     </center>
                 </Box>
 
                 <Flex className="title">
-                    <Text ml="28px" pb="10px" pt="12px" color="#072446" fontSize="4xl" fontWeight="bolder" fontFamily="Montserrat">
+                    <Text ml="28px" pb="10px" pt="12px" color="#072446" fontSize="3xl" fontWeight="bolder" fontFamily="Montserrat">
                         {liveSession.title}
                     </Text>
                 </Flex>
 
                 <Box ml="28px" pb="9%">
                     <Flex className="description" mb="-25px">
-                        <Text fontSize="l" fontWeight="bold" fontFamily="Montserrat" lineHeight="97%">
+                        <Text fontSize="md" fontWeight="bold" fontFamily="Montserrat" lineHeight="97%">
                             {liveSession.description}
                         </Text>
                     </Flex>
 
-                    <Flex justifyContent="space-between" alignItems="center">
+                    <Flex justifyContent="space-between" alignItems="center" pt="20px">
                         <Box mr='10px' className="schedule">
-                            <img src={clockIcon} alt="clock logo" height="30px !important" width="50px" />
+                            <img src={clockIcon} alt="clock logo"  style={{objectFit:'cover'}}  />
                             <Box className="schedule-date" ml="20px" mb="5px">
-                                <Text fontWeight="600" fontFamily="Montserrat">SCHEDULED FOR</Text>
+                                <Text fontSize="sm" fontWeight="bolder" fontFamily="Montserrat">SCHEDULED FOR</Text>
                                 <Text fontSize="xs">{moment(liveSession.date).format('dddd DD MMMM YYYY')}</Text>
                                 <Text fontSize="xs">{moment(liveSession.date).format('HH.mm A')}</Text>
                             </Box>
                         </Box>
                         <Box  className="schedule" mr="20px">
-                            <img src={enrollIcon} alt="clock logo" height="30px !important" width="50px" />
+                            <img src={enrollIcon} alt="clock logo" style={{objectFit:'cover'}} />
                             <Box className="schedule-date" ml="20px" >
-                                <Text fontWeight="600" fontFamily="Montserrat">ENROLMENT ENDS IN</Text>
+                                <Text fontSize="sm" fontWeight="bolder" fontFamily="Montserrat">ENROLMENT ENDS IN</Text>
                                 <Text fontSize="xs"> {difference.days} Days   {difference.hours} hours    {difference.minutes} minutes</Text>
                             </Box>
                         </Box>

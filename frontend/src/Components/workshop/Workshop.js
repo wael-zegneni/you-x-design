@@ -32,7 +32,7 @@ const Workshop = ({ workshop }) => {
                     <Box mr='10px' className="schedule">
                         <img src={clockIcon} alt="clock logo" height="30px !important" width="50px" />
                         <Box className="schedule-date" ml="20px" >
-                            <Text fontWeight="600" fontFamily="Montserrat">SCHEDULED FOR</Text>
+                            <Text fontSize='sm' fontWeight="bolder" fontFamily="Montserrat">SCHEDULED FOR</Text>
                             <Text fontSize="xs">{moment(workshop.date).format('dddd DD MMMM YYYY')}</Text>
                             <Text fontSize="xs">{moment(workshop.date).format('HH.mm A')}</Text>
                         </Box>
