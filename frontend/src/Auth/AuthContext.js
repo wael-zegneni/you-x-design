@@ -5,6 +5,7 @@ import setHeaderToken from '../utils/setTokenHeader';
 export const AuthContext = createContext(null);
 
 const AuthContextProvider = ({children}) => {
+
     const [auth,setAuth]= useState({
         user : null,
         token : localStorage.getItem("token"),
@@ -37,7 +38,6 @@ const AuthContextProvider = ({children}) => {
                 setAuth({error : error.response.data.message, isLogginIn: false, user: null, token: null, isAuthenticated: false})
         }
     } 
-
     const signout = () => {
         localStorage.removeItem("token")
         setAuth({
@@ -47,6 +47,7 @@ const AuthContextProvider = ({children}) => {
             isLogginIn: false,
             error: null
         })
+        
     }
 
     return(

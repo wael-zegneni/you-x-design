@@ -80,8 +80,8 @@ const Landing = () => {
 
   return (
     <Layout>
-      <Welcome />
-      <Box ml="2.5vw">
+      {auth.isAuthenticated ? <Welcome  userName={auth.user.userName} /> : <WeAreUnique/> }
+            <Box ml="2.5vw">
         <Flex justify="space-between" mt="3em">
           <LiveSession liveSession={liveSession} />
           <WorkshopSwiper workshopList={workshopList} />
