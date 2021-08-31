@@ -5,10 +5,12 @@ const {addCourse,
     updateCourse,
     deleteCourse,
     getCourseById,
+    getCoursesByDate,
 } = require('../controllers/CourseController')
 const {uploadCourse} = require('../middlewares/fileStorageEngine')
 
 router.get('/', getCourses)
+router.get('/new', getCoursesByDate)
 router.get('/getone', getCourseById)
 router.post('/add',uploadCourse.single('thumbnail'),addCourse)
 router.patch('/update',uploadCourse.single('thumbnail'),updateCourse)

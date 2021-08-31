@@ -26,6 +26,7 @@ const Landing = () => {
   const [InstructorList, setInstructorList] = useState([]);
   const [testimonialList, settestimonialList] = useState([]);
   const { auth } = useContext(AuthContext);
+  const [newCourseList, setnewCourseList ] = useState([]);
 
   const history = useHistory();
 
@@ -63,6 +64,11 @@ const Landing = () => {
     setcourseList(res.data);
   }, []);
   useEffect(async () => {
+    const res = await axios.get("api/v1/course/new");
+    console.log(res.data)
+    setnewCourseList(res.data);
+  }, []);
+  useEffect(async () => {
     const res = await axios.get("api/v1/user/instructors/");
     setInstructorList(res.data);
   }, []);
@@ -80,7 +86,7 @@ const Landing = () => {
           <LiveSession liveSession={liveSession} />
           <WorkshopSwiper workshopList={workshopList} />
         </Flex>
-        <CourseSwiper courseList={courseList} />
+        <CourseSwiper courseList={newCourseList} />
         <Flex alignItems="center" justifyContent="space-between" my="20px" mt="3em">
           <Text
             color="#072446"
