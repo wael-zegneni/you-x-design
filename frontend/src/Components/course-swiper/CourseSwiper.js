@@ -7,16 +7,18 @@ import './course-swiper.css'
 // importing swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
+import CourseCard from '../course-card/CourseCard';
 
 
 
-const CourseSwiper = ({ CourseList }) => {
+const CourseSwiper = ({ courseList }) => {
+    console.log(courseList)
     return (
-        <div style={{ marginTop: '65px', marginLeft: "30px" }}>
+        <Box style={{ marginTop: '65px', marginLeft: "30px" }} >
             <Text color="#072446" fontSize="3xl" fontWeight="bolder" mb="10px" >
                 Upcoming
             </Text>
-            <Swiper watchSlidesProgress={true} watchSlidesVisibility={true} freeMode={true} className="mySwiper" breakpoints={{
+            <Swiper watchSlidesProgress={true} watchSlidesVisibility={true} freeMode={true} className="course_swiper" breakpoints={{
                 "640": {
                     "slidesPerView": 1,
                     "spaceBetween": 20
@@ -41,19 +43,19 @@ const CourseSwiper = ({ CourseList }) => {
                     "spaceBetween": 20
                 }
             }}>
-                {CourseSwiper.map((el) => (
-                    <SwiperSlide><Workshop workshop={el} /></SwiperSlide>
+                {courseList.map((el) => (
+                    <SwiperSlide><CourseCard cardData={el} /></SwiperSlide>
                 ))}
             </Swiper>
-        </div>
+        </Box>
     )
 }
 
 
 CourseSwiper.defaultProps = {
-    workshopList: [
+    courseList: [
         {
-            thumbnailUrl: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+            thumbnail: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
             courseName: 'Business and marketing outcomes',
             courseType: 'Workshop',
             studentsCount: 45,
@@ -64,7 +66,7 @@ CourseSwiper.defaultProps = {
             }
         },
         {
-            thumbnailUrl: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+            thumbnail: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
             courseName: 'Business and marketing outcomes',
             courseType: 'Workshop',
             studentsCount: 45,
@@ -75,7 +77,7 @@ CourseSwiper.defaultProps = {
             }
         },
         {
-            thumbnailUrl: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+            thumbnail: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
             courseName: 'Business and marketing outcomes',
             courseType: 'Workshop',
             studentsCount: 45,
