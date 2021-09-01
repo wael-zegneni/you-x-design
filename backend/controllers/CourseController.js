@@ -16,7 +16,7 @@ const addCourse = async (req,res)=> {
             date : currentDate,
             language : req.body.language,
             url : req.body.url,
-            thumbnail : req.file.path.replace(/ /g,'-'),
+            thumbnail : req.file.path.replace(/ /g,'-').replace('(','').replace(')',''),
             content : req.body.content,
             type : req.body.type,
             instructor : req.body.instructor
@@ -39,12 +39,12 @@ const addCourse = async (req,res)=> {
 }
 }
 const getCourses = async (req,res)=> {
-    const courses = await Course.find().populate('instructor')
+    const courses = await Course.find().populate('instructor').limit(6)
     console.log(courses)
     return res.send(courses)
 }
 const getCoursesByDate = async(req,res)=>{
-    const courses = await Course.find().populate('instructor').sort('-date')
+    const courses = await Course.find().populate('instructor').sort('-date').limit(10)
     return res.send(courses)
 }
 const getCourseById = async (req,res) => {
@@ -65,7 +65,7 @@ const updateCourse = async (req,res)=> {
             tags : req.body.tags,
             language : req.body.language,
             url : req.body.url,
-            thumbnail : req.file.path.replace(/ /g,'-'),
+            thumbnail : req.file.path.replace(/ /g,'-').replace('(','').replace(')',''),
             content : req.body.content,
             type : req.body.type,
             instructor : req.body.instructor

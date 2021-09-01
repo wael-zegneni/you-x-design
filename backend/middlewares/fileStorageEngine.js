@@ -13,7 +13,7 @@ const fileStorageEngineCourse = multer.diskStorage({
         cb(null, './public/uploads/courses/img')
     },
     filename :(req,file, cb)=> {
-        cb(null, Date.now()+"-"+ file.originalname.replace(/ /g,'-'))
+        cb(null, Date.now()+"-"+ file.originalname.replace(/ /g,'-').replace('(','').replace(')',''))
     }
 
 });
