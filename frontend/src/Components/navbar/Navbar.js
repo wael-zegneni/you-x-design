@@ -44,7 +44,9 @@ const Navbar = () => {
                     ?
                     <ProfileAvatar avatar = {auth.user.avatar}/>
                     :
-                    <Text color="white" bg="#FCC509" fontSize="sm" px=" 25px" _hover={{transform:'scale(1.03)', transition:"0.2s"}} py="13px" cursor="pointer" borderRadius="3xl" fontWeight="bolder" textAlign="center" >Join our community</Text>  
+                    <Link to ='/login'>
+                    <Text color="white" bg="#FCC509" fontSize="sm" px=" 25px" _hover={{transform:'scale(1.03)', transition:"0.2s"}} py="13px" cursor="pointer" borderRadius="3xl" fontWeight="bolder" textAlign="center" >Join our community</Text>
+                    </Link>  
                 } 
             </div>
 
