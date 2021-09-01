@@ -31,7 +31,9 @@ const Navbar = () => {
     const { auth, signout } = useContext(AuthContext)
     return (
         <Box className="navbar" width="100%" py="20px" position='relative' style={{ zIndex: 10 }}>
+            <Link to = '/'>
             <img src={logo} alt="youXdesign" />
+            </Link>
             <div className="searchBar">
                 <input type='text' />
                 <img src={searchLogo} alt="searchLogo" />
