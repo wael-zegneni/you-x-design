@@ -71,14 +71,14 @@ const Home = () => {
 
   const { auth } = useContext(AuthContext);
   console.log(auth);
-  if (auth.isAuthenticated) {
-    return (
-      <div>
-        <h1>CONNECTED!!!!</h1>
-        <Heading>{auth.user.userName}</Heading>
-      </div>
-    );
-  } else {
+  // if (auth.isAuthenticated) {
+  //   return (
+  //     <div>
+  //       <h1>CONNECTED!!!!</h1>
+  //       <Heading>{auth.user.userName}</Heading>
+  //     </div>
+  //   );
+  // } else {
     return (
       // <Layout>
       <Box>
@@ -155,7 +155,7 @@ const Home = () => {
 
       // </Layout>
     );
-  }
+  // }
 };
 
 export default Home;
