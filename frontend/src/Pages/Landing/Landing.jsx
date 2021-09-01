@@ -16,6 +16,7 @@ import CourseCardList from "../../Components/course-card-list/CourseCardList";
 import { Heading, Flex, Text, Box } from "@chakra-ui/react";
 import Layout from "../../Components/layout/Layout";
 import Welcome from "../../Components/welcome/Welcome";
+import ProfileAvatar from "../../Components/profile-avatar/ProfileAvatar";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
@@ -90,18 +91,8 @@ const Landing = () => {
           <LiveSession liveSession={liveSession} />
           <WorkshopSwiper workshopList={workshopList} />
         </Flex>
-<<<<<<< HEAD
-        <CourseSwiper courseList={courseList} />
-        <Flex
-          alignItems="center"
-          justifyContent="space-between"
-          my="20px"
-          mt="3em"
-        >
-=======
         <CourseSwiper courseList={newCourseList} />
         <Flex alignItems="center" justifyContent="space-between" my="20px" mt="3em">
->>>>>>> 79bb2a42a7af8d8334c66a2b53db07b94c5edeec
           <Text
             color="#072446"
             fontSize="3xl"
@@ -127,6 +118,7 @@ const Landing = () => {
         <InstructorSwiper InstructorList={InstructorList} />
       </Box>
       <Footer style={{ zIndex: 999, width: "100%" }} />
+      
     </Layout>
   );
 };
