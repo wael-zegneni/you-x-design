@@ -31,7 +31,7 @@ const AllCourses = () => {
     return (
         <Box>
             <Navbar/>
-            {/* <CourseCardList courseList={courseList.results}/> */}
+           <CourseCardList courseList={courseList.results}/>
         </Box>
     )
 }
