@@ -19,35 +19,38 @@ const WorkshopSwiper = ({ workshopList }) => {
             <Text color="#072446" fontSize="3xl" fontWeight="bolder" mb="10px" >
                 Upcoming
             </Text>
-            <Swiper watchSlidesProgress={true} watchSlidesVisibility={true} freeMode={true}  className="mySwiper" breakpoints={{
-                "640": {
-                    "slidesPerView": 1,
-                    "spaceBetween": 20
-                },
-                "768": {
-                    "slidesPerView": 0.8,
-                    "spaceBetween": 40
-                },
-                "1024": {
-                    "slidesPerView": 1,
-                    "spaceBetween": 40
-                },
-                "1440": {
-                    "slidesPerView": 1.3,
-                    "spaceBetween": 30
-                }, "1920": {
-                    "slidesPerView": 1.7,
-                    "spaceBetween": 20
-                },
-                "2560": {
-                    "slidesPerView": 2.5,
-                    "spaceBetween": 20
-                }
-            }}>
-                {workshopList.map((el) => (
-                    <SwiperSlide><Workshop workshop={el} /></SwiperSlide>
-                ))}
-            </Swiper>
+            <Box width={auth.isAuthenticated? '42vw' : '49vw' }>
+                <Swiper watchSlidesProgress={true} watchSlidesVisibility={true} freeMode={true} className="mySwiper" breakpoints={{
+                    "640": {
+                        "slidesPerView": 1,
+                        "spaceBetween": 20
+                    },
+                    "768": {
+                        "slidesPerView": 0.8,
+                        "spaceBetween": 40
+                    },
+                    "1024": {
+                        "slidesPerView": 1,
+                        "spaceBetween": 40
+                    },
+                    "1440": {
+                        "slidesPerView": 1.3,
+                        "spaceBetween": 30
+                    }, "1920": {
+                        "slidesPerView": 1.7,
+                        "spaceBetween": 20
+                    },
+                    "2560": {
+                        "slidesPerView": 2.5,
+                        "spaceBetween": 20
+                    }
+                }}>
+                    {workshopList.map((el) => (
+                        <SwiperSlide><Workshop workshop={el} /></SwiperSlide>
+                    ))}
+                </Swiper>
+            </Box>
+
         </div>
     )
 }

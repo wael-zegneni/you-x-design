@@ -54,7 +54,7 @@ const LiveSession = ({ liveSession }) => {
             <Text color="#072446"   fontSize="3xl" fontWeight="bolder"  mb="30px">
                 Live Session
             </Text>
-            <Box borderRadius="2xl" boxShadow="0px 0px 10px #DCDCDC	" ml='3px' height="400px" width={auth.isAuthenticated? '37vw' : '40vw'} className="workshop" >
+            <Box borderRadius="2xl" boxShadow="0px 0px 10px #DCDCDC	" ml='3px' height="400px" width={auth.isAuthenticated? '38vw' : '41vw'} className="workshop" >
 
                 <Box height="17%" display="flex" justifyContent="flex-end" alignItems="flex-end" bg="#FCC509" borderTopLeftRadius="2xl" borderTopRightRadius="2xl">
                     <center className="liveLogo">
