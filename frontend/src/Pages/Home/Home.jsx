@@ -17,6 +17,7 @@ import { Heading, Flex, Text, Box } from "@chakra-ui/react";
 import "./home.css";
 import axios from "axios";
 import Layout from "../../Components/layout/Layout";
+import { useHistory } from "react-router-dom";
 
 const Home = () => {
   const [workshopList, setworkshopList] = useState([]);
@@ -71,6 +72,11 @@ const Home = () => {
 
   const { auth } = useContext(AuthContext);
   console.log(auth);
+  const history = useHistory()
+  useEffect(()=>{
+    if (auth.isAuthenticated){
+    history.push('/dashboard')}
+  },[auth.isAuthenticated]);
   // if (auth.isAuthenticated) {
   //   return (
   //     <div>

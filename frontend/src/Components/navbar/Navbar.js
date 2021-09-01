@@ -31,7 +31,9 @@ const Navbar = () => {
     const { auth, signout } = useContext(AuthContext)
     return (
         <Box className="navbar" width="100%" py="20px" position='relative' style={{ zIndex: 10 }}>
+            <Link to = '/'>
             <img src={logo} alt="youXdesign" />
+            </Link>
             <div className="searchBar">
                 <input type='text' />
                 <img src={searchLogo} alt="searchLogo" />
@@ -40,9 +42,11 @@ const Navbar = () => {
                 <ReactLanguageSelect className="langPicker" defaultLanguage="en" languages={["en", "fr", "ar"]} customLabels={{ "en": "EN", "fr": "FR", "ar": "AR" }} />
                 {auth.isAuthenticated
                     ?
-                    <ProfileAvatar/>
+                    <ProfileAvatar avatar = {auth.user.avatar}/>
                     :
-                    <Text color="white" bg="#FCC509" fontSize="sm" px=" 25px" _hover={{transform:'scale(1.03)', transition:"0.2s"}} py="13px" cursor="pointer" borderRadius="3xl" fontWeight="bolder" textAlign="center" >Join our community</Text>  
+                    <Link to ='/login'>
+                    <Text color="white" bg="#FCC509" fontSize="sm" px=" 25px" _hover={{transform:'scale(1.03)', transition:"0.2s"}} py="13px" cursor="pointer" borderRadius="3xl" fontWeight="bolder" textAlign="center" >Join our community</Text>
+                    </Link>  
                 } 
             </div>
 
