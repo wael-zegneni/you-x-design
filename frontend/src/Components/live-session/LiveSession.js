@@ -4,6 +4,8 @@ import liveLogo from '../../Assets/Images/liveLogo.png'
 import clockIcon from '../../Assets/Images/clockIcon.png'
 import enrollIcon from '../../Assets/Images/icon-enrollement.png'
 import './liveSession.css'
+import { useContext } from 'react'
+import { AuthContext } from '../../Auth/AuthContext'
 import moment from 'moment'
 
 
@@ -45,12 +47,14 @@ const LiveSession = ({ liveSession }) => {
     // console.log(diffHoursMs)
     // console.log(diffMinMs)
     // console.log(diffMin)
+    
+    const { auth, signout } = useContext(AuthContext)
     return (
         <Box>
             <Text color="#072446"   fontSize="3xl" fontWeight="bolder"  mb="30px">
                 Live Session
             </Text>
-            <Box borderRadius="2xl" boxShadow="0px 0px 10px #DCDCDC	" ml='3px' height="400px" width="37vw" className="workshop" >
+            <Box borderRadius="2xl" boxShadow="0px 0px 10px #DCDCDC	" ml='3px' height="400px" width={auth.isAuthenticated? '37vw' : '40vw'} className="workshop" >
 
                 <Box height="17%" display="flex" justifyContent="flex-end" alignItems="flex-end" bg="#FCC509" borderTopLeftRadius="2xl" borderTopRightRadius="2xl">
                     <center className="liveLogo">

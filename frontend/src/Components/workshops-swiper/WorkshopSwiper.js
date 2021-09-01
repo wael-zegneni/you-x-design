@@ -3,6 +3,8 @@
 import Workshop from '../workshop/Workshop';
 import { Box, Center, Heading, Text, Stack, Avatar, useColorModeValue, Flex } from '@chakra-ui/react';
 import './workshopSwiper.css'
+import { useContext } from 'react'
+import { AuthContext } from '../../Auth/AuthContext'
 
 // importing swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,12 +13,13 @@ import "swiper/swiper.min.css";
 
 
 const WorkshopSwiper = ({ workshopList }) => {
+    const { auth, signout } = useContext(AuthContext)
     return (
-        <div style={{ marginTop: '65px'  }}>
+        <div style={{ marginTop: '65px' }}>
             <Text color="#072446" fontSize="3xl" fontWeight="bolder" mb="10px" >
                 Upcoming
             </Text>
-            <Swiper watchSlidesProgress={true} watchSlidesVisibility={true} freeMode={true} className="mySwiper" breakpoints={{
+            <Swiper watchSlidesProgress={true} watchSlidesVisibility={true} freeMode={true}  className="mySwiper" breakpoints={{
                 "640": {
                     "slidesPerView": 1,
                     "spaceBetween": 20
@@ -32,7 +35,7 @@ const WorkshopSwiper = ({ workshopList }) => {
                 "1440": {
                     "slidesPerView": 1.3,
                     "spaceBetween": 30
-                },"1920": {
+                }, "1920": {
                     "slidesPerView": 1.7,
                     "spaceBetween": 20
                 },

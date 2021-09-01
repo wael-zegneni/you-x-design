@@ -1,12 +1,16 @@
 import React from 'react'
+import { useContext } from 'react'
+import { AuthContext } from '../../Auth/AuthContext'
 import './we-are-unique.css'
 import { Box, Text, Stack, Avatar, useColorModeValue, Flex } from '@chakra-ui/react';
 
 
+
 const WeAreUnique = () => {
-    return (
-        <Box className="wauBg">
-            <Flex alignItems='center' justify="space-between">
+    const { auth, signout } = useContext(AuthContext)
+    return ( 
+        <Box className="wauBg" bg={auth.isAuthenticated? "#FCFCFC": '#F7F9FB'}>
+            <Flex alignItems='center' justify="space-between"  >
                 <Box>
                     <Text fontSize="4xl" fontWeight="bold" color="#072446">
                         WE ARE UNIQUE !

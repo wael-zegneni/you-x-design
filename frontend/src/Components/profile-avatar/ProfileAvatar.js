@@ -10,30 +10,45 @@ import {
     MenuIcon,
     MenuCommand,
     MenuDivider,
+    Avatar
 } from "@chakra-ui/react"
+import { Link } from 'react-router-dom'
+import { BsPersonFill } from 'react-icons/bs'
+import { BiLogOutCircle } from 'react-icons/bi'
+import { AuthContext } from '../../Auth/AuthContext'
+import { useContext } from 'react'
 
-const ProfileAvatar = () => {
+
+
+const ProfileAvatar = ({ avatar }) => {
+    const { auth, signout } = useContext(AuthContext)
+
+    const test = () => {
+        console.log("object")
+    }
     return (
         <Menu>
             <MenuButton >
-                Your Cats
+                <Avatar src={avatar} />
             </MenuButton>
             <MenuList>
-                <MenuItem command="⌘T">
-                    New Tab
+                <MenuItem icon={<BsPersonFill />}>
+                    View profile
                 </MenuItem>
-                <MenuItem command="⌘N">
-                    New Window
-                </MenuItem>
-                <MenuItem command="⌘⇧N">
-                    Open Closed Tab
-                </MenuItem>
-                <MenuItem command="⌘O">
-                    Open File...
-                </MenuItem>
+
+                <Link to='/' variant="solid" onClick={signout} >
+                    <MenuItem icon={<BiLogOutCircle />} >
+                        Sign out
+                    </MenuItem>
+                </Link>
+
             </MenuList>
         </Menu>
     )
+}
+
+ProfileAvatar.defaultProps = {
+    avatar: 'http://ojodepeza.com/proyectos/wp-content/uploads/2015/01/martin-schoeller-barack-obama-portrait-up-close-and-personal.jpg'
 }
 
 export default ProfileAvatar
