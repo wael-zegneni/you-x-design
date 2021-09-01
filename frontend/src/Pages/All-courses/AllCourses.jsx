@@ -22,16 +22,23 @@ import { useHistory } from "react-router-dom";
 const AllCourses = () => {
     const [courseList, setCourseList] = useState([])
     const [page, setpage] = useState(1)
+    const [results, setresults] =useState([])
     useEffect( async () => {
-        const courses = await axios.get(`/api/v1/course/courses?page=1`)
-        console.log(courses)
-        setCourseList(courses.data)
+        const res = await axios.get(`/api/v1/course/courses?page=${page}`)
+        console.log(res)
+        setCourseList(res.data)
+        setresults(res.data.results)
+        console.log(courseList)
     }, [])
 
     return (
         <Box>
             <Navbar/>
+<<<<<<< HEAD
            <CourseCardList courseList={courseList.results}/>
+=======
+            <CourseCardList courseList={results}/>
+>>>>>>> 61818f1554e793bafb6de7851f9ae112ffef1695
         </Box>
     )
 }
