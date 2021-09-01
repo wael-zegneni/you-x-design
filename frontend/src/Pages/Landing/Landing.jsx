@@ -16,6 +16,7 @@ import CourseCardList from "../../Components/course-card-list/CourseCardList";
 import { Heading, Flex, Text, Box } from "@chakra-ui/react";
 import Layout from "../../Components/layout/Layout";
 import Welcome from "../../Components/welcome/Welcome";
+import ProfileAvatar from "../../Components/profile-avatar/ProfileAvatar";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
@@ -117,6 +118,7 @@ const Landing = () => {
         <InstructorSwiper InstructorList={InstructorList} />
       </Box>
       <Footer style={{ zIndex: 999, width: "100%" }} />
+      
     </Layout>
   );
 };

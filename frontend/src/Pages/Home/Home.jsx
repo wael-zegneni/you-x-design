@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useState, useEffect } from "react";
+import Navbar from "../../Components/navbar/Navbar";
 import WeAreUnique from "../../Components/we-are-unique/WeAreUnique";
 import Testimonial from "../../Components/testimonial/Testimonial";
 import InstructorCard from "../../Components/instructor-card/InstructorCard";
@@ -81,6 +82,7 @@ const Home = () => {
     return (
       // <Layout>
       <Box>
+        <Navbar/>
         <WeAreUnique />
         <Box ml="0.3vw">
           <Box ml="2.5vw">
