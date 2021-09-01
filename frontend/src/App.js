@@ -10,6 +10,7 @@ import Landing from "./Pages/Landing/Landing";
 import { useContext, useEffect } from "react";
 import { AuthContext } from './Auth/AuthContext';
 import Candidate from "./Components/candidate/Candidate";
+import AllCourses from "./Pages/All-courses/AllCourses";
 
 function App() {
   const {pathname} = useLocation()
@@ -29,7 +30,9 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/candidate" component={Candidate} />
           <Route exact path ="/dashboard" component={Landing} />
+          <Route exact path="/allcourses" component={AllCourses}/>
           <PrivateRoute exact path="/profile" component={Profile} />
+
         </Switch>
       </>
   );

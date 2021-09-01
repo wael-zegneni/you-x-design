@@ -4,6 +4,7 @@ import { Box, Center, Heading, Text, Stack, Avatar, useColorModeValue, Flex } fr
 import CourseCard from '../course-card/CourseCard';
 
 const CourseCardList = ({ courseList }) => {
+    console.log(courseList)
     return (
         <Flex  justifyContent="flex-start" className="course_card_list" width='100%' ml="auto"  wrap="wrap">
             {
