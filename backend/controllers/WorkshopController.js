@@ -35,34 +35,36 @@ const liveSession = async(req,res) => {
     try {
         
     
-    const livesession= await Workshop.aggregate([
-        {
-            $project : {
-                date : 1,
-                title : 1,
-                description : 1,
-                date : 1,
-                endDate : 1,    
-                maxAtt : 1,
-                link : 1,
-                instructor : 1,
-                difference : {
-                    $abs : {
-                        $subtract : [new Date(), "$date"]
-                    }
-                }
-            }
-        },
-        {
-            $sort : {difference : 1}
-        },
-        {
-            $limit : 1
-        }
-        ]);
-        Workshop.populate(livesession, {path: "instructor"}, (err, result) => {
-            return res.send(result)
-        });
+    // const livesession= await Workshop.aggregate([
+    //     {
+    //         $project : {
+    //             date : 1,
+    //             title : 1,
+    //             description : 1,
+    //             date : 1,
+    //             endDate : 1,    
+    //             maxAtt : 1,
+    //             link : 1,
+    //             instructor : 1,
+    //             difference : {
+    //                 $abs : {
+    //                     $subtract : [new Date(), "$date"]
+    //                 }
+    //             }
+    //         }
+    //     },
+    //     {
+    //         $sort : {difference : 1}
+    //     },
+    //     {
+    //         $limit : 1
+    //     }
+    //     ]);
+
+    // Workshop.populate(livesession, {path: "instructor"}, (err, result) => {
+    //     return res.send(result)
+    // });
+        const livesession = await  Workshop.find().sort('-endDate').limit(1).populate('instructor')
     } catch (error) {
         res.status(400).send(error)
     }

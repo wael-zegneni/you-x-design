@@ -34,11 +34,7 @@ const AllCourses = () => {
     return (
         <Box>
             <Navbar/>
-<<<<<<< HEAD
-           <CourseCardList courseList={courseList.results}/>
-=======
             <CourseCardList courseList={results}/>
->>>>>>> 61818f1554e793bafb6de7851f9ae112ffef1695
         </Box>
     )
 }
