@@ -1,6 +1,6 @@
 import React from 'react'
 import './welcome.css'
-import { Box, Text, Flex } from '@chakra-ui/react';
+import { Box, Text, Flex, Link } from '@chakra-ui/react';
 import { FaInstagram, FaFacebook, FaLinkedin, FaEnvelope, FaWhatsapp, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 

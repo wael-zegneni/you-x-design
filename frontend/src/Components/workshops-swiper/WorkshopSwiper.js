@@ -19,7 +19,7 @@ const WorkshopSwiper = ({ workshopList }) => {
             <Text color="#072446" fontSize="3xl" fontWeight="bolder" mb="10px" >
                 Upcoming
             </Text>
-            <Box width={auth.isAuthenticated? '41vw' : '49vw' }>
+            <Box cursor = 'move' width={auth.isAuthenticated? '41vw' : '49vw' }>
                 <Swiper watchSlidesProgress={true} watchSlidesVisibility={true} freeMode={true} className="mySwiper" breakpoints={{
                     "640": {
                         "slidesPerView": 1,
