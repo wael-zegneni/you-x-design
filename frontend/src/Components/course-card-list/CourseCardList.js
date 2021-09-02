@@ -3,10 +3,10 @@ import Workshop from '../workshop/Workshop';
 import { Box, Center, Heading, Text, Stack, Avatar, useColorModeValue, Flex } from '@chakra-ui/react';
 import CourseCard from '../course-card/CourseCard';
 
-const CourseCardList = ({ courseList }) => {
+const CourseCardList = ({ courseList, isLoading }) => {
     return (
         <Flex  justifyContent="flex-start" className="course_card_list" width='100%' ml="auto"  wrap="wrap">
-            {
+            {isLoading ? <h1>LOADING...</h1> : 
                 courseList.map((el) => (
                     <CourseCard cardData={el} /> 
                 ))
