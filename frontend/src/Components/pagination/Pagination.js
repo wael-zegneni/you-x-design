@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { Box, Center, Heading, Text, Stack, Avatar, useColorModeValue, Flex } from '@chakra-ui/react';
 
-const Pagination = () => {
+const Pagination = ({totalPages}) => {
 
-    const [totalPages, settotalPages] = useState(0)
     const [currentPage, setcurrentPage] = useState(0)
 
     return (
