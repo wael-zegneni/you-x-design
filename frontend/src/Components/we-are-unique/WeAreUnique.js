@@ -2,7 +2,7 @@ import React from 'react'
 import { useContext } from 'react'
 import { AuthContext } from '../../Auth/AuthContext'
 import './we-are-unique.css'
-import { Box, Text, Stack, Avatar, useColorModeValue, Flex } from '@chakra-ui/react';
+import { Box, Text, Stack, Avatar, useColorModeValue, Flex, Link } from '@chakra-ui/react';
 
 
 

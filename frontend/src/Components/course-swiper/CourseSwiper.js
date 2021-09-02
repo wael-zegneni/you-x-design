@@ -14,7 +14,7 @@ import CourseCard from '../course-card/CourseCard';
 const CourseSwiper = ({ courseList }) => {
     console.log(courseList)
     return (
-        <Box style={{ marginTop: '65px', marginLeft:'-0.4vw' }} >
+        <Box cursor='move' style={{ marginTop: '65px', marginLeft:'-0.4vw' }} >
             <Text color="#072446"
             fontSize="3xl"
             fontWeight="bolder"
