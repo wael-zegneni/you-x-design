@@ -4,6 +4,7 @@ import Navbar from "../../Components/navbar/Navbar";
 import WeAreUnique from "../../Components/we-are-unique/WeAreUnique";
 import Testimonial from "../../Components/testimonial/Testimonial";
 import InstructorCard from "../../Components/instructor-card/InstructorCard";
+import Pagination from "../../Components/pagination/Pagination";
 import Footer from "../../Components/footer/Footer";
 import TestimonyList from "../../Components/testimony-list/TestimonyList";
 import JoinCommunityCard from "../../Components/join-community-card/JoinCommunityCard";
@@ -23,18 +24,18 @@ const AllCourses = () => {
     const [courseList, setCourseList] = useState([])
     const [page, setpage] = useState(1)
     const [results, setresults] =useState([])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect( async () => {
         const res = await axios.get(`/api/v1/course/courses?page=${page}`)
-        console.log(res)
         setCourseList(res.data)
         setresults(res.data.results)
-        console.log(courseList)
     }, [])
 
     return (
         <Box>
             <Navbar/>
             <CourseCardList courseList={results}/>
+            <Pagination/>
         </Box>
     )
 }

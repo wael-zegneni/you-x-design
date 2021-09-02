@@ -14,7 +14,6 @@ const CourseCard = ({cardData}) => {
         
       }, [])
       
-      console.log(imgUrl)
     return (
         <Center py={6}  _hover={{ transform: "translateY(-10px)" }} ml="1vw" mr="1.7vw" transition="0.3s">
             <Box  width={'24vw'} bg={useColorModeValue('white', 'gray.900')} boxShadow={'xl'} rounded={'xl'} p={6} overflow={'hidden'}>
