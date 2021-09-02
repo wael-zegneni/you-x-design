@@ -35,7 +35,7 @@ const register = async (req,res) => {
         return res.status(400).json({errors :[{msg: "user already exists !"}]});
     } else {
         // Insert the new user if they do not exist yet
-       try {
+       try { 
         const hashedPassword = await bcrypt.hash(req.body.RegisterPassword,10)
         console.log(hashedPassword)
             user = new User({
@@ -47,6 +47,7 @@ const register = async (req,res) => {
                 age : req.body.age,
                 residence : req.body.residence,
                 bio : req.body.bio,
+                avatar : "public\\uploads\\default.jpg",
             });
             await user.save();
             var token = jwt.sign(user.toJSON(), process.env.SECRET_KEY);

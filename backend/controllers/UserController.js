@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const Candidate = require('../models/Candidates') 
+const bcrypt = require ('bcrypt')
 
 const updateUser = async (req,res) => {
     try {
@@ -70,35 +71,46 @@ const getStudents = async(req,res) =>{
     res.send(results)
 }
 const approveInstructor = async(req,res) => {
-    try {
         candidate = await Candidate.findById(req.body.id)
-        if(await User.find({email : candidate.email, role: "instructor"}))
+        console.log(candidate)
+        let x = await User.find({email : candidate.email, role: "instructor"})
+        console.log('x : ' ,x)
+        if(x.length)
         {
-            res.send('email already used as instructor')
+            res.status(400).send('email already used as instructor')
         }else {
-        let instructor = new User({
-        userName : candidate.name,
-        phone : candidate.phone,
-        email : candidate.email,
-        residence : candidate.residence,
-        age : candidate.age,
-        career : candidate.job,
-        bio: candidate.bio,
-        school : candidate.school,
-        degree : candidate.degree,
-        facebook : candidate.facebook,
-        linkedin : candidate.linkedin,
-        instagram : candidate.instagram
-    })
-    console.log('candidate approved : ',instructor)
-    await instructor.save()
-    res.send(instructor)
-}
-    } catch (error) {
-        console.log(error)
-        res.status(400).send(error)
+            try {  
+            const password = await bcrypt.hash('test12345',10)
+            let instructor = new User({
+                userName : candidate.name,
+                phone : candidate.phone,
+                email : candidate.email,
+                residence : candidate.residence,
+                age : candidate.age,
+                career : candidate.job,
+                bio: candidate.bio,
+                school : candidate.school,
+                degree : candidate.degree,
+                facebook : candidate.facebook,
+                linkedin : candidate.linkedin,
+                instagram : candidate.instagram,
+                role : "instructor",
+                password: password,
+                avatar : "public\\uploads\\default.jpg",
+        
+            })
+            console.log('candidate approved : ',instructor)
+            await instructor.save()
+            await Candidate.deleteOne({_id : candidate.id})
+            await candidate.save()
+            res.send(instructor)
+            
+        } catch (error) {
+            res.status(400).send(error)
+        }
+            
+        }
     }
-}
 module.exports = {
     updateUser,
     deleteUser,
