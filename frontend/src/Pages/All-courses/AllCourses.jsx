@@ -11,20 +11,27 @@ import { useHistory } from "react-router-dom";
 
 const AllCourses = () => {
     const [courseList, setCourseList] = useState([])
-    const [page, setpage] = useState(1)
     const [results, setresults] =useState([])
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect( async () => {
+    const [isLoading, setIsLoading] = useState(false)
+
+    const getCourses = async (page = 1) => {
+        setIsLoading(true)
         const res = await axios.get(`/api/v1/course/courses?page=${page}`)
         setCourseList(res.data)
+        setIsLoading(false)
         setresults(res.data.results)
+    }
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect( () => {
+        getCourses()
     }, [])
 
     return (
         <Box>
             <Navbar/>
-            <CourseCardList courseList={results}/>
-            <Pagination/>
+            <CourseCardList courseList={results} isLoading={isLoading}/>
+            <Pagination response={courseList} getCourses={getCourses}/>
         </Box>
     )
 }
