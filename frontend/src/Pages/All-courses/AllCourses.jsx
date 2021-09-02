@@ -13,18 +13,23 @@ const AllCourses = () => {
     const [courseList, setCourseList] = useState([])
     const [page, setpage] = useState(1)
     const [results, setresults] =useState([])
+    const [totalPages, settotalPages] = useState(0)
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect( async () => {
         const res = await axios.get(`/api/v1/course/courses?page=${page}`)
         setCourseList(res.data)
         setresults(res.data.results)
+        settotalPages(res.data.total)
+        console.log(res.data)
+
     }, [])
 
     return (
         <Box>
             <Navbar/>
             <CourseCardList courseList={results}/>
-            <Pagination/>
+            <Pagination totalPages={totalPages}/>
         </Box>
     )
 }
