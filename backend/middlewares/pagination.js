@@ -25,10 +25,13 @@ exports.paginatedResults = function(model, pop){
       }
       try {
           if (pop) {
+            
             results.results = await model.find().populate(pop).limit(limit).skip(startIndex).exec()
+            results.total = Math.ceil((await model.countDocuments()) / limit)
             res.paginatedResults = results
           } else {
             results.results = await model.find().limit(limit).skip(startIndex).exec()
+            results.total = Math.ceil((await model.countDocuments()) / limit)
             res.paginatedResults = results
           }
         
