@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const Candidate = require('../models/Candidates') 
 
 const updateUser = async (req,res) => {
     try {
@@ -68,12 +69,37 @@ const getStudents = async(req,res) =>{
     console.log(results)
     res.send(results)
 }
+const approveInstructor = async(req,res) => {
+    try {
+        candidate = await Candidate.findById(req.body.id)
+        let instructor = new User({
+        userName : candidate.name,
+        phone : candidate.phone,
+        email : candidate.email,
+        residence : candidate.residence,
+        age : candidate.age,
+        career : candidate.job,
+        bio: candidate.bio,
+        school : candidate.school,
+        degree : candidate.degree,
+        facebook : candidate.facebook,
+        linkedin : candidate.linkedin,
+        instagram : candidate.instagram
+    })
+    console.log('candidate approved : ',instructor)
+    await instructor.save()
+    res.send(instructor)
 
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
+}
 module.exports = {
     updateUser,
     deleteUser,
     findUserById,
     getInstructors,
     getStudents,
-    updateProfilePic
+    updateProfilePic,
 }
