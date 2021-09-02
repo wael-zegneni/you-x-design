@@ -1,18 +1,7 @@
 import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import Navbar from "../../Components/navbar/Navbar";
-import WeAreUnique from "../../Components/we-are-unique/WeAreUnique";
-import Testimonial from "../../Components/testimonial/Testimonial";
-import InstructorCard from "../../Components/instructor-card/InstructorCard";
 import Pagination from "../../Components/pagination/Pagination";
-import Footer from "../../Components/footer/Footer";
-import TestimonyList from "../../Components/testimony-list/TestimonyList";
-import JoinCommunityCard from "../../Components/join-community-card/JoinCommunityCard";
-import InstructorSwiper from "../../Components/instructor-swiper/InstructorSwiper";
-import WorkshopSwiper from "../../Components/workshops-swiper/WorkshopSwiper";
-import { AuthContext } from "../../Auth/AuthContext";
-import FilterBy from "../../Components/filter-by/FilterBy";
-import LiveSession from "../../Components/live-session/LiveSession";
 import CourseCardList from "../../Components/course-card-list/CourseCardList";
 import { Heading, Flex, Text, Box } from "@chakra-ui/react";
 import axios from "axios";
