@@ -23,6 +23,8 @@ const UserSchema = new mongoose.Schema({
     age: Number,
     bio : String,
     career : String,
+    school: String,
+    degree: String,
     followers: [
         {
             type: mongoose.Types.ObjectId,
@@ -34,7 +36,10 @@ const UserSchema = new mongoose.Schema({
             type: mongoose.Types.ObjectId,
             ref: 'course'
         }
-    ]
+    ],
+    facebook: String,
+    linkedin: String,
+    instagram: String
     
 
 

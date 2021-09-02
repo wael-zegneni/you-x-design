@@ -58,6 +58,17 @@ const getCourseById = async (req,res) => {
         res.status(400).send(error)
     }
 }
+const getCourseForInstructor = async(req,res) => {
+    try {
+        const result = {}
+        result.courses = await Course.find({instructor : req.body.instructor})
+        result.total = await Course.countDocuments({instructor : req.body.instructor})
+        res.send(result)
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
+}
 const updateCourse = async (req,res)=> {
     try {
         Course.findByIdAndUpdate(req.body.id,{
@@ -118,4 +129,5 @@ module.exports = {
     deleteCourse,
     getCourseById,
     getCoursesByDate,
+    getCourseForInstructor,
 }

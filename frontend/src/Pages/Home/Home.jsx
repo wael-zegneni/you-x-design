@@ -62,7 +62,7 @@ const Home = () => {
   useEffect(async () => {
     const res = await axios.get("api/v1/user/instructors/");
     console.log(res.data);
-    setInstructorList(res.data);
+    setInstructorList(res.data.instructors);
   }, []);
   useEffect(async () => {
     const res = await axios.get("api/v1/comment/testimonials");
