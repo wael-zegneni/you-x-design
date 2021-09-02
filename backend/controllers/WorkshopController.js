@@ -27,47 +27,33 @@ const addWorkshop = async (req,res)=> {
 }
 
 const indexWorkshop = async (req,res) => {
-    const workshops = await Workshop.find().sort('date')
+    const workshops = await Workshop.find({
+        "endDate" : {"$gte": Date.now()}
+    }).sort('date')
     console.log(workshops)
     return res.send(workshops)
 }
 const liveSession = async(req,res) => {
-    try {
         
     
-    const livesession= await Workshop.aggregate([
-        {
-            $project : {
-                date : 1,
-                title : 1,
-                description : 1,
-                date : 1,
-                endDate : 1,    
-                maxAtt : 1,
-                link : 1,
-                instructor : 1,
-                difference : {
-                           
-                        $cond : { if: {$gte: ["$diffrence", 0]}, then: {$subtract : ["$endDate", new Date()]}, else :99999999}
-                }
-            }
-        },
-        {
-            $sort : {difference : 1}
-        },
-        // {
-        //     $limit : 1
-        // }
-        ]);
-
-    Workshop.populate(livesession, {path: "instructor"}, (err, result) => {
-        return res.send(result)
-    });
-        // const livesession = await  Workshop.find().sort('endDate').limit(1).populate('instructor')
-        // res.send(livesession)
+   
+    try {
+        const livesession = await Workshop.find({
+            "endDate" : {"$gte": Date.now()}
+        }).sort('endDate').limit(1).populate('instructor')
+        res.send(livesession)
     } catch (error) {
+        console.log(error)
         res.status(400).send(error)
     }
+    
+        
+    // Workshop.populate(livesession, {path: "instructor"}, (err, result) => {
+    //     return res.send(result)
+    // });
+        // const livesession = await  Workshop.find().sort('endDate').limit(1).populate('instructor')
+        // res.send(livesession)
+    
         
 }
 const updateWorkshop = (req,res)=>{
