@@ -1,9 +1,8 @@
 
 
-exports.paginatedResults = function(model, pop){
+exports.paginatedResults = function(model, pop, limit){
     return async (req, res, next) => {
       const page = parseInt(req.query.page)
-      const limit = 12
   
       const startIndex = (page - 1) * limit
       const endIndex = page * limit
