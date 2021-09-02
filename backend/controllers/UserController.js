@@ -72,6 +72,10 @@ const getStudents = async(req,res) =>{
 const approveInstructor = async(req,res) => {
     try {
         candidate = await Candidate.findById(req.body.id)
+        if(await User.find({email : candidate.email, role: "instructor"}))
+        {
+            res.send('email already used as instructor')
+        }else {
         let instructor = new User({
         userName : candidate.name,
         phone : candidate.phone,
@@ -89,7 +93,7 @@ const approveInstructor = async(req,res) => {
     console.log('candidate approved : ',instructor)
     await instructor.save()
     res.send(instructor)
-
+}
     } catch (error) {
         console.log(error)
         res.status(400).send(error)
@@ -102,4 +106,5 @@ module.exports = {
     getInstructors,
     getStudents,
     updateProfilePic,
+    approveInstructor,
 }
