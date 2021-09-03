@@ -19,7 +19,7 @@ router.get('/getone', getCourseById)
 router.post('/add',uploadCourse.single('thumbnail'),addCourse)
 router.patch('/update',uploadCourse.single('thumbnail'),updateCourse)
 router.delete('/delete',deleteCourse)
-router.get('/courses',paginatedResults(Course,'instructor', 12), (req, res) => {
+router.get('/courses',paginatedResults(Course,'instructor', 6), (req, res) => {
   
     console.log('paginatedresults ' + res.paginatedResults)
     res.send(res.paginatedResults)
