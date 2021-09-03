@@ -5,7 +5,6 @@ const addRating = async (req,res) => {
     const existingRating = await Rating.findOne({user : req.body.user, course: req.body.course})
     // 
     console.log('existing rating : ', existingRating)
-
     if (existingRating){  
         Rating.deleteOne({_id : existingRating._id}, async function(err){
             let course = await Course.findById(req.body.course)
@@ -19,7 +18,6 @@ const addRating = async (req,res) => {
                 console.log(err);
             }  
             })
-    
     }
     const rating = new Rating({
         rating : req.body.rating,
@@ -45,7 +43,6 @@ const addRating = async (req,res) => {
             console.log(err)
         }
     })
-    // course.avgRating = sum/course.ratings.length
     }
     res.send( rating )
     
