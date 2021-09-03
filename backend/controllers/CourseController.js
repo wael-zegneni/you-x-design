@@ -52,8 +52,7 @@ const getCoursesByDate = async(req,res)=>{
 const getCourseById = async (req,res) => {
 
     try {
-        const course = await Course.findOne({ _id : req.body.id})
-        console.log('course by id ' + course)
+        const course = await Course.findOne({ _id : req.query.id })
         res.send(course)
     } catch (error) {
         console.log(error)

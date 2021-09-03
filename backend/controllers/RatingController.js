@@ -13,7 +13,7 @@ const addRating = async (req,res) => {
             if (!err && course) {
                 await course.ratings.pull(existingRating._id)
                 await course.save()
-                console.log('course deleted')
+                console.log('rating deleted')
             }
             else {
                 console.log(err);
@@ -32,10 +32,24 @@ const addRating = async (req,res) => {
     await course.ratings.push(rating._id)
     await rating.save()
     await course.save()
-    res.send(rating)
+    let coursex = await Course.findById(req.body.course).populate('ratings')
+    if(coursex.ratings.length){
+    var sum = 0
+    for ( var i = 0 ; i< coursex.ratings.length; i++){
+        sum = sum + coursex.ratings[i].rating
+    }
+    Course.updateOne({_id : req.body.course},{avgRating : sum/coursex.ratings.length },(err,result)=>{
+        if (!err) {
+            console.log('avgrating : ' + result)
+        } else {
+            console.log(err)
+        }
+    })
+    // course.avgRating = sum/course.ratings.length
+    }
+    res.send( rating )
     
 }
-
 module.exports = {
     addRating,
 }
