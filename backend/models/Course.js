@@ -16,7 +16,11 @@ const CourseSchema = new mongoose.Schema({
     },
     date : Date,
     views : Number,
-    rating : Number,
+    ratings : [{
+        type: mongoose.Types.ObjectId,
+        ref: 'rating'
+    }], 
+    avgRating : Number,
     thumbnail: String,
     url : String,
     content : {

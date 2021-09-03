@@ -10,6 +10,7 @@ const {addCourse,
     getCourseForInstructor,
 } = require('../controllers/CourseController')
 const {uploadCourse} = require('../middlewares/fileStorageEngine');
+const {addRating}=require('../controllers/RatingController');
 const Course = require('../models/Course');
 
 router.get('/', getCourses)
@@ -19,6 +20,7 @@ router.get('/getone', getCourseById)
 router.post('/add',uploadCourse.single('thumbnail'),addCourse)
 router.patch('/update',uploadCourse.single('thumbnail'),updateCourse)
 router.delete('/delete',deleteCourse)
+router.post('/rate', addRating)
 router.get('/courses',paginatedResults(Course,'instructor', 12), (req, res) => {
   
     console.log('paginatedresults ' + res.paginatedResults)
