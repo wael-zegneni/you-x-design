@@ -4,6 +4,7 @@ import Navbar from "../../Components/navbar/Navbar";
 import Pagination from "../../Components/pagination/Pagination";
 import CourseCardList from "../../Components/course-card-list/CourseCardList";
 import { Heading, Flex, Text, Box } from "@chakra-ui/react";
+import FilterBy from '../../Components/filter-by/FilterBy'
 import axios from "axios";
 import Layout from "../../Components/layout/Layout";
 import { useHistory } from "react-router-dom";
@@ -28,11 +29,18 @@ const AllCourses = () => {
     }, [])
 
     return (
-        <Box>
-            <Navbar/>
-            <CourseCardList courseList={results} isLoading={isLoading}/>
+        <Layout overflowX="hidden" >
+            <Box display="flex" justifyContent="flex-end" bg="#F7F9FB" my="20px" mt="40px" py="50px">
+                <Flex alignItems="center" justifyContent="space-between" width="61%" >
+                    <Text fontSize="2.6vw" fontWeight="bold" >
+                        ALL COURSES
+                    </Text>
+                    <FilterBy/>
+                </Flex>
+            </Box>
+            <CourseCardList style={{marginLeft:'10px'}} courseList={results} isLoading={isLoading}/>
             <Pagination response={courseList} getCourses={getCourses}/>
-        </Box>
+        </Layout>
     )
 }
 

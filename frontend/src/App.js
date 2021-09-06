@@ -4,7 +4,7 @@ import Home from './Pages/Home/Home';
 import AuthContextProvider from './Auth/AuthContext'
 import Navbar from "./Components/navbar/Navbar";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
-import Profile from "./Components/profile/Profile";
+import Profile from "./Pages/Profile/Profile";
 import Login from "./Components/login/Login";
 import Landing from "./Pages/Landing/Landing";
 import { useContext, useEffect } from "react";

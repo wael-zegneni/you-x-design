@@ -64,7 +64,7 @@ export default function Layout({
         display={{ base: 'none', md: 'block' }}
         bg="#072446"
         overflowX={"hidden"}
-        pt="8vh"
+        pt="15vh"
       />
       <Drawer
         overFlow={"hidden"}

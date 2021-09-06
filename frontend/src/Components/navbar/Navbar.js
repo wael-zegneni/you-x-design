@@ -7,6 +7,7 @@ import 'react-languages-select/css/react-languages-select.css';
 import { Link } from 'react-router-dom'
 import { Heading, Flex, Text, Box } from "@chakra-ui/react";
 import ProfileAvatar from '../profile-avatar/ProfileAvatar';
+import SearchInput from '../search-input/SearchInput';
 import { BsPersonFill } from 'react-icons/bs'
 import { BiLogOutCircle } from 'react-icons/bi'
 import {
@@ -34,10 +35,7 @@ const Navbar = () => {
             <Link to = '/'>
             <img src={logo} alt="youXdesign" />
             </Link>
-            <div className="searchBar">
-                <input type='text' />
-                <img src={searchLogo} alt="searchLogo" />
-            </div>
+            <SearchInput/>
             <div style={{ display: "flex", alignItems: "center", alignSelf:'flex-end', marginLeft:"3em" }}>
                 <ReactLanguageSelect className="langPicker" defaultLanguage="en" languages={["en", "fr", "ar"]} customLabels={{ "en": "EN", "fr": "FR", "ar": "AR" }} />
                 {auth.isAuthenticated

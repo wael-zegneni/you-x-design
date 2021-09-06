@@ -32,10 +32,11 @@ const ProfileAvatar = ({ avatar }) => {
                 <Avatar src={avatar} />
             </MenuButton>
             <MenuList>
-                <MenuItem icon={<BsPersonFill />}>
-                    View profile
-                </MenuItem>
-
+                <Link to="/profile">
+                    <MenuItem icon={<BsPersonFill />}>
+                        View profile
+                    </MenuItem>
+                </Link>
                 <Link to='/' variant="solid" onClick={signout} >
                     <MenuItem icon={<BiLogOutCircle />} >
                         Sign out

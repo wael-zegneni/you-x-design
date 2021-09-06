@@ -5,7 +5,7 @@ import CourseCard from '../course-card/CourseCard';
 
 const CourseCardList = ({ courseList, isLoading }) => {
     return (
-        <Flex  justifyContent="flex-start" className="course_card_list" width='100%' ml="auto"  wrap="wrap">
+        <Flex  justifyContent="flex-start" className="course_card_list" width='95%' ml="auto" mr="auto"  wrap="wrap">
             {isLoading ? <h1>LOADING...</h1> : 
                 courseList.map((el) => (
                     <CourseCard cardData={el} /> 

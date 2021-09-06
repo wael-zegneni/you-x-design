@@ -49,7 +49,7 @@ const CourseSwiper = ({ courseList }) => {
                 }
             }}>
                 {courseList.map((el) => (
-                    <SwiperSlide><CourseCard cardData={el} /></SwiperSlide>
+                    <SwiperSlide><CourseCard cardData={el} swiper={true} /></SwiperSlide>
                 ))}
             </Swiper>
         </Box>
