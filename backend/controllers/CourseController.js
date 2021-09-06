@@ -19,7 +19,9 @@ const addCourse = async (req,res)=> {
             thumbnail : req.file.path.replace(/ /g,'-').replace('(','').replace(')',''),
             content : req.body.content,
             type : req.body.type,
-            instructor : req.body.instructor
+            instructor : req.body.instructor,
+            avgRating : 0,
+            ratings : [],
         })
         console.log('course ' + course)
         let instructor = await User.findById(req.body.instructor)
@@ -50,8 +52,7 @@ const getCoursesByDate = async(req,res)=>{
 const getCourseById = async (req,res) => {
 
     try {
-        const course = await Course.findOne({ _id : req.body.id})
-        console.log('course by id ' + course)
+        const course = await Course.findOne({ _id : req.query.id })
         res.send(course)
     } catch (error) {
         console.log(error)
