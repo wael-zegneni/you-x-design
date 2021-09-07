@@ -37,6 +37,12 @@ const UserSchema = new mongoose.Schema({
             ref: 'course'
         }
     ],
+    saved : [
+        {
+            type : mongoose.Types.ObjectId,
+            ref : 'course'
+        }
+    ],
     facebook: String,
     linkedin: String,
     instagram: String

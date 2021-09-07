@@ -10,7 +10,8 @@ const {
     getInstructors,
     getStudents,
     updateProfilePic,
-    approveInstructor,   
+    approveInstructor,
+    saveCourse,   
     } = require ( "../controllers/UserController")
 
     
@@ -21,5 +22,6 @@ router.patch('/update', updateUser)
 router.patch('/updatepic',uploadAvatar.single('avatar') , updateProfilePic)
 router.get('/students', getStudents)
 router.post('/approve', approveInstructor)
+router.post('/saveCourse',saveCourse)
 
 module.exports = router

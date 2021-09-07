@@ -12,16 +12,19 @@ import {
 } from "@chakra-ui/react";
 import Layout from "../../Components/layout/Layout";
 import Footer from "../../Components/footer/Footer";
+import { AuthContext } from "../../Auth/AuthContext";
 
 const Profile = () => {
-  const user = {
-    avatar:
-      "https://pyxis.nymag.com/v1/imgs/3c3/54b/d6e10a19a66822da8bc30bef7b37b3b2f7-obama-interview-lede.2x.h600.w512.jpg",
-    username: "wael",
-    email: "wael@gmail.com",
-    mobileNumber: "24445983",
-  };
-
+  // const user = {
+  //   avatar:
+  //     "https://pyxis.nymag.com/v1/imgs/3c3/54b/d6e10a19a66822da8bc30bef7b37b3b2f7-obama-interview-lede.2x.h600.w512.jpg",
+  //   userName: "wael",
+  //   email: "wael@gmail.com",
+  //   phone: "24445983",
+  // };
+  const {auth} = useContext(AuthContext)
+  console.log(auth)
+  const user = auth.user
   return (
     <Layout>
       <Box height="71vh" alignContent="center">
@@ -61,7 +64,7 @@ const Profile = () => {
                   top="15px"
                   accept="image/*"
                   autoComplete="off"
-                  name="cv"
+                  name="avatar"
                 />
                 <Text
                   className="join_upload_text"
@@ -112,7 +115,7 @@ const Profile = () => {
                 Username:
               </Box>
               <Box ml="25px" w="100%" h="10" fontSize="xl">
-                {user.username}
+                {user.userName}
               </Box>
               <Box
                 w="100%"
@@ -136,7 +139,7 @@ const Profile = () => {
                 Mobile Number:
               </Box>
               <Box ml="25px" w="100%" h="10" fontSize="xl">
-                {user.mobileNumber}
+                {user.phone}
               </Box>
             </Grid>
           </Flex>

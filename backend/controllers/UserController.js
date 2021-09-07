@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const Candidate = require('../models/Candidates') 
 const bcrypt = require ('bcrypt')
+const Course = require('../models/Course')
 
 const updateUser = async (req,res) => {
     try {
@@ -29,7 +30,7 @@ const updateUser = async (req,res) => {
 }
 const updateProfilePic = async (req,res)=> {
     try {
-        User.findByIdAndUpdate(req.body.id,{
+        User.findByIdAndUpdate(req.query.id,{
             avatar : req.file.path
         },function(err,user){
             if (err) {
@@ -43,7 +44,7 @@ const updateProfilePic = async (req,res)=> {
     }
 }
 const deleteUser = (req,res)=>{
-    User.deleteOne({ _id: req.body.id }, function(err) {
+    User.deleteOne({ _id: req.query.id }, function(err) {
         if (!err) {
                 res.send('user deleted !');
         }
@@ -53,7 +54,7 @@ const deleteUser = (req,res)=>{
     });
 }
 const findUserById = async (req,res)=>{
-    const user = await User.findById(req.body.id)
+    const user = await User.findById(req.query.id).populate('saved')
     res.send(user)
 }
 const getInstructors = async (req,res) =>{
@@ -111,6 +112,35 @@ const approveInstructor = async(req,res) => {
             
         }
     }
+
+const saveCourse = async (req,res) => {
+    try {
+        const course = await Course.findById(req.body.course)
+        const user = await User.findById(req.body.user)
+        var exist = false
+        if (user.saved.length) {   
+            for (var i =0 ; i < user.saved.length ; i++){
+                if (user.saved[i]==req.body.course){
+                    exist = true
+                }
+            }
+        }
+        console.log(exist)
+        if (exist) {
+            res.status(400).send('course already saved')
+        } else {
+            await user.saved.push(course._id)
+            await user.save()
+            res.send('course saved')
+        }
+        
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
+    
+}
+
 module.exports = {
     updateUser,
     deleteUser,
@@ -119,4 +149,5 @@ module.exports = {
     getStudents,
     updateProfilePic,
     approveInstructor,
+    saveCourse,
 }

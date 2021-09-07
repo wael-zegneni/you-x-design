@@ -42,11 +42,11 @@ const Landing = () => {
   //   setliveSession(res.data[0])
 
   // }, [])
-  useEffect(() => {
-    if (!auth.isAuthenticated) {
-      history.push("/login");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!auth.isAuthenticated) {
+  //     history.push("/login");
+  //   }
+  // }, []);
   useEffect(async () => {
     const res = await axios.get("api/v1/workshop/");
     const res2 = await axios.get("api/v1/workshop/livesession");
