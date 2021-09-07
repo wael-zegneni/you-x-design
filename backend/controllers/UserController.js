@@ -43,6 +43,21 @@ const updateProfilePic = async (req,res)=> {
         res.status(400).send(error)
     }
 }
+const removeProfilePic = async (req,res)=> {
+    try {
+        User.findByIdAndUpdate(req.query.id,{
+            avatar : "public\\uploads\\default.jpg"
+        },function(err,user){
+            if (err) {
+                res.status(400).send(err)
+            } else {
+                res.send('profile picture updated')
+            }
+        })
+    } catch (error) {
+        res.status(400).send(error)
+    }
+}
 const deleteUser = (req,res)=>{
     User.deleteOne({ _id: req.query.id }, function(err) {
         if (!err) {
@@ -150,4 +165,5 @@ module.exports = {
     updateProfilePic,
     approveInstructor,
     saveCourse,
+    removeProfilePic,
 }

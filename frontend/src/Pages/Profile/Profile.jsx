@@ -13,6 +13,8 @@ import {
 import Layout from "../../Components/layout/Layout";
 import Footer from "../../Components/footer/Footer";
 import { AuthContext } from "../../Auth/AuthContext";
+import {useToast} from "@chakra-ui/react"
+import axios from 'axios'
 
 const Profile = () => {
   // const user = {
@@ -22,9 +24,32 @@ const Profile = () => {
   //   email: "wael@gmail.com",
   //   phone: "24445983",
   // };
-  const {auth} = useContext(AuthContext)
+  const {auth, reloadUser} = useContext(AuthContext)
   console.log(auth)
   const user = auth.user
+  const toast = useToast()
+  const handleRemovePhoto = async e => {
+      e.preventDefault();
+      try {
+        const res = await axios.patch(`api/v1/user/removePic?id=${auth.user._id}`)
+        reloadUser(auth.user._id)
+            toast({
+                title: "profile picture removed",
+                status: "success",
+                duration: 9000,
+                isClosable: true,
+            })
+      } catch (error) {
+        console.log(error)
+        toast({
+          title: error,
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+      })
+
+      }
+  }
   return (
     <Layout>
       <Box height="71vh" alignContent="center">
@@ -68,7 +93,7 @@ const Profile = () => {
                 />
                 <Text
                   className="join_upload_text"
-                  ml="6%"
+                  ml="0%"
                   px="6"
                   borderRadius="3xl"
                   py="3"
@@ -79,10 +104,10 @@ const Profile = () => {
                   color="white"
                   _hover={{ color: "white !important" }}
                 >
-                  New Profile Photo
+                  Update Profile Photo
                 </Text>
               </Text>
-              <Text textAlign="center" color="#FCC509" cursor="pointer" fontSize="sm" mr="5px" fontWeight="600" my="3">
+              <Text textAlign="center" color="#FCC509" cursor="pointer" fontSize="sm" mr="5px" fontWeight="600" my="3" onClick={handleRemovePhoto}>
                 Remove Profile Photo
               </Text>
             </Box>

@@ -26,7 +26,24 @@ const AuthContextProvider = ({children}) => {
                 setAuth({error : error.response.data.message, isLogginIn: false, user: null, token: null, isAuthenticated: false})
             }
         }
-        
+        // const reloadUser = async() => {
+        //     try {
+        //         await loadUser()
+        //         const res = axios.get(`/api/v1/user?id=${auth.user._id}`)
+        //         setAuth({...auth, user: res.data})
+        //     } catch (error) {
+        //         console.log(error)
+        //     }
+        // }
+        const reloadUser = async (id)=>{
+            try {
+                const res = await axios.get(`/api/v1/user?id=${id}`)
+                setAuth({...auth, user: res.data})
+            } catch (error) {
+                console.log(error)
+            }
+            
+        }
         const loadUser = async () => {
             setHeaderToken();
             setAuth({isLogginIn: true})
@@ -51,7 +68,7 @@ const AuthContextProvider = ({children}) => {
     }
 
     return(
-    <AuthContext.Provider value ={{auth, login, loadUser, signout}}>
+    <AuthContext.Provider value ={{auth, login, loadUser, signout, reloadUser}}>
         {children}
     </AuthContext.Provider>
 
