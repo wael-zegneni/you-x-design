@@ -69,8 +69,13 @@ const deleteUser = (req,res)=>{
     });
 }
 const findUserById = async (req,res)=>{
-    const user = await User.findById(req.query.id).populate('saved')
+    try {
+        const user = await User.findById(req.query.id).populate({path : 'saved', populate : { path: 'instructor'}})
     res.send(user)
+    } catch (error) {
+        console.log(error)
+    }
+    
 }
 const getInstructors = async (req,res) =>{
     const results = {}

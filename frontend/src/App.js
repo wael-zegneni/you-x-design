@@ -11,6 +11,7 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from './Auth/AuthContext';
 import Candidate from "./Components/candidate/Candidate";
 import AllCourses from "./Pages/All-courses/AllCourses";
+import Saved from "./Pages/Saved-courses/Saved"
 
 function App() {
   const {pathname} = useLocation()
@@ -32,7 +33,7 @@ function App() {
           <PrivateRoute exact path ="/dashboard" component={Landing} />
           <Route exact path="/allcourses" component={AllCourses}/>
           <PrivateRoute exact path="/profile" component={Profile} />
-
+          <Route exact path="/savedcourses" component={Saved}/>
         </Switch>
       </>
   );
