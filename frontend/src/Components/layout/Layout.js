@@ -9,7 +9,6 @@ import {
   VStack,
   Icon,
   useColorModeValue,
-  Link,
   Drawer,
   DrawerContent,
   Text,
@@ -41,12 +40,13 @@ import {FaComment } from 'react-icons/fa';
 
 import Navbar from '../navbar/Navbar';
 
+import {Link} from 'react-router-dom'
 
 const LinkItems = [
-  { name: 'DashBoard', icon: FiHome },
-  { name: 'Saved', icon: FiBookmark },
-  { name: 'Settings', icon: FiSettings },
-  { name: 'Chat', icon: BsChatSquare },
+  { name: 'DashBoard', icon: FiHome, lien: "/dashboard" },
+  { name: 'Saved', icon: FiBookmark, lien: "#" },
+  { name: 'Settings', icon: FiSettings, lien: "#" },
+  { name: 'Chat', icon: BsChatSquare,lin: "#" },
 ];
 
 
@@ -105,7 +105,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
+        <NavItem key={link.name} icon={link.icon} lien={link.lien}>
           {link.name}
         </NavItem>
       ))}
@@ -113,10 +113,10 @@ const SidebarContent = ({ onClose, ...rest }) => {
   );
 };
 
-const NavItem = ({ icon, children, ...rest }) => {
+const NavItem = ({ icon, children,lien, ...rest }) => {
   const { pathname } = useLocation()
   return (
-    <Link href="#" style={{ textDecoration: 'none' }}>
+    <Link to={lien} style={{ textDecoration: 'none' }}>
       <Flex
         align="center"
         p="4"
