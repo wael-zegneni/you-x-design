@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./profile.css";
 import {
   Heading,
@@ -13,43 +13,48 @@ import {
 import Layout from "../../Components/layout/Layout";
 import Footer from "../../Components/footer/Footer";
 import { AuthContext } from "../../Auth/AuthContext";
-import {useToast} from "@chakra-ui/react"
-import axios from 'axios'
+import { useToast } from "@chakra-ui/react";
+import axios from "axios";
 
 const Profile = () => {
-  // const user = {
-  //   avatar:
-  //     "https://pyxis.nymag.com/v1/imgs/3c3/54b/d6e10a19a66822da8bc30bef7b37b3b2f7-obama-interview-lede.2x.h600.w512.jpg",
-  //   userName: "wael",
-  //   email: "wael@gmail.com",
-  //   phone: "24445983",
-  // };
-  const {auth, reloadUser} = useContext(AuthContext)
-  console.log(auth)
-  const user = auth.user
-  const toast = useToast()
-  const handleRemovePhoto = async e => {
-      e.preventDefault();
-      try {
-        const res = await axios.patch(`api/v1/user/removePic?id=${auth.user._id}`)
-        reloadUser(auth.user._id)
-            toast({
-                title: "profile picture removed",
-                status: "success",
-                duration: 9000,
-                isClosable: true,
-            })
-      } catch (error) {
-        console.log(error)
-        toast({
-          title: error,
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-      })
+  const [avatared, setavatared] = useState(false);
+  console.log(avatared);
 
-      }
+  const { auth, reloadUser } = useContext(AuthContext);
+  const user = auth.user;
+  const toast = useToast();
+  const handleRemovePhoto = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.patch(
+        `api/v1/user/removePic?id=${auth.user._id}`
+      );
+      reloadUser(auth.user._id);
+      toast({
+        title: "profile picture removed",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: error,
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
+  };
+
+
+  const handleSubmit = async ()  => {
+    const res = await axios.patch(
+      `api/v1/user/updatepic?id=${user._id}`
+    )
   }
+
+
   return (
     <Layout>
       <Box height="71vh" alignContent="center">
@@ -72,42 +77,73 @@ const Profile = () => {
               alt="profile"
             />{" "}
             <Box mt="3">
-              <Text width='14em' color="white" height="78px">
-                <input
-                  color="white"
-                  className="join_upload_input"
-                  type="file"
-                  style={{
-                    position: "relative",
-                    top: "39px",
-                    width: "227px",
-                    left: "-44px",
-                    cursor: "pointer",
-                    opacity: "0",
-                  }}
-                  position="relative"
-                  top="15px"
-                  accept="image/*"
-                  autoComplete="off"
-                  name="avatar"
-                />
-                <Text
-                  className="join_upload_text"
-                  ml="0%"
-                  px="6"
-                  borderRadius="3xl"
-                  py="3"
-                  fontSize="l"
-                  width="max-content"
-                  backgroundColor="#FCC509"
-                  fontWeight="bold"
-                  color="white"
-                  _hover={{ color: "white !important" }}
-                >
-                  Update Profile Photo
-                </Text>
-              </Text>
-              <Text textAlign="center" color="#FCC509" cursor="pointer" fontSize="sm" mr="5px" fontWeight="600" my="3" onClick={handleRemovePhoto}>
+              <Box width="14em" color="white" height="78px">
+                <form enctype="multipart/form-data" onSubmit={handleSubmit}>
+                  <input
+                    onChange={(e) => setavatared(true)}
+                    color="white"
+                    className="join_upload_input"
+                    type="file"
+                    style={{
+                      position: "relative",
+                      top: "39px",
+                      width: "227px",
+                      left: "-44px",
+                      cursor: "pointer",
+                      opacity: "0",
+                      display: avatared && "none",
+                    }}
+                    position="relative"
+                    top="15px"
+                    accept="image/*"
+                    autoComplete="off"
+                    name="avatar"
+                  />
+
+                  <Text
+                    onChange={(e) => console.log(e.target.files)}
+                    className="join_upload_text"
+                    ml="0%"
+                    px="6"
+                    borderRadius="3xl"
+                    py="3"
+                    fontSize="l"
+                    width="max-content"
+                    backgroundColor="#FCC509"
+                    fontWeight="bold"
+                    color="white"
+                    _hover={{ color: "white !important" }}
+                    style={{ display: avatared ? "none" : "block" }}
+                  >
+                    Update Profile Photo
+                  </Text>
+                  <br />
+                  <button
+                    type="submit"
+                    style={{
+                      color: "#FCC509",
+                      display: avatared ? "block" : "none",
+                      fontWeight: "bolder",
+                      textAlign: "center",
+                      width: "100%",
+                    }}
+                    
+                  >
+                    Confirm
+                  </button>
+                </form>
+              </Box>
+              <Text
+                textAlign="center"
+                style={{ display: avatared ? "none" : "block" }}
+                color="#FCC509"
+                cursor="pointer"
+                fontSize="sm"
+                mr="5px"
+                fontWeight="600"
+                my="3"
+                onClick={handleRemovePhoto}
+              >
                 Remove Profile Photo
               </Text>
             </Box>
@@ -139,7 +175,7 @@ const Profile = () => {
               >
                 Username:
               </Box>
-              <Box ml="25px" w="100%" h="10" fontSize="xl">
+              <Box w="100%" h="10" fontSize="xl">
                 {user.userName}
               </Box>
               <Box
@@ -151,7 +187,7 @@ const Profile = () => {
               >
                 Email:
               </Box>
-              <Box ml="25px" w="100%" h="10" fontSize="xl">
+              <Box w="100%" h="10" fontSize="xl">
                 {user.email}
               </Box>
               <Box
@@ -163,7 +199,7 @@ const Profile = () => {
               >
                 Mobile Number:
               </Box>
-              <Box ml="25px" w="100%" h="10" fontSize="xl">
+              <Box w="100%" h="10" fontSize="xl">
                 {user.phone}
               </Box>
             </Grid>

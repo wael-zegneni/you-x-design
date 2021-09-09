@@ -9,6 +9,7 @@ import Login from "./Components/login/Login";
 import Landing from "./Pages/Landing/Landing";
 import { useContext, useEffect } from "react";
 import { AuthContext } from './Auth/AuthContext';
+import CourseDetails from "./Pages/CourseDetails/CourseDetails";
 import Candidate from "./Components/candidate/Candidate";
 import AllCourses from "./Pages/All-courses/AllCourses";
 import Saved from "./Pages/Saved-courses/Saved"
@@ -34,6 +35,7 @@ function App() {
           <Route exact path="/allcourses" component={AllCourses}/>
           <PrivateRoute exact path="/profile" component={Profile} />
           <Route exact path="/savedcourses" component={Saved}/>
+          <Route exact path="/course" component={CourseDetails}/>
         </Switch>
       </>
   );
