@@ -17,10 +17,14 @@ import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 
 const Profile = () => {
-  const [avatared, setavatared] = useState(false);
+  const [avatared, setavatared] = useState();
   console.log(avatared);
-
+  
   const { auth, reloadUser } = useContext(AuthContext);
+  const [photo, setphoto] = useState({
+    avatar: "",
+  });
+  console.log(photo)
   const user = auth.user;
   const toast = useToast();
   const handleRemovePhoto = async (e) => {
@@ -47,12 +51,44 @@ const Profile = () => {
     }
   };
 
-
-  const handleSubmit = async ()  => {
-    const res = await axios.patch(
-      `api/v1/user/updatepic?id=${user._id}`
-    )
+  const handlechange = async e => {
+    e.preventDefault()
+    setavatared(true)
+    console.log(e.target.files[0])
+    setphoto({avatar : e.target.files[0]})
   }
+  const handleSubmit = async e  => {
+    e.preventDefault();
+    const formData = new FormData()
+        Object.keys(photo).map(key => formData.append(key, photo[key]))
+        for (const [key, value] of formData.entries()) {
+          console.log('key:'+ key + 'value' + value )
+        }
+    try {
+      const res = await axios.patch(
+        `api/v1/user/updatepic?id=${user._id}`,formData
+      )
+      reloadUser(auth.user._id);
+      setavatared(false)
+      toast({
+        title: "photo updated !",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      })
+    } catch (error) {
+      toast({
+        title: error,
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      })
+      console.log(error)
+    }
+    
+  }
+
+  
 
 
   return (
@@ -80,7 +116,7 @@ const Profile = () => {
               <Box width="14em" color="white" height="78px">
                 <form enctype="multipart/form-data" onSubmit={handleSubmit}>
                   <input
-                    onChange={(e) => setavatared(true)}
+                    onChange={handlechange}
                     color="white"
                     className="join_upload_input"
                     type="file"
@@ -101,7 +137,7 @@ const Profile = () => {
                   />
 
                   <Text
-                    onChange={(e) => console.log(e.target.files)}
+                    onChange={(e) => console.log('e.target.files[0]')}
                     className="join_upload_text"
                     ml="0%"
                     px="6"
