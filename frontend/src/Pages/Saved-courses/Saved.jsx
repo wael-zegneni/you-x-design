@@ -24,9 +24,11 @@ const Saved = () =>{
     const [courseList, setCourseList] = useState([])
     const [isLoading, setIsLoading] = useState(false)
 
-    const getCourses = async (page = 1) => {
+    const getCourses = async () => {
+        console.log(auth)
         setIsLoading(true)
-        const res = await axios.get(`/api/v1/user?id=${auth.user._id}`)
+        const res = await axios.get(`api/v1/user?id=${auth.user._id}`)
+        console.log(res.data)
         setCourseList(res.data.saved)
         setIsLoading(false)
     }
@@ -41,6 +43,7 @@ const Saved = () =>{
             <Box display="flex" justifyContent="flex-end" my="20px" mt="40px" py="50px">
                 <Flex alignItems="Left" justifyContent="space-between" width="95%" >
                     <Text fontSize="2.6vw" fontWeight="bold" >
+                    
                         My saved courses
                     </Text>                  
                 </Flex>
