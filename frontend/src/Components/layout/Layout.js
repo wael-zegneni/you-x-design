@@ -44,7 +44,7 @@ import {Link} from 'react-router-dom'
 
 const LinkItems = [
   { name: 'DashBoard', icon: FiHome, lien: "/dashboard" },
-  { name: 'Saved', icon: FiBookmark, lien: "#" },
+  { name: 'Saved', icon: FiBookmark, lien: "/savedcourses" },
   { name: 'Settings', icon: FiSettings, lien: "#" },
   { name: 'Chat', icon: BsChatSquare,lin: "#" },
 ];

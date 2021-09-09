@@ -34,8 +34,8 @@ function App() {
           <PrivateRoute exact path ="/dashboard" component={Landing} />
           <Route exact path="/allcourses" component={AllCourses}/>
           <PrivateRoute exact path="/profile" component={Profile} />
-          <Route exact path="/savedcourses" component={Saved}/>
           <Route exact path="/course" component={CourseDetails}/>
+          <PrivateRoute exact path="/savedcourses" component={Saved}/>
         </Switch>
       </>
   );
