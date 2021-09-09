@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   IconButton,
   Avatar,
@@ -41,22 +41,39 @@ import {FaComment } from 'react-icons/fa';
 import Navbar from '../navbar/Navbar';
 
 import {Link} from 'react-router-dom'
+import {AuthContext} from '../../Auth/AuthContext'
 
-const LinkItems = [
-  { name: 'DashBoard', icon: FiHome, lien: "/dashboard" },
-  { name: 'Saved', icon: FiBookmark, lien: "/savedcourses" },
-  { name: 'Settings', icon: FiSettings, lien: "#" },
-  { name: 'Chat', icon: BsChatSquare,lin: "#" },
-];
+let LinkItems = []
 
 
 
 export default function Layout({
   children,
 }) {
+  
+const {auth} = useContext(AuthContext)
+
+if (auth.user.role == 'admin') {
+  LinkItems = [
+  { name: 'DashBoard', icon: FiHome, lien: "/dashboard" },
+  { name: 'Instructors', icon: BsChatSquare,lien: "#" },  
+  { name: 'Students', icon: BsChatSquare,lien: "#" },
+  { name: 'Courses', icon: BsChatSquare,lien: "/allcourses" },
+  { name: 'Settings', icon: FiSettings, lien: "#" },
+  { name: 'Chat', icon: BsChatSquare,lien: "#" },
+];
+}else{
+  LinkItems = [
+    { name: 'DashBoard', icon: FiHome, lien: "/dashboard" },
+    { name: 'Saved', icon: FiBookmark, lien: "/savedcourses" },
+    { name: 'Settings', icon: FiSettings, lien: "#" },
+    { name: 'Chat', icon: BsChatSquare,lien: "#" },
+  ];
+} 
 
   const {pathname} = useLocation()
   const { isOpen, onClose } = useDisclosure();
+  
   return (
     <Box minH="100vh" bg={'#FEFEFE'}>
       <SidebarContent
