@@ -31,12 +31,13 @@ import {
   FiBell,
   FiChevronDown,
 } from 'react-icons/fi';
+import{ImBooks} from "react-icons/im";
 
 import { useLocation } from 'react-router';
 
 import { BsChatSquare } from "react-icons/bs"
 
-import {FaComment } from 'react-icons/fa';
+import {FaComment, FaUserTie,FaUsers } from 'react-icons/fa';
 
 import Navbar from '../navbar/Navbar';
 
@@ -56,11 +57,12 @@ const {auth} = useContext(AuthContext)
 if (auth.user.role == 'admin') {
   LinkItems = [
   { name: 'DashBoard', icon: FiHome, lien: "/dashboard" },
-  { name: 'Instructors', icon: BsChatSquare,lien: "#" },  
-  { name: 'Students', icon: BsChatSquare,lien: "#" },
-  { name: 'Courses', icon: BsChatSquare,lien: "/allcourses" },
+  { name: 'Instructors', icon: FaUserTie,lien: "#" },  
+  { name: 'Students', icon: FaUsers,lien: "#" },
+  { name: 'Courses', icon: ImBooks,lien: "/allcourses" },
   { name: 'Settings', icon: FiSettings, lien: "#" },
   { name: 'Chat', icon: BsChatSquare,lien: "#" },
+  
 ];
 }else{
   LinkItems = [
