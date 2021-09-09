@@ -84,13 +84,15 @@ const getInstructors = async (req,res) =>{
     console.log(results)
     res.send(results)
 }
-const getStudents = async(req,res) =>{
-    const results = {} 
-    results.total = await User.countDocuments({role : "student"})
-    results.students = await User.find({role : "student"})
-    console.log(results)
-    res.send(results)
-}
+// const getStudents = async(req,res) =>{
+//     const results = {} 
+//     results.total = await User.countDocuments({role : "student"})
+//     console.log(res.startIndex)
+//     results.paginatedResults = res.paginatedResults
+//     results.paginatedResults.results = await User.find({role : "student"}).limit(15).skip(res.startIndex).exec()
+//     console.log(results)
+//     res.send(results)
+// }
 const approveInstructor = async(req,res) => {
         candidate = await Candidate.findById(req.body.id)
         console.log(candidate)
@@ -166,7 +168,7 @@ module.exports = {
     deleteUser,
     findUserById,
     getInstructors,
-    getStudents,
+    // getStudents,
     updateProfilePic,
     approveInstructor,
     saveCourse,
