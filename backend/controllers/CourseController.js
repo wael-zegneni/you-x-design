@@ -52,8 +52,37 @@ const getCoursesByDate = async(req,res)=>{
 const getCourseById = async (req,res) => {
 
     try {
-        const course = await Course.findOne({ _id : req.query.id })
-        res.send(course)
+        let results ={}
+        const course = await Course.findOne({ _id : req.query.id }).populate('ratings').populate('instructor')
+        let five = 0;
+        let four= 0;
+        let three = 0;
+        let two = 0;
+        let one = 0;
+        if (course.ratings.length){
+            let ratings = course.ratings
+            for (i in ratings){
+                if (ratings[i].rating == 5) 
+                    five++
+                 else if(ratings[i].rating== 4) 
+                    four ++
+                else if(ratings[i].rating==3)
+                    three++
+                else if(ratings[i].rating==2)
+                    two++
+                else if(ratings[i].rating==1)
+                    one++
+            }
+        }
+        results.totalRatings = course.ratings.length
+        results.one = one;
+        results.two=two;
+        results.three=three;
+        results.four=four;
+        results.five =five;
+        results.average = course.avgRating
+        results.course = course
+        res.send(results)
     } catch (error) {
         console.log(error)
         res.status(400).send(error)
