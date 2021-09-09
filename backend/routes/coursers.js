@@ -21,12 +21,10 @@ router.post('/rate',addRating)
 router.post('/add',uploadCourse.single('thumbnail'),addCourse)
 router.patch('/update',uploadCourse.single('thumbnail'),updateCourse)
 router.delete('/delete',deleteCourse)
-router.get('/courses',paginatedResults(Course,'instructor', 6), (req, res) => {
+router.get('/courses',paginatedResults(Course, 6, 1), (req, res) => {
   
     console.log('paginatedresults ' + res.paginatedResults)
-    res.send(res.paginatedResults)
-  
-    
+    res.send(res.paginatedResults)    
   })
   
 module.exports = router
