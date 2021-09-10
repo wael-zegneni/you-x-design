@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContex, useState } from "react";
 import {
     Heading,
     Flex,
@@ -15,27 +15,39 @@ import Navbar from "../../Components/navbar/Navbar";
 import { AuthContext } from "../../Auth/AuthContext";
 import { useToast } from "@chakra-ui/react"
 import axios from 'axios'
-import {BiBookmark} from 'react-icons/bi'
+import { BsBookmark } from 'react-icons/bs'
+import { BsBookmarkFill } from "react-icons/bs";
 
 const CourseDescription = ({ course }) => {
 
+    const [saved, setSaved] = useState(true)
+
+    const handleSaved = () =>{
+        setSaved(!saved)
+        // request in here !! 
+    }
 
     return (
-        <Flex px="100"  bg="#FCFCFC" justifyContent="space-between" flexWrap="wrap" py='5'>
-            <Box flex="0.4" height="350px" bg="blue" borderRadius="15px">
-                <img style={{ height: '100%', objectFit: 'cover', borderRadius:'15px'}} src={course.thumbnail} />
+        <Flex px="100" bg="#FCFCFC" justifyContent="space-between" flexWrap="wrap" py='5'>
+            <Box flex="0.5" height="350px" borderRadius="15px">
+                <img style={{ height: '100%', objectFit: 'cover', borderRadius: '15px' }} src={course.thumbnail} />
             </Box>
             <Box flex="0.5" mt="5">
                 <Flex alignItems="flex-start" justifyContent="space-between">
-                    <Text flex='0.9' fontSize="4xl" lineHeight="1.1" fontWeight="bolder">
+                    <Text flex='0.9' fontSize="2vw" lineHeight="1.1" fontWeight="bolder">
                         {course.title}
                     </Text>
-                    <BiBookmark style={{marginTop:'10px'}} fontSize="35px" flex="0.1"/>
+                    {
+                        saved ?
+                            <BsBookmark cursor="pointer" style={{ marginTop: '10px' }} fontSize="35px" flex="0.1" onClick = {handleSaved} />
+                            :
+                            <BsBookmarkFill cursor="pointer" style={{ marginTop: '10px' }} fontSize="35px" flex="0.1" onClick = {handleSaved}/>
+                    }
                 </Flex>
-                <Text fontSize="lg" pt='2' color="#2167B8" fontWeight="bold">
+                <Text fontSize="1.1vw" pt='2' color="#2167B8" fontWeight="bold">
                     {course.type}
                 </Text>
-                <Text pt='6' fontWeight="600" lineHeight="2" fontSize="xl">
+                <Text pt='6' fontWeight="500" lineHeight="1.8" fontSize="1.3vw">
                     {course.description}
                 </Text>
             </Box>

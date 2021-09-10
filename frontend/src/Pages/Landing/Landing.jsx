@@ -91,6 +91,14 @@ const Landing = () => {
           <LiveSession liveSession={liveSession} />
           <WorkshopSwiper workshopList={workshopList} />
         </Flex>
+        <Text color="#072446"
+            fontSize="3xl"
+            fontWeight="bolder"
+            ml="1vw"
+            mb="15px"
+            mt="1em" >
+                New Course
+            </Text>
         <CourseSwiper courseList={newCourseList} />
         <Flex alignItems="center" justifyContent="space-between" my="20px" mt="3em">
           <Text
