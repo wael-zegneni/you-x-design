@@ -38,6 +38,7 @@ const Home = () => {
 
   // }, [])
 
+
   useEffect(async () => {
     const res = await axios.get("api/v1/workshop/");
     console.log(res.data);

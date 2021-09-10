@@ -39,6 +39,7 @@ function App() {
           <PrivateRoute exact path="/profile" component={Profile} />
           <Route exact path="/course" component={CourseDetails}/>
           <PrivateRoute exact path="/savedcourses" component={Saved}/>
+          <Route path = "/course/:id" render={props => <CourseDetails id={props.match.params.id}/>}/>
         </Switch>
       </>
   );

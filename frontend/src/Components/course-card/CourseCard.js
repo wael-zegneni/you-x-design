@@ -1,23 +1,25 @@
-import React , {useEffect, useState }from 'react'
+import React, { useEffect, useState  } from 'react'
+import { Link } from 'react-router-dom'
 import { Box, Center, Heading, Text, Stack, Avatar, useColorModeValue, Flex } from '@chakra-ui/react';
 import './courseCard.css'
 import articleLogo from '../../Assets/Images/articleLogo.png'
 import workshopLogo from '../../Assets/Images/workshopLogo.png'
 import moment from 'moment'
 
-const CourseCard = ({cardData, swiper}) => {
-    
-    
-    const [imgUrl,setimgUrl]=useState()
-    useEffect( async () => {
-        setimgUrl (cardData.thumbnail.replace(/\\/g, "/"))
-        
-      }, [])
-      
+const CourseCard = ({ cardData, swiper }) => {
+
+
+    const [imgUrl, setimgUrl] = useState()
+    useEffect(async () => {
+        setimgUrl(cardData.thumbnail.replace(/\\/g, "/"))
+
+    }, [])
+
+
     return (
-        <Box py={6} width={swiper ? "90%" : '30%'}  _hover={{ transform: "translateY(-10px)" }} ml="auto" mr="auto" transition="0.3s">
-            <Box   bg={useColorModeValue('white', 'gray.900')} boxShadow={'xl'} rounded={'xl'} p={6} overflow={'hidden'}>
-                <Box h={'18vw'} overflow={"hidden"} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'} style={{backgroundImage: `url(${imgUrl})`,backgroundSize:'cover'  , backgroundRepeat:'no-repeat'}}>
+        <Box py={6} width={swiper ? "90%" : '30%'} _hover={{ transform: "translateY(-10px)" }} ml="auto" mr="auto" transition="0.3s">
+            <Box bg={useColorModeValue('white', 'gray.900')} boxShadow={'xl'} rounded={'xl'} p={6} overflow={'hidden'}>
+                <Box h={'18vw'} overflow={"hidden"} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'} style={{ backgroundImage: `url(${imgUrl})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                     {/* <img src={cardData.thumbnail} layout={'cover'} alt='img' style={{backgroundSize:"cover"}}  /> */}
                     {/* 'https://lh3.googleusercontent.com/proxy/bZ-B6bR6kqpy0Hl4NTm7ekPwXT96HRE81rHz1WGt1dEJ-ttqyhxTe1SRamNo9IZsF4usF17ER-83ojGXPDHhz1nvJxaeXY7osSIiegT2F7_6ybFjKQESoS8VplVv' */}
                 </Box>
@@ -34,7 +36,7 @@ const CourseCard = ({cardData, swiper}) => {
                                         <center>
                                             <img src={articleLogo} alt="articleLogo" />
                                             <Text fontFamily={'montserrat'} fontSize={'xs'} mt='5px' className="courseType__text">Article</Text>
-                                        </center> 
+                                        </center>
                                     </div>
                                     :
                                     <div className="courseType">
@@ -51,7 +53,7 @@ const CourseCard = ({cardData, swiper}) => {
                     <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
                         <Avatar
                             // src={cardData.instructor.instructorPicture}
-                            src = {cardData.instructor.avatar}
+                            src={cardData.instructor.avatar}
                             alt={'Author'}
                         />
                         <Stack direction={'column'} spacing={0} fontSize={'sm'}>
@@ -62,9 +64,12 @@ const CourseCard = ({cardData, swiper}) => {
                         </Stack>
                     </Stack>
 
-                    <Flex mr='10px' mb='7px' className='view-details' cursor='pointer'>
-                        View details <span style={{ marginLeft: 10 }}></span>
-                    </Flex>
+                    <Link to={`course/${cardData._id}`}>
+                        <Flex mr='10px' mb='7px' className='view-details' cursor='pointer'>
+                            View details <span style={{ marginLeft: 10 }}></span>
+                        </Flex>
+                    </Link>
+
                 </Flex>
 
             </Box>
@@ -72,8 +77,8 @@ const CourseCard = ({cardData, swiper}) => {
 
     )
 }
-CourseCard.defaultProps={
-    cardData : {
+CourseCard.defaultProps = {
+    cardData: {
         thumbnail: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
         courseName: 'Business and marketing outcomes',
         courseType: 'Workshop',
