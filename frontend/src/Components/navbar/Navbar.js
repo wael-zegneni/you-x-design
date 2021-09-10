@@ -29,7 +29,6 @@ import './navbar.css'
 import { Button } from '@chakra-ui/react';
 
 const Navbar = () => {
-    console.log("not working ???")
     const { auth, signout } = useContext(AuthContext)
     return (
         <Box className="navbar" width="100%" py="20px" position='relative' style={{ zIndex: 10 }}>

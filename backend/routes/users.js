@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const {uploadAvatar} = require('../middlewares/fileStorageEngine')
+const {paginatedResults} = require('../middlewares/pagination')
+const User = require('../models/User')
 
 
 const {
@@ -8,7 +10,7 @@ const {
     deleteUser,
     findUserById,
     getInstructors,
-    getStudents,
+    // getStudents,
     updateProfilePic,
     approveInstructor,
     saveCourse,
@@ -21,7 +23,14 @@ router.delete('/delete', deleteUser);
 router.get('/instructors', getInstructors)
 router.patch('/update', updateUser)
 router.patch('/updatepic',uploadAvatar.single('avatar') , updateProfilePic)
-router.get('/students', getStudents)
+router.get('/students', paginatedResults(User,24,3), (req, res) => {  
+    console.log('paginatedresults ' + res.paginatedResults)
+    res.send(res.paginatedResults)  
+    })
+router.get('/instructorspag', paginatedResults(User,15,4), (req, res) => {  
+    console.log('paginatedresults ' + res.paginatedResults)
+    res.send(res.paginatedResults)  
+    })
 router.post('/approve', approveInstructor)
 router.post('/saveCourse',saveCourse)
 router.patch('/removePic', removeProfilePic)
