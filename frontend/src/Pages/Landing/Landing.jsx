@@ -31,7 +31,7 @@ const Landing = () => {
   const { auth } = useContext(AuthContext);
   const [newCourseList, setnewCourseList ] = useState([]);
   const [candidateList, setcandidateList] = useState([]);
-  const [insights, setinsights] = useState();
+  const [insights, setinsights] = useState({});
 
   const history = useHistory();
 
@@ -81,6 +81,7 @@ const Landing = () => {
   // }, []);
   console.log(auth);
   console.log(candidateList)
+  console.log(insights)
   if (auth.user.role=='admin')
   return(
   <Layout overflowX="hidden" >
