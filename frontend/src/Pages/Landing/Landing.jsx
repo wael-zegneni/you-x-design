@@ -95,9 +95,15 @@ const Landing = () => {
             Insights
           </Text>
   <Flex justify="space-between" mt="3em">
+    {insights.students ? (
     <InsightCard type='student' count={insights.students}/>
+    ):(<InsightCard type='student' count = '0' />)}
+    {insights.instructors ? (
     <InsightCard type='instructor' count={insights.instructors}/>
+    ):(<InsightCard type='instructor' count = '0' />)}
+    {insights.courses ? (
     <InsightCard type='course' count={insights.courses}/>
+    ):(<InsightCard type='course' count = '0' />)}
     </Flex>
           
   <CandidateSwiper candidateList={candidateList}/>
