@@ -28,7 +28,8 @@ const addCandidate = async (req,res) => {
             facebook : req.body.facebook,
             linkedin : req.body.linkedin,
             instagram : req.body.instagram,
-            cv: req.file.path
+            cv: req.file.path,
+            date : Date.now()
         })
         await candidate.save();
         res.send(candidate)
@@ -49,7 +50,7 @@ const getCandidateById = async (req,res) => {
     }
 }
 const getCandidates = async(req,res) => {
-    candidates = await Candidate.find()
+    candidates = await Candidate.find().sort('date')
     console.log("all candidates " + candidates)
     if (candidates) {
         res.send(candidates)

@@ -19,15 +19,19 @@ import Welcome from "../../Components/welcome/Welcome";
 import ProfileAvatar from "../../Components/profile-avatar/ProfileAvatar";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import CandidateSwiper from '../../Components/candidate-swiper/CandidateSwiper'
+import InsightCard from "../../insights-card/InsightsCard";
 
 const Landing = () => {
   const [workshopList, setworkshopList] = useState([]);
   const [liveSession, setliveSession] = useState();
   const [courseList, setcourseList] = useState([]);
   const [InstructorList, setInstructorList] = useState([]);
-  const [testimonialList, settestimonialList] = useState([]);
+  // const [testimonialList, settestimonialList] = useState([]);
   const { auth } = useContext(AuthContext);
   const [newCourseList, setnewCourseList ] = useState([]);
+  const [candidateList, setcandidateList] = useState([]);
+  const [insights, setinsights] = useState();
 
   const history = useHistory();
 
@@ -36,17 +40,11 @@ const Landing = () => {
     console.log(res.data);
     setworkshopList(res.data);
   }, []);
-  // useEffect(async () => {
-  //   const res = await axios.get('api/v1/workshop/livesession')
-  //   console.log (res.data[0])
-  //   setliveSession(res.data[0])
-
-  // }, [])
-  // useEffect(() => {
-  //   if (!auth.isAuthenticated) {
-  //     history.push("/login");
-  //   }
-  // }, []);
+  useEffect(async () => {
+    const res = await axios.get("api/v1/candidate/all");
+    console.log(res.data);
+    setcandidateList(res.data);
+  }, []);
   useEffect(async () => {
     const res = await axios.get("api/v1/workshop/");
     const res2 = await axios.get("api/v1/workshop/livesession");
@@ -74,11 +72,60 @@ const Landing = () => {
     setInstructorList(res.data.instructors);
   }, []);
   useEffect(async () => {
-    const res = await axios.get("api/v1/comment/testimonials");
-    settestimonialList(res.data);
+    const res = await axios.get("api/v1/user/insights");
+    setinsights(res.data);
   }, []);
+  // useEffect(async () => {
+  //   const res = await axios.get("api/v1/comment/testimonials");
+  //   settestimonialList(res.data);
+  // }, []);
   console.log(auth);
-
+  console.log(candidateList)
+  if (auth.user.role=='admin')
+  return(
+  <Layout overflowX="hidden" >
+  <Box ml="2.3vw" overflowX="hidden">
+  <Text
+            color="#072446"
+            fontSize="3xl"
+            fontWeight="bolder"
+            ml="1vw"
+            mt="1em"
+          >
+            Insights
+          </Text>
+  <Flex justify="space-between" mt="3em">
+    <InsightCard type='student' count={insights.students}/>
+    <InsightCard type='instructor' count={insights.instructors}/>
+    <InsightCard type='course' count={insights.courses}/>
+    </Flex>
+          
+  <CandidateSwiper candidateList={candidateList}/>
+    <Flex justify="space-between" mt="3em">
+      <LiveSession liveSession={liveSession} />
+      <WorkshopSwiper workshopList={workshopList} />
+    </Flex>
+    
+    <CourseSwiper courseList={newCourseList} />
+    <Flex alignItems="center" justifyContent="space-between" my="20px" mt="3em">
+      <Text
+        color="#072446"
+        fontSize="3xl"
+        fontWeight="bolder"
+        ml="1vw"
+        mt="1em"
+      >
+        Our Most Popular Courses
+      </Text>
+      <FilterBy />
+    </Flex>
+    <CourseCardList courseList={courseList} />
+  </Box>
+  <Footer style={{ zIndex: 999, width: "100%" }} />
+  
+</Layout>
+)
+  else
   return (
     <Layout overflowX="hidden" >
       {auth.isAuthenticated ? (

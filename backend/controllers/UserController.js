@@ -162,6 +162,19 @@ const saveCourse = async (req,res) => {
     }
     
 }
+const getInsights = async (req,res) => {
+    try {
+        const results = {}
+        results.students = await User.countDocuments({role : 'student'})
+        results.instructors = await User.countDocuments({role : 'instructor'})
+        results.courses = await Course.countDocuments()
+        res.send(results)
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
+
+}
 
 module.exports = {
     updateUser,
@@ -173,4 +186,5 @@ module.exports = {
     approveInstructor,
     saveCourse,
     removeProfilePic,
+    getInsights,
 }
