@@ -20,6 +20,7 @@ import ProfileAvatar from "../../Components/profile-avatar/ProfileAvatar";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import CandidateSwiper from '../../Components/candidate-swiper/CandidateSwiper'
+import InsightCard from "../../insights-card/InsightsCard";
 
 const Landing = () => {
   const [workshopList, setworkshopList] = useState([]);
@@ -30,6 +31,7 @@ const Landing = () => {
   const { auth } = useContext(AuthContext);
   const [newCourseList, setnewCourseList ] = useState([]);
   const [candidateList, setcandidateList] = useState([]);
+  const [insights, setinsights] = useState();
 
   const history = useHistory();
 
@@ -69,6 +71,10 @@ const Landing = () => {
     const res = await axios.get("api/v1/user/instructors/");
     setInstructorList(res.data.instructors);
   }, []);
+  useEffect(async () => {
+    const res = await axios.get("api/v1/user/insights");
+    setinsights(res.data);
+  }, []);
   // useEffect(async () => {
   //   const res = await axios.get("api/v1/comment/testimonials");
   //   settestimonialList(res.data);
@@ -79,11 +85,27 @@ const Landing = () => {
   return(
   <Layout overflowX="hidden" >
   <Box ml="2.3vw" overflowX="hidden">
+  <Text
+            color="#072446"
+            fontSize="3xl"
+            fontWeight="bolder"
+            ml="1vw"
+            mt="1em"
+          >
+            Insights
+          </Text>
+  <Flex justify="space-between" mt="3em">
+    <InsightCard type='student' count={insights.students}/>
+    <InsightCard type='instructor' count={insights.instructors}/>
+    <InsightCard type='course' count={insights.courses}/>
+    </Flex>
+          
+  <CandidateSwiper candidateList={candidateList}/>
     <Flex justify="space-between" mt="3em">
       <LiveSession liveSession={liveSession} />
       <WorkshopSwiper workshopList={workshopList} />
     </Flex>
-    <CandidateSwiper candidateList={candidateList}/>
+    
     <CourseSwiper courseList={newCourseList} />
     <Flex alignItems="center" justifyContent="space-between" my="20px" mt="3em">
       <Text

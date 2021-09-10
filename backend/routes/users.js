@@ -14,7 +14,8 @@ const {
     updateProfilePic,
     approveInstructor,
     saveCourse,
-    removeProfilePic   
+    removeProfilePic,
+    getInsights,
     } = require ( "../controllers/UserController")
 
     
@@ -34,5 +35,6 @@ router.get('/instructorspag', paginatedResults(User,15,4), (req, res) => {
 router.post('/approve', approveInstructor)
 router.post('/saveCourse',saveCourse)
 router.patch('/removePic', removeProfilePic)
+router.get('/insights',getInsights)
 
 module.exports = router
