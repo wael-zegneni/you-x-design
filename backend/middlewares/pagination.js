@@ -39,24 +39,6 @@ exports.paginatedResults = function(model, limit, query){
         }
       }
       try {
-          // if (query == 1){           
-          //   results.results = await model.find().populate('instructor').limit(limit).skip(startIndex).exec()
-          //   results.totalelements = await model.countDocuments()
-          //   results.total = Math.ceil((await model.countDocuments()) / limit)     
-          // } else if(query == 2) {            
-          //   results.results = await model.find().limit(limit).skip(startIndex).exec()
-          //   results.totalelements = await model.countDocuments()
-          //   results.total = Math.ceil((await model.countDocuments()) / limit)
-          // }else if (query ==3 ) {
-          //   results.results = await model.find({role : "student"}).limit(limit).skip(startIndex).exec()
-          //   results.totalelements = await model.countDocuments({role : "student"})
-          //   results.total = Math.ceil((await model.countDocuments({role : "student"})) / limit)
-          // }
-          // else if (query==4){
-          //   results.results = await model.find({role : "instructor"}).limit(limit).skip(startIndex).exec()
-          //   results.totalelements = await model.countDocuments({role : "instructor"})
-          //   results.total = Math.ceil((await model.countDocuments({role : "instructor"})) / limit)
-          // }
           results.limit = limit
           results.page = page
           switch (query) {
