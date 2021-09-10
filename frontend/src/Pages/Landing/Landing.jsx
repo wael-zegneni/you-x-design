@@ -19,17 +19,16 @@ import Welcome from "../../Components/welcome/Welcome";
 import ProfileAvatar from "../../Components/profile-avatar/ProfileAvatar";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import CandidateSwiper from '../../Components/candidate-swiper/CandidateSwiper'
-import InsightCard from "../../insights-card/InsightsCard";
+import CandidateSwiper from "../../Components/candidate-swiper/CandidateSwiper";
+import InsightCard from "../../Components/insights-card/InsightsCard";
 
 const Landing = () => {
   const [workshopList, setworkshopList] = useState([]);
   const [liveSession, setliveSession] = useState();
   const [courseList, setcourseList] = useState([]);
   const [InstructorList, setInstructorList] = useState([]);
-  // const [testimonialList, settestimonialList] = useState([]);
   const { auth } = useContext(AuthContext);
-  const [newCourseList, setnewCourseList ] = useState([]);
+  const [newCourseList, setnewCourseList] = useState([]);
   const [candidateList, setcandidateList] = useState([]);
   const [insights, setinsights] = useState({});
 
@@ -37,12 +36,10 @@ const Landing = () => {
 
   useEffect(async () => {
     const res = await axios.get("api/v1/workshop/");
-    console.log(res.data);
     setworkshopList(res.data);
   }, []);
   useEffect(async () => {
     const res = await axios.get("api/v1/candidate/all");
-    console.log(res.data);
     setcandidateList(res.data);
   }, []);
   useEffect(async () => {
@@ -53,9 +50,6 @@ const Landing = () => {
     });
     setliveSession(res2.data[0]);
     setworkshopList(filtered);
-    // const res = await axios.get('api/v1/workshop/')
-    // console.log (res.data)
-    // setworkshopList (res.data)
   }, []);
 
   useEffect(async () => {
@@ -64,7 +58,7 @@ const Landing = () => {
   }, []);
   useEffect(async () => {
     const res = await axios.get("api/v1/course/new");
-    console.log(res.data)
+    console.log(res.data);
     setnewCourseList(res.data);
   }, []);
   useEffect(async () => {
@@ -75,18 +69,12 @@ const Landing = () => {
     const res = await axios.get("api/v1/user/insights");
     setinsights(res.data);
   }, []);
-  // useEffect(async () => {
-  //   const res = await axios.get("api/v1/comment/testimonials");
-  //   settestimonialList(res.data);
-  // }, []);
-  console.log(auth);
-  console.log(candidateList)
-  console.log(insights)
-  if (auth.user.role=='admin')
-  return(
-  <Layout overflowX="hidden" >
-  <Box ml="2.3vw" overflowX="hidden">
-  <Text
+
+  if (auth.user.role === "admin")
+    return (
+      <Layout overflowX="hidden">
+        <Box ml="2.3vw" overflowX="hidden">
+          <Text
             color="#072446"
             fontSize="3xl"
             fontWeight="bolder"
@@ -95,94 +83,98 @@ const Landing = () => {
           >
             Insights
           </Text>
-  <Flex justify="space-between" mt="3em">
-    {insights.students ? (
-    <InsightCard type='student' count={insights.students}/>
-    ):(<InsightCard type='student' count = '0' />)}
-    {insights.instructors ? (
-    <InsightCard type='instructor' count={insights.instructors}/>
-    ):(<InsightCard type='instructor' count = '0' />)}
-    {insights.courses ? (
-    <InsightCard type='course' count={insights.courses}/>
-    ):(<InsightCard type='course' count = '0' />)}
-    </Flex>
-          
-  <CandidateSwiper candidateList={candidateList}/>
-    <Flex justify="space-between" mt="3em">
-      <LiveSession liveSession={liveSession} />
-      <WorkshopSwiper workshopList={workshopList} />
-    </Flex>
-    
-    <CourseSwiper courseList={newCourseList} />
-    <Flex alignItems="center" justifyContent="space-between" my="20px" mt="3em">
-      <Text
-        color="#072446"
-        fontSize="3xl"
-        fontWeight="bolder"
-        ml="1vw"
-        mt="1em"
-      >
-        Our Most Popular Courses
-      </Text>
-      <FilterBy />
-    </Flex>
-    <CourseCardList courseList={courseList} />
-  </Box>
-  <Footer style={{ zIndex: 999, width: "100%" }} />
-  
-</Layout>
-)
-  else
-  return (
-    <Layout overflowX="hidden" >
-      {auth.isAuthenticated ? (
-        <Welcome userName={auth.user.userName} />
-      ) : (
-        <WeAreUnique />
-      )}
-      <Box ml="2.3vw" overflowX="hidden">
-        <Flex justify="space-between" mt="3em">
-          <LiveSession liveSession={liveSession} />
-          <WorkshopSwiper workshopList={workshopList} />
-        </Flex>
-        <Text color="#072446"
-            fontSize="3xl"
-            fontWeight="bolder"
-            ml="1vw"
-            mb="15px"
-            mt="1em" >
-                New Course
+          <Flex justify="space-around" mt="3em">
+            <InsightCard type="student" count={insights.students} />
+            <InsightCard type="instructor" count={insights.instructors} />
+            <InsightCard type="course" count={insights.courses} />
+          </Flex>
+
+          <CandidateSwiper candidateList={candidateList} />
+          <Flex justify="space-between" mt="3em">
+            <LiveSession liveSession={liveSession} />
+            <WorkshopSwiper workshopList={workshopList} />
+          </Flex>
+
+          <CourseSwiper courseList={newCourseList} />
+          <Flex
+            alignItems="center"
+            justifyContent="space-between"
+            my="20px"
+            mt="3em"
+          >
+            <Text
+              color="#072446"
+              fontSize="3xl"
+              fontWeight="bolder"
+              ml="1vw"
+              mt="1em"
+            >
+              Our Most Popular Courses
             </Text>
-        <CourseSwiper courseList={newCourseList} />
-        <Flex alignItems="center" justifyContent="space-between" my="20px" mt="3em">
+            <FilterBy />
+          </Flex>
+          <CourseCardList courseList={courseList} />
+        </Box>
+        <Footer style={{ zIndex: 999, width: "100%" }} />
+      </Layout>
+    );
+  else
+    return (
+      <Layout overflowX="hidden">
+        {auth.isAuthenticated ? (
+          <Welcome userName={auth.user.userName} />
+        ) : (
+          <WeAreUnique />
+        )}
+        <Box ml="2.3vw" overflowX="hidden">
+          <Flex justify="space-between" mt="3em">
+            <LiveSession liveSession={liveSession} />
+            <WorkshopSwiper workshopList={workshopList} />
+          </Flex>
           <Text
             color="#072446"
             fontSize="3xl"
             fontWeight="bolder"
             ml="1vw"
+            mb="15px"
             mt="1em"
           >
-            Our Most Popular Courses
+            New Course
           </Text>
-          <FilterBy />
-        </Flex>
-        <CourseCardList courseList={courseList} />
-        <Text
-          color="#072446"
-          fontSize="3xl"
-          fontWeight="bolder"
-          ml="1vw"
-          mb="30px"
-          mt="3em"
-        >
-          Our Instructors
-        </Text>
-        <InstructorSwiper InstructorList={InstructorList} />
-      </Box>
-      <Footer style={{ zIndex: 999, width: "100%" }} />
-      
-    </Layout>
-  );
+          <CourseSwiper courseList={newCourseList} />
+          <Flex
+            alignItems="center"
+            justifyContent="space-between"
+            my="20px"
+            mt="3em"
+          >
+            <Text
+              color="#072446"
+              fontSize="3xl"
+              fontWeight="bolder"
+              ml="1vw"
+              mt="1em"
+            >
+              Our Most Popular Courses
+            </Text>
+            <FilterBy />
+          </Flex>
+          <CourseCardList courseList={courseList} />
+          <Text
+            color="#072446"
+            fontSize="3xl"
+            fontWeight="bolder"
+            ml="1vw"
+            mb="30px"
+            mt="3em"
+          >
+            Our Instructors
+          </Text>
+          <InstructorSwiper InstructorList={InstructorList} />
+        </Box>
+        <Footer style={{ zIndex: 999, width: "100%" }} />
+      </Layout>
+    );
 };
 
 export default Landing;
