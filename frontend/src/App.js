@@ -13,6 +13,7 @@ import CourseDetails from "./Pages/CourseDetails/CourseDetails";
 import Candidate from "./Components/candidate/Candidate";
 import AllCourses from "./Pages/All-courses/AllCourses";
 import Saved from "./Pages/Saved-courses/Saved"
+import { background, color } from "@chakra-ui/styled-system";
 
 function App() {
   const {pathname} = useLocation()
@@ -21,6 +22,8 @@ function App() {
   useEffect(() => {
     loadUser()
   }, [])
+
+
 
   return (
       <>

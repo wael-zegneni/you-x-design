@@ -10,20 +10,56 @@ import {
   Avatar,
 } from "@chakra-ui/react";
 import Layout from "../../Components/layout/Layout";
+import CourseDescription from "../../Components/course-description/CourseDescription";
 import Footer from "../../Components/footer/Footer";
 import Navbar from "../../Components/navbar/Navbar";
+import InstructorDescription from "../../Components/instructor-description/InstructorDescription";
 import { AuthContext } from "../../Auth/AuthContext";
 import {useToast} from "@chakra-ui/react"
 import axios from 'axios'
+import './courseDetails.css'
 
 const CourseDetails = () => {
+    const data = {
+        thumbnail: 'https://i2.wp.com/slbuddy.com/wp-content/uploads/2020/08/Free-Online-Business-Courses-with-Certificates.jpg?resize=960%2C600&ssl=1',
+        title : " Business and marketing outcomes",
+        type : "Article",
+        description: "This article seeks to align the goals and understanding of designers and marketers, which helps them work together on the important business goal of creating value propositions.",
+        instructor: {
+            name: 'Instrcutor Name',
+            role: 'UX designer',
+            residence: 'Sousse',
+            join_year: '2021',
+            bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae est id faucibus in ac libero.cahoncus consequat turpis ut mollis. Ut vulputate suscipitemper. Fusce nec diam lla felis, a fermentum nibh aliquet a. Donec vel facilisis nisl, vel suscipit '
+        }
+    }
+
+
+    const course = {
+        title: data.title,
+        type : data.type,
+        description: data.description,
+        thumbnail: data.thumbnail
+    }
+
+    console.log(course)
+
+    const instructor = {
+        name: data.instructor.name,
+        role: data.instructor.role,
+        residence: data.instructor.residence,
+        join_year: data.instructor.join_year,
+        bio: data.instructor.bio
+    }
     return (
         <div>
             <Navbar/>
-            <Text py="10" px="100" fontSize="2xl" fontWeight="bold" color="#072446" bg="#F7F9FB" my="70">About this course</Text>
-            <Text py="10" px="100" fontSize="2xl" fontWeight="bold" color="#072446" bg="#F7F9FB" my="70">Instructor</Text>
-            <Text py="10" px="100" fontSize="2xl" fontWeight="bold" color="#072446" bg="#F7F9FB" my="70">Review</Text>
-            <Text py="10" px="100" fontSize="2xl" fontWeight="bold" color="#072446" bg="#F7F9FB" my="70">Recommended for you</Text>
+            <Text py="10" px="2.8em" fontSize="4xl" fontWeight="bold" color="#072446" bg="#F7F9FB" my="70">About this course</Text>
+            <CourseDescription course={course} />
+            <Text py="10" px="2.8em" fontSize="4xl" fontWeight="bold" color="#072446" bg="#F7F9FB" my="70">Instructor</Text>
+            <InstructorDescription instructor = {instructor}  />
+            <Text py="10" px="2.8em" fontSize="4xl" fontWeight="bold" color="#072446" bg="#F7F9FB" my="70">Review</Text>
+            <Text py="10" px="2.8em" fontSize="4xl" fontWeight="bold" color="#072446" bg="#F7F9FB" my="70">Recommended for you</Text>
 
 
         </div>
