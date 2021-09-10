@@ -19,15 +19,17 @@ import Welcome from "../../Components/welcome/Welcome";
 import ProfileAvatar from "../../Components/profile-avatar/ProfileAvatar";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import CandidateSwiper from '../../Components/candidate-swiper/CandidateSwiper'
 
 const Landing = () => {
   const [workshopList, setworkshopList] = useState([]);
   const [liveSession, setliveSession] = useState();
   const [courseList, setcourseList] = useState([]);
   const [InstructorList, setInstructorList] = useState([]);
-  const [testimonialList, settestimonialList] = useState([]);
+  // const [testimonialList, settestimonialList] = useState([]);
   const { auth } = useContext(AuthContext);
   const [newCourseList, setnewCourseList ] = useState([]);
+  const [candidateList, setcandidateList] = useState([]);
 
   const history = useHistory();
 
@@ -36,17 +38,11 @@ const Landing = () => {
     console.log(res.data);
     setworkshopList(res.data);
   }, []);
-  // useEffect(async () => {
-  //   const res = await axios.get('api/v1/workshop/livesession')
-  //   console.log (res.data[0])
-  //   setliveSession(res.data[0])
-
-  // }, [])
-  // useEffect(() => {
-  //   if (!auth.isAuthenticated) {
-  //     history.push("/login");
-  //   }
-  // }, []);
+  useEffect(async () => {
+    const res = await axios.get("api/v1/candidate/all");
+    console.log(res.data);
+    setcandidateList(res.data);
+  }, []);
   useEffect(async () => {
     const res = await axios.get("api/v1/workshop/");
     const res2 = await axios.get("api/v1/workshop/livesession");
@@ -73,11 +69,12 @@ const Landing = () => {
     const res = await axios.get("api/v1/user/instructors/");
     setInstructorList(res.data.instructors);
   }, []);
-  useEffect(async () => {
-    const res = await axios.get("api/v1/comment/testimonials");
-    settestimonialList(res.data);
-  }, []);
+  // useEffect(async () => {
+  //   const res = await axios.get("api/v1/comment/testimonials");
+  //   settestimonialList(res.data);
+  // }, []);
   console.log(auth);
+  console.log(candidateList)
   if (auth.user.role=='admin')
   return(
   <Layout overflowX="hidden" >
@@ -86,6 +83,7 @@ const Landing = () => {
       <LiveSession liveSession={liveSession} />
       <WorkshopSwiper workshopList={workshopList} />
     </Flex>
+    <CandidateSwiper candidateList={candidateList}/>
     <CourseSwiper courseList={newCourseList} />
     <Flex alignItems="center" justifyContent="space-between" my="20px" mt="3em">
       <Text
