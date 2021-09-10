@@ -31,7 +31,7 @@ const Landing = () => {
   const { auth } = useContext(AuthContext);
   const [newCourseList, setnewCourseList ] = useState([]);
   const [candidateList, setcandidateList] = useState([]);
-  const [insights, setinsights] = useState();
+  const [insights, setinsights] = useState({});
 
   const history = useHistory();
 
@@ -81,6 +81,7 @@ const Landing = () => {
   // }, []);
   console.log(auth);
   console.log(candidateList)
+  console.log(insights)
   if (auth.user.role=='admin')
   return(
   <Layout overflowX="hidden" >
@@ -95,9 +96,15 @@ const Landing = () => {
             Insights
           </Text>
   <Flex justify="space-between" mt="3em">
+    {insights.students ? (
     <InsightCard type='student' count={insights.students}/>
+    ):(<InsightCard type='student' count = '0' />)}
+    {insights.instructors ? (
     <InsightCard type='instructor' count={insights.instructors}/>
+    ):(<InsightCard type='instructor' count = '0' />)}
+    {insights.courses ? (
     <InsightCard type='course' count={insights.courses}/>
+    ):(<InsightCard type='course' count = '0' />)}
     </Flex>
           
   <CandidateSwiper candidateList={candidateList}/>
