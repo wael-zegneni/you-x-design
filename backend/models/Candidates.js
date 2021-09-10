@@ -29,7 +29,8 @@ const CandidateSchema = new mongoose.Schema({
     },
     facebook: String,
     linkedin: String,
-    instagram: String
+    instagram: String,
+    date: Date,
 
 
 })

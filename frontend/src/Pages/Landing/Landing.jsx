@@ -78,7 +78,34 @@ const Landing = () => {
     settestimonialList(res.data);
   }, []);
   console.log(auth);
-
+  if (auth.user.role=='admin')
+  return(
+  <Layout overflowX="hidden" >
+  <Box ml="2.3vw" overflowX="hidden">
+    <Flex justify="space-between" mt="3em">
+      <LiveSession liveSession={liveSession} />
+      <WorkshopSwiper workshopList={workshopList} />
+    </Flex>
+    <CourseSwiper courseList={newCourseList} />
+    <Flex alignItems="center" justifyContent="space-between" my="20px" mt="3em">
+      <Text
+        color="#072446"
+        fontSize="3xl"
+        fontWeight="bolder"
+        ml="1vw"
+        mt="1em"
+      >
+        Our Most Popular Courses
+      </Text>
+      <FilterBy />
+    </Flex>
+    <CourseCardList courseList={courseList} />
+  </Box>
+  <Footer style={{ zIndex: 999, width: "100%" }} />
+  
+</Layout>
+)
+  else
   return (
     <Layout overflowX="hidden" >
       {auth.isAuthenticated ? (
