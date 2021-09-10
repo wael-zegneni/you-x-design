@@ -21,7 +21,7 @@ import {useToast} from "@chakra-ui/react"
 import axios from 'axios'
 import './courseDetails.css'
 
-const CourseDetails = () => {
+const CourseDetails = ({id}) => {
     const data = {
 
         thumbnail: 'https://i2.wp.com/slbuddy.com/wp-content/uploads/2020/08/Free-Online-Business-Courses-with-Certificates.jpg?resize=960%2C600&ssl=1',
