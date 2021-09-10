@@ -15,14 +15,7 @@ const CourseSwiper = ({ courseList }) => {
     console.log(courseList)
     return (
         <Box cursor='move' style={{ marginTop: '65px', marginLeft:'-0.4vw' }} >
-            <Text color="#072446"
-            fontSize="3xl"
-            fontWeight="bolder"
-            ml="1vw"
-            mb="15px"
-            mt="1em" >
-                New Course
-            </Text>
+            
             <Swiper watchSlidesProgress={true}  watchSlidesVisibility={true} freeMode={true} className="course_swiper" breakpoints={{
                 "640": {
                     "slidesPerView": 1,

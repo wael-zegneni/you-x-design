@@ -50,8 +50,8 @@ const SocialButton = ({ children, label, href, }) => {
 const InstructorDescription = ({ instructor }) => {
     return (
         <Flex px="100" bg="#FCFCFC" justifyContent="space-between" flexWrap="wrap" py='5'>
-            <Flex flex="0.4" borderRadius="15px">
-                <Avatar size="2xl" name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
+            <Flex flex="0.5" borderRadius="15px">
+                <Avatar size="2xl" mr="3" name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
                 <Box ml="15px">
                     <Text fontSize="1.6vw" fontWeight="bold" >{instructor.name}</Text>
                     <Text fontSize="1.1vw" fontWeight="600">{instructor.role}, {instructor.residence}</Text>
@@ -70,7 +70,7 @@ const InstructorDescription = ({ instructor }) => {
                 </Box>
             </Flex>
             <Box flex="0.5" mt="3" >
-                <Text flex='0.9' fontSize="1.1vw" lineHeight="1.4" fontWeight="600">
+                <Text flex='0.9' fontSize="1.1vw" lineHeight="1.4" fontWeight="500">
                     {instructor.bio}
                 </Text>
             </Box>
