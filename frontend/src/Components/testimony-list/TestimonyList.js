@@ -1,11 +1,6 @@
 import React from 'react'
 import {
-    Heading,
-    Avatar,
-    Box,
-    Center,
     Flex,
-    Text,
 } from "@chakra-ui/react";
 
 import Testimonial from '../testimonial/Testimonial';

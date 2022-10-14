@@ -121,8 +121,8 @@ const Login = () => {
                 {
                     position ?
                         <form className="login-form" onSubmit={handleLoginSubmit}>
-                            <h1>Login</h1>
-                            {auth.isLogginIn && <h1>LOADING... </h1>}
+                            {auth.isLogginIn ? <h1>Logging in ...  </h1> : <h1>Login</h1>
+}
                             <div className="inputs">
                                 <div className="input-trans">
                                     <input className="input" type="email" autoComplete="off" placeholder=" " onChange={handleLoginChange} name="email"></input>

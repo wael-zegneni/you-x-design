@@ -10,15 +10,11 @@ import {
   Avatar,
 } from "@chakra-ui/react";
 import ReviewCard from "../../Components/review-card/ReviewCard";
-import Layout from "../../Components/layout/Layout";
 import CourseDescription from "../../Components/course-description/CourseDescription";
-import Footer from "../../Components/footer/Footer";
 import Navbar from "../../Components/navbar/Navbar";
 import CourseSwiper from '../../Components/course-swiper/CourseSwiper'
 import InstructorDescription from "../../Components/instructor-description/InstructorDescription";
-import { AuthContext } from "../../Auth/AuthContext";
-import {useToast} from "@chakra-ui/react"
-import axios from 'axios'
+
 import './courseDetails.css'
 
 const CourseDetails = ({id}) => {
@@ -57,7 +53,6 @@ const CourseDetails = ({id}) => {
         saved: data.saved
     }
 
-    console.log(course)
 
     const instructor = {
         name: data.instructor.name,

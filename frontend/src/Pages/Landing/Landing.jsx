@@ -1,11 +1,7 @@
 import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import WeAreUnique from "../../Components/we-are-unique/WeAreUnique";
-import Testimonial from "../../Components/testimonial/Testimonial";
-import InstructorCard from "../../Components/instructor-card/InstructorCard";
 import Footer from "../../Components/footer/Footer";
-import TestimonyList from "../../Components/testimony-list/TestimonyList";
-import JoinCommunityCard from "../../Components/join-community-card/JoinCommunityCard";
 import InstructorSwiper from "../../Components/instructor-swiper/InstructorSwiper";
 import WorkshopSwiper from "../../Components/workshops-swiper/WorkshopSwiper";
 import CourseSwiper from "../../Components/course-swiper/CourseSwiper";
@@ -92,7 +88,7 @@ const Landing = () => {
           <CandidateSwiper candidateList={candidateList} />
           <Flex justify="space-between" mt="3em">
             <LiveSession liveSession={liveSession} />
-            <WorkshopSwiper workshopList={workshopList} />
+            <WorkshopSwiper style={{marginLeft:"2em"}} workshopList={workshopList} />
           </Flex>
 
           <CourseSwiper courseList={newCourseList} />

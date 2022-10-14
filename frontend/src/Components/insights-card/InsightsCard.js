@@ -7,7 +7,7 @@ import { Flex, Text, Box, Icon } from "@chakra-ui/react";
 const InsightCard = ({ type, count }) => {
     if (type == 'student') {
         return (
-            <Flex className="insightCard" borderRadius="2xl"  width="23%" bg="#F7F9FB" px="25px" alignItems="center" justifyContent="space-around" py="15px" borderRadius="2xl">
+            <Flex boxShadow="1px 1px 4px #D3D3D3" className="insightCard" borderRadius="2xl"  width="23%" bg="#F7F9FB" px="25px" alignItems="center" justifyContent="space-around" py="15px" borderRadius="2xl">
                 <Icon
                     mr="4"
                     fontSize="7vw"
@@ -18,7 +18,7 @@ const InsightCard = ({ type, count }) => {
                     <Text fontSize="3.8vw" lineHeight='1.2' color='#072446' fontWeight="bolder">
                         {count}
                     </Text>
-                    <Text color='#1E1E1E'>students</Text>
+                    <Text fontSize="1vw" color='#1E1E1E'>students</Text>
                 </Flex>
             </Flex>
         )
@@ -26,7 +26,7 @@ const InsightCard = ({ type, count }) => {
     else if (type == 'instructor') {
         return (
            
-                <Flex className="insightCard" borderRadius="2xl" width="23%" bg="#F7F9FB" px="25px" alignItems="center" justifyContent="space-around" py="15px" borderRadius="2xl">
+                <Flex boxShadow="1px 1px 4px #D3D3D3"  className="insightCard" borderRadius="2xl" width="23%" bg="#F7F9FB" px="25px" alignItems="center" justifyContent="space-around" py="15px" borderRadius="2xl">
                     <Icon
                         mr="4"
                         fontSize="6vw"
@@ -37,7 +37,7 @@ const InsightCard = ({ type, count }) => {
                         <Text fontSize="3.8vw" lineHeight='1.2' color='#072446' fontWeight="bolder">
                             {count}
                         </Text>
-                        <Text color='#1E1E1E'>instructors</Text>
+                        <Text fontSize="1vw" color='#1E1E1E'>instructors</Text>
                     </Flex>
                 </Flex>
         
@@ -46,7 +46,7 @@ const InsightCard = ({ type, count }) => {
     else if (type == 'course') {
         return (
        
-                <Flex className="insightCard" borderRadius="2xl" width="23%" bg="#F7F9FB" px="25px" alignItems="center" justifyContent="space-around" py="15px" borderRadius="2xl">
+                <Flex boxShadow="1px 1px 4px #D3D3D3" className="insightCard" borderRadius="2xl" width="23%" bg="#F7F9FB" px="25px" alignItems="center" justifyContent="space-around" py="15px" borderRadius="2xl">
                     <Icon
                         mr="4"
                         fontSize="7vw"
@@ -57,7 +57,7 @@ const InsightCard = ({ type, count }) => {
                         <Text fontSize="3.8vw" lineHeight='1.2' color='#072446' fontWeight="bolder">
                             {count}
                         </Text>
-                        <Text color='#1E1E1E'>courses</Text>
+                        <Text fontSize="1vw" color='#1E1E1E'>courses</Text>
                     </Flex>
                 </Flex>
  

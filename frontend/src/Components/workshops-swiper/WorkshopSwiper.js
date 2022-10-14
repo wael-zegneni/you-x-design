@@ -15,7 +15,7 @@ import "swiper/swiper.min.css";
 const WorkshopSwiper = ({ workshopList }) => {
     const { auth, signout } = useContext(AuthContext)
     return (
-        <div style={{ marginTop: '65px' }}>
+        <div style={{ marginTop: '65px', marginLeft: '40px' }}>
             <Text color="#072446" fontSize="3xl" fontWeight="bolder" mb="10px" >
                 Upcoming
             </Text>
